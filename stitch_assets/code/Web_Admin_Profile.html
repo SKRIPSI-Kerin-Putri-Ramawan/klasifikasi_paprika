@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Profile | Botanical Lab</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1c",
+                    "background": "#f8faf9",
+                    "on-primary-container": "#c6ffd0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#394857",
+                    "secondary-fixed-dim": "#b8c8da",
+                    "on-background": "#191c1c",
+                    "inverse-on-surface": "#eff1f0",
+                    "surface-tint": "#006d37",
+                    "tertiary-fixed": "#c5eccc",
+                    "surface-container": "#eceeed",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-secondary-container": "#556474",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#aad0b1",
+                    "primary-fixed": "#96f7af",
+                    "inverse-surface": "#2e3131",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#3b5d45",
+                    "secondary-container": "#d1e1f4",
+                    "secondary-fixed": "#d4e4f6",
+                    "surface": "#f8faf9",
+                    "on-error-container": "#93000a",
+                    "secondary": "#50606f",
+                    "primary": "#006331",
+                    "on-primary-fixed-variant": "#005228",
+                    "primary-container": "#147e43",
+                    "surface-variant": "#e1e3e2",
+                    "primary-fixed-dim": "#7ada95",
+                    "on-secondary-fixed": "#0d1d2a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#00210c",
+                    "on-tertiary-fixed": "#00210e",
+                    "tertiary-container": "#53765c",
+                    "surface-bright": "#f8faf9",
+                    "outline-variant": "#bfcaba",
+                    "inverse-primary": "#7ada95",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f3",
+                    "surface-container-high": "#e6e9e8",
+                    "on-tertiary-fixed-variant": "#2c4e36",
+                    "surface-dim": "#d8dada",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#d4fcdb",
+                    "outline": "#707a6c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#40493d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-stone-50 dark:bg-slate-950 flex flex-col h-full border-r border-stone-200 dark:border-slate-800 z-50">
+<div class="p-8">
+<h1 class="font-manrope text-2xl font-black text-emerald-900 dark:text-emerald-50 tracking-tighter">PlantClassify</h1>
+<p class="font-inter tracking-wide uppercase text-[10px] font-bold text-stone-500 mt-1">Precision Ag-Tech</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Scan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="potted_plant">potted_plant</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Gallery</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="medication">medication</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Treatment</span>
+</a>
+<!-- Active Profile Tab -->
+<a class="flex items-center gap-3 px-4 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-100 rounded-lg mx-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Profile</span>
+</a>
+</nav>
+<div class="p-6">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold text-sm tracking-tight cursor-pointer active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Start New Analysis
+            </button>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-40 bg-stone-50/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-8 py-3 w-full ml-64 border-b border-stone-100 dark:border-slate-900">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search lab records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 text-stone-500 dark:text-slate-400">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="settings">settings</span>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-stone-200 dark:border-slate-800">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Budi Santoso</p>
+<p class="text-[10px] font-bold text-primary uppercase tracking-wider">Lead Researcher</p>
+</div>
+<img alt="Researcher Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-emerald-100" data-alt="Professional headshot of a middle-aged man with short hair in a clean laboratory setting, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB75lSwCfTCJcVtdczhb_N4CKOUVONwbsd2MoKDQl3KyKsb8-H0IuD9Vq_gFLPEf3hTAMvly7DsxHUFowhNE8GL7Ce9reOdepzStNw9vJNVn2kqOMTvdvjtvxzO5JsH7ciz59yKOGBHYSgLiriU7R8rKl8Aw60V5gNsz0A6U5GOK3J_2_Ytb5Wl5I0LQM7w3Hx8NVhvNn51XD-3jNfBb4KjuKqegGU5g0CXHNht009Hk-dLTVtmcY4QI7MUI1t8shD0bN0ZSXYaMKY"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-12 max-w-7xl">
+<header class="mb-12">
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Admin Profile</h2>
+<p class="text-on-surface-variant max-w-2xl">Manage your researcher credentials and monitor account security across the Botanical Lab network.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Profile Card -->
+<div class="lg:col-span-5 space-y-8">
+<!-- Main Identity Card -->
+<div class="bg-surface-container-low rounded-xl p-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+<div class="flex flex-col items-center text-center relative z-10">
+<div class="relative mb-6">
+<img class="w-32 h-32 rounded-xl object-cover shadow-2xl ring-4 ring-white" data-alt="Budi Santoso, a professional lab administrator, wearing a white lab coat, clean studio portrait background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOJgc7KknXztXxlcsTTyRJMPp2mF_S0DLAWPFylVXUO3AJjcjNk3B6zE9qDsYur7C1kBiBtoa9kT1msRVal9fACZG1Smw1_0NBwEpoomCWo4B2qhF_I1BUZyMclSGyCcLQvls32PYac6NXr0musmnw4fXpkN59UtzKj1cwKSTOcPk-9Sb4I6zux1M6sAUdL-BGj94aaucPPSH1QUpUe9hCWgO5zAcMZS17kwZccZn2yH1nDr3vp67OINV3tYtiBM4yVjhaISLVe58"/>
+<button class="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-lg shadow-lg hover:bg-primary-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-1">Budi Santoso</h3>
+<p class="text-primary font-semibold text-sm mb-6 px-4 py-1 bg-primary/10 rounded-full">Lead Administrator &amp; Researcher</p>
+<div class="w-full grid grid-cols-2 gap-4 border-t border-stone-200/50 pt-6 mt-2">
+<div class="text-center">
+<p class="text-xs font-bold text-stone-500 uppercase tracking-widest mb-1">ID NUMBER</p>
+<p class="font-headline font-bold text-on-surface">BL-2024-991</p>
+</div>
+<div class="text-center">
+<p class="text-xs font-bold text-stone-500 uppercase tracking-widest mb-1">DEPARTMENT</p>
+<p class="font-headline font-bold text-on-surface">Pathology</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-4">
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-highest rounded-xl group hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="photo_camera">photo_camera</span>
+<span class="font-bold text-sm">Update Photo</span>
+</div>
+<span class="material-symbols-outlined text-stone-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-highest rounded-xl group hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="lock_reset">lock_reset</span>
+<span class="font-bold text-sm">Change Password</span>
+</div>
+<span class="material-symbols-outlined text-stone-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-error-container/20 rounded-xl group hover:bg-error-container/40 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error" data-icon="logout">logout</span>
+<span class="font-bold text-sm text-error">Logout Session</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Right Column: Security Logs -->
+<div class="lg:col-span-7 space-y-8">
+<section class="bg-surface-container-low rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-bold tracking-tight">Security Logs</h3>
+<p class="text-xs text-on-surface-variant font-medium mt-1">Review your active sessions and device history</p>
+</div>
+<span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-full">3 ACTIVE SESSIONS</span>
+</div>
+<div class="space-y-4">
+<!-- Session 1: MacBook Pro -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-start gap-4 hover:shadow-lg transition-shadow border border-transparent hover:border-outline-variant/10">
+<div class="p-3 bg-stone-100 rounded-lg text-stone-600">
+<span class="material-symbols-outlined text-2xl" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface">MacBook Pro 16"</h4>
+<span class="text-[10px] px-2 py-0.5 bg-primary text-white rounded font-bold">CURRENT DEVICE</span>
+</div>
+<div class="flex gap-4 items-center">
+<p class="text-sm text-on-surface-variant">Surabaya, Indonesia • 192.168.1.1</p>
+</div>
+<p class="text-[10px] font-bold text-stone-400 mt-2 uppercase tracking-tighter">Last Active: Just Now</p>
+</div>
+</div>
+<!-- Session 2: iPhone -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-start gap-4 hover:shadow-lg transition-shadow border border-transparent hover:border-outline-variant/10">
+<div class="p-3 bg-stone-100 rounded-lg text-stone-600">
+<span class="material-symbols-outlined text-2xl" data-icon="smartphone">smartphone</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface">iPhone 15 Pro</h4>
+<button class="text-[10px] font-bold text-error uppercase hover:underline">Revoke</button>
+</div>
+<div class="flex gap-4 items-center">
+<p class="text-sm text-on-surface-variant">Surabaya, Indonesia • Mobile Network</p>
+</div>
+<p class="text-[10px] font-bold text-stone-400 mt-2 uppercase tracking-tighter">Last Active: 12 minutes ago</p>
+</div>
+</div>
+<!-- Session 3: Lab Terminal -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-start gap-4 hover:shadow-lg transition-shadow border border-transparent hover:border-outline-variant/10">
+<div class="p-3 bg-stone-100 rounded-lg text-stone-600">
+<span class="material-symbols-outlined text-2xl" data-icon="terminal">terminal</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface">Lab Terminal #04</h4>
+<button class="text-[10px] font-bold text-error uppercase hover:underline">Revoke</button>
+</div>
+<div class="flex gap-4 items-center">
+<p class="text-sm text-on-surface-variant">Main Lab Facility • 10.0.0.42</p>
+</div>
+<p class="text-[10px] font-bold text-stone-400 mt-2 uppercase tracking-tighter">Last Active: Yesterday, 14:20</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-stone-200/50">
+<button class="text-primary font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">
+                            View All Activity History
+                            <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Additional Stats/Contextual Bento Box -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-primary-container/10 p-6 rounded-xl">
+<p class="text-[10px] font-black text-primary-container uppercase tracking-[0.2em] mb-4">Total Scans</p>
+<div class="flex items-end gap-2">
+<span class="text-4xl font-black text-primary">1,284</span>
+<span class="text-xs font-bold text-primary/60 mb-1">+12% this month</span>
+</div>
+</div>
+<div class="bg-secondary-container/20 p-6 rounded-xl">
+<p class="text-[10px] font-black text-secondary uppercase tracking-[0.2em] mb-4">Account Tier</p>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl text-secondary" data-icon="verified_user">verified_user</span>
+<span class="text-xl font-bold text-secondary">Verified Admin</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

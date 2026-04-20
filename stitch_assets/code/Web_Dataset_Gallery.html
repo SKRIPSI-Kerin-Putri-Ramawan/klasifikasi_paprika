@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dataset Gallery | Botanical Lab</title>
+<!-- Google Fonts: Manrope & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1c",
+                    "background": "#f8faf9",
+                    "on-primary-container": "#c6ffd0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#394857",
+                    "secondary-fixed-dim": "#b8c8da",
+                    "on-background": "#191c1c",
+                    "inverse-on-surface": "#eff1f0",
+                    "surface-tint": "#006d37",
+                    "tertiary-fixed": "#c5eccc",
+                    "surface-container": "#eceeed",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-secondary-container": "#556474",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#aad0b1",
+                    "primary-fixed": "#96f7af",
+                    "inverse-surface": "#2e3131",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#3b5d45",
+                    "secondary-container": "#d1e1f4",
+                    "secondary-fixed": "#d4e4f6",
+                    "surface": "#f8faf9",
+                    "on-error-container": "#93000a",
+                    "secondary": "#50606f",
+                    "primary": "#006331",
+                    "on-primary-fixed-variant": "#005228",
+                    "primary-container": "#147e43",
+                    "surface-variant": "#e1e3e2",
+                    "primary-fixed-dim": "#7ada95",
+                    "on-secondary-fixed": "#0d1d2a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#00210c",
+                    "on-tertiary-fixed": "#00210e",
+                    "tertiary-container": "#53765c",
+                    "surface-bright": "#f8faf9",
+                    "outline-variant": "#bfcaba",
+                    "inverse-primary": "#7ada95",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f3",
+                    "surface-container-high": "#e6e9e8",
+                    "on-tertiary-fixed-variant": "#2c4e36",
+                    "surface-dim": "#d8dada",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#d4fcdb",
+                    "outline": "#707a6c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#40493d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            background-color: rgba(248, 250, 249, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-stone-50 flex flex-col border-r border-stone-200 z-50">
+<div class="p-8">
+<h1 class="font-headline text-2xl font-black text-emerald-900 tracking-tighter">PlantClassify</h1>
+<p class="font-label text-[10px] font-bold uppercase tracking-wide text-stone-500 mt-1">Precision Ag-Tech</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-lg transition-all cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-lg transition-all cursor-pointer">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-medium text-sm">Scan</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-lg transition-all cursor-pointer">
+<span class="material-symbols-outlined">history</span>
+<span class="font-medium text-sm">History</span>
+</div>
+<!-- Active State: Gallery -->
+<div class="flex items-center gap-3 px-4 py-3 bg-emerald-50 text-emerald-800 rounded-lg transition-all cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">potted_plant</span>
+<span class="font-semibold text-sm">Gallery</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-lg transition-all cursor-pointer">
+<span class="material-symbols-outlined">medication</span>
+<span class="font-medium text-sm">Treatment</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-lg transition-all cursor-pointer">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-medium text-sm">Profile</span>
+</div>
+</nav>
+<div class="p-4 mt-auto">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+                Start New Analysis
+            </button>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 w-full glass-nav flex justify-between items-center px-8 py-4 shadow-[inset_0_-1px_0_0_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-6">
+<h2 class="font-headline font-bold text-lg text-emerald-800 tracking-tight">Botanical Lab</h2>
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-stone-400 group-focus-within:text-emerald-600 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-80 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all outline-none" placeholder="Search dataset specimens..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-500 hover:bg-emerald-50 rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-stone-500 hover:bg-emerald-50 rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img alt="Researcher Profile" data-alt="Close up portrait of a professional female botanical researcher with a clean, scientific aesthetic and soft lab lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwKMYoALCgsyJipzqpsu2iU5kZAX_PhezsWTXjbXynY8WotpnOaW9gn8A-h6_8kqMmyjbqcC_pRJbTh-2QPa83QCog_YEq8OUY4L4vhC87-KllXjECrWWcnarPNtx2zxwUNABxNGJfHiAtWiNLPl5Kt9sgOhAC-UDhPX3fTinPp1J8kFIcJh4d-ac-6ZQw1sKYjzepp1OSJJdb5nc9pSxLale4ZFMITy3xdL_055F230Bl4JMh4Y5QzGp6nzuZDkQzakxXpnzwhwQ"/>
+</div>
+</div>
+</header>
+<!-- Gallery Canvas -->
+<div class="p-10 max-w-[1600px] mx-auto space-y-16">
+<!-- Section: Overview Stats -->
+<section class="grid grid-cols-4 gap-6">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="font-label text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-2">Total Samples</p>
+<p class="font-headline text-4xl font-extrabold text-emerald-900 tracking-tighter">14,208</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="font-label text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-2">Validated Sets</p>
+<p class="font-headline text-4xl font-extrabold text-emerald-900 tracking-tighter">12</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="font-label text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-2">Growth Rate</p>
+<p class="font-headline text-4xl font-extrabold text-emerald-900 tracking-tighter">+24%</p>
+</div>
+<div class="bg-emerald-800 p-6 rounded-xl flex flex-col justify-between">
+<p class="text-emerald-100 font-label text-[10px] font-bold uppercase tracking-widest">Model Accuracy</p>
+<div class="flex items-end justify-between">
+<span class="font-headline text-4xl font-extrabold text-white tracking-tighter">98.4%</span>
+<span class="material-symbols-outlined text-emerald-300 text-3xl">insights</span>
+</div>
+</div>
+</section>
+<!-- Gallery Sections -->
+<!-- Healthy Specimens -->
+<section>
+<div class="flex items-baseline justify-between mb-8">
+<div class="flex items-center gap-4">
+<h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Healthy Specimens</h3>
+<span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-wider rounded-full">Primary Control</span>
+</div>
+<button class="flex items-center gap-2 text-primary hover:text-primary-container font-semibold text-sm transition-colors group">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Download Metadata
+                    </button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm hover:shadow-xl transition-all group">
+<div class="aspect-square rounded-md overflow-hidden mb-4 bg-stone-100">
+<img alt="Specimen H-01" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Macro photography of a perfectly healthy green plant leaf with vibrant veins and no signs of disease, soft studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-mQi4R-KdeSZfU2wuPusdQrFODWSDlxclGMlnEuoNsa_rWZCyzzBWJGyk8CqU4nB1jsb52vKJtluw1zYrRpFrM3fgjOBcBxQ-uExy1EMzeRX-7xySpsZd82o_EVgRz0uZfhefHUeEc719Sbgm7LFiPijwrLh5nBfi6hxVc728A7c1zXQ2BdljQMwfaoBQQDTN-eu6L6A0d2l9PndW0EjhazSFO1yM4goZLoV9xNOu7OPAJVXCRy_C4Jy9MHNyi0zMW-vRTk3-2O4"/>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-xs font-mono text-stone-400">#H-7721-A</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Repeat specimen items with varied asymmetric heights or grid layouts if desired, here keeping clean for high-res focus -->
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm hover:shadow-xl transition-all group">
+<div class="aspect-square rounded-md overflow-hidden mb-4 bg-stone-100">
+<img alt="Specimen H-02" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Deep green serrated leaf macro photo against a white laboratory background, sharp focus on biological textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwVRKdACtOEZV-XIAXBupy6a-kRcLI17wK4bcXrPypsfuxy7raOtUlVlJyDqk9LEBXyL5xlTsOShpox6XhMeIs09pCAAd_dQj772terN3sLll8guqoshP5U6CcEJayIuyiqTL7NGZdHeF_08w_I-RJ7p02IQkIMAYhii43A8cNZ-MfoMUsd8QZq1uoP3Q9d8zTUTe-SN4IgeByhWjctYY4NdB5BA-VuAYpq6u2K_4Va90pg-XQmIEB3duqAoY3MJ1YXCqzj43Lv9I"/>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-xs font-mono text-stone-400">#H-7722-B</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm hover:shadow-xl transition-all group">
+<div class="aspect-square rounded-md overflow-hidden mb-4 bg-stone-100">
+<img alt="Specimen H-03" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a vibrant young sprout with two leaves emerging from rich dark soil, scientific observation style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCvmFRx35Bon6wBbkwbaT11JNZKxyhDfPZ-ZocSpl6O9sGNo-2E2LCss46Za0q4NvD6OWOeTIrZCN5H3vhgsy_v5MlfQaIMEb-MCuxBke2hCxHpLq7C2c7usVQ3gkRY3fymBampLr8KBIbhKcepiv-ZBFnndDaV-VOk3SZYN57BLKXjqly9JpFIg2sQhRy_46kJr2cFCR0SO8Djfu5uXLZoC_jcMojP9WlDNYJwW2vyeJdl3eI4sMKkJbU_YIUnpramjocge7AFjM"/>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-xs font-mono text-stone-400">#H-7723-C</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm hover:shadow-xl transition-all group">
+<div class="aspect-square rounded-md overflow-hidden mb-4 bg-stone-100">
+<img alt="Specimen H-04" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist top view of a single monstera leaf showing intricate biological patterns and healthy chlorophyll saturation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTuV9aa_ZGTHVyH2EMGc-jMb8bnVm1UP7EgAeDicNWjLoEXnWYaErJG6GPm2-yhg61Xj-p3IuXNh59CSUzZYDfKZmU9ki9MtiQUrgvqtIsIbWtp3aTSPvA6uHKAWdTCe1dHQpiikLnuK7oCzY_AjmMgARMWC4xxnZzwEHgB5XjzqjKsEA5s7oNgmt0Io7G5FNh7r62SCUN-sX6Eh2RQEnuDloAQ8XY_822KS_QqodfLNqbcP7BiBx3MbuyZt_UiY1PWf7CDnqRwS4"/>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-xs font-mono text-stone-400">#H-7724-D</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bacterial Spot -->
+<section>
+<div class="flex items-baseline justify-between mb-8">
+<div class="flex items-center gap-4">
+<h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Bacterial Spot</h3>
+<span class="px-3 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider rounded-full">Xanthomonas Campestris</span>
+</div>
+<button class="flex items-center gap-2 text-primary hover:text-primary-container font-semibold text-sm transition-colors group">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Download Metadata
+                    </button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm hover:shadow-xl transition-all group">
+<div class="aspect-square rounded-md overflow-hidden mb-4 bg-stone-100">
+<img alt="Specimen BS-01" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Macro scientific view of a leaf affected by bacterial spot with visible necrosis and yellow halo around lesions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7eIY4gAZ_FHLABH9pinEuHQkugSn62JvpCDLDHxngJPqR6z9Tq7IaR6XGXTC3XIUBwW9AsBjIQ0O_IYYh407B9BqvtyMjPXQSM4MuEarYdbQ24IQATCloquV61kbvuLMT6aCodkqZcMB3sxYPSIuksKL4fIwR_2XpUclCxbBBalgc3Z6gpxxToEMOv5kpYc9RXM9zdpapk8nDpXfaJuKJUFW-IDqmHpAMJaJvAbEHcQ74p63LLG0xV_QhhiagKVYABNnpEy9vwGc"/>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-xs font-mono text-stone-400">#BS-901-X</span>
+<span class="text-[10px] font-bold text-amber-600">89% CONFIDENCE</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm hover:shadow-xl transition-all group">
+<div class="aspect-square rounded-md overflow-hidden mb-4 bg-stone-100">
+<img alt="Specimen BS-02" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Detailed view of plant pathology with brown circular lesions on a drying leaf surface, laboratory specimen lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZDAzlrEIbFElDemxQcwgCZeKa5A9bNsWHRjMfI06GBK76v86fEvv3nxsucCm8kirqYH1WFGN17tWu8JUyCo0pwHfR-PO3XnNknloZ1fTmXJ0qbUDLIacv6_ng1Kjhag3TF9QvbC8DtIugZg6dJ8DDWLJmUAPBmxUstMhIOkkrnZOv2ECaSkpI2si6j6gLA2crjvk74QmRwBHIuePNZBg8mIiO7MW9VwIpQO24p-05no8O8myz96nVjLsXBoX5Cnp8IO7tLTufuPQ"/>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-xs font-mono text-stone-400">#BS-902-Y</span>
+<span class="text-[10px] font-bold text-amber-600">92% CONFIDENCE</span>
+</div>
+</div>
+<!-- Empty placeholder specimen cards to show scale -->
+<div class="bg-surface-container-low/50 rounded-lg border-2 border-dashed border-outline-variant/30 flex items-center justify-center p-8">
+<div class="text-center">
+<span class="material-symbols-outlined text-stone-300 text-4xl mb-2">add_photo_alternate</span>
+<p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Pending Upload</p>
+</div>
+</div>
+<div class="bg-surface-container-low/50 rounded-lg border-2 border-dashed border-outline-variant/30 flex items-center justify-center p-8">
+<div class="text-center">
+<span class="material-symbols-outlined text-stone-300 text-4xl mb-2">add_photo_alternate</span>
+<p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Pending Upload</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Leaf Curl & Early Blight (Simplified Bento Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+<!-- Leaf Curl Column -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-2xl font-extrabold text-on-surface">Leaf Curl</h3>
+<button class="p-2 text-primary hover:bg-emerald-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm border border-outline-variant/10">
+<div class="aspect-[4/3] rounded overflow-hidden mb-3">
+<img alt="Leaf Curl Sample" class="w-full h-full object-cover" data-alt="High-resolution specimen of a tomato leaf showing characteristic upward curling and thickening of leaf edges, clinical white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh_HfW5lI7NTC5D3QizxLMHFKAfUGFsURXgkpggoGR8CXA-pmmJvUFYGUiAleNHwEQoMVRa4tmVatNzja2Ztz9IgrufZupsI2lgtsDlRupsVsHF2mCZPJOyaeDvvztFH80BWuFszXk949OKMp2zCwbCDIPyuYc_cZJRnikYoexJ4XmqBQkGWnAoMANKbYygHn5M6EuwdOFe76FmO223Z-nx8ydm3bMU3GCqFClMh8yE2eIomv8a4Ei-warQ80st4Ua5ycHwq6u_e4"/>
+</div>
+<span class="font-mono text-[10px] text-stone-400">LC_CAT_001</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm border border-outline-variant/10">
+<div class="aspect-[4/3] rounded overflow-hidden mb-3">
+<img alt="Leaf Curl Sample 2" class="w-full h-full object-cover" data-alt="Macro detail of twisted leaf tissue with viral infection symptoms, scientific study of agricultural pests." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx5R2_D8t0w60cWFXsvTePAROEVw_X9BsKnHFLUyRO8zeQtRGoqYPND3ty4fRx6OM61HKMLwszNPbPLXdtw5RPuO5vlaP9fb4a71ryPwlbk0J15Yutl4K-TnRS-CqdqLtgEXtjlxJ2iIVesJJ-0NAclhDsVBi7NNA8MuoteGPPuJNFjz_Sw0eYU4IAOA6D12u0lZrdD3YeWZkOyiZV5wp-TtVPkZwWxrvH0dYpBwtqcTRGOsYJAO_B7BuSf9IiAVhO0ltVsvlrA04"/>
+</div>
+<span class="font-mono text-[10px] text-stone-400">LC_CAT_002</span>
+</div>
+</div>
+</section>
+<!-- Early Blight Column -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-2xl font-extrabold text-on-surface">Early Blight</h3>
+<button class="p-2 text-primary hover:bg-emerald-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm border border-outline-variant/10">
+<div class="aspect-[4/3] rounded overflow-hidden mb-3">
+<img alt="Early Blight Sample" class="w-full h-full object-cover" data-alt="Specimen leaf with target-like brown spots of Alternaria solani early blight, detailed texture and concentric rings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtsdsqhUdJpPL6iQegE9FayMeqOUEI8I8bvPsv2kHIz4D7TtXntMZCMmNHEB5RgMcc7WJdsqrBO27DS9Y3RUuMMVFcSgjSHwcwoVvpCqEW08slkmfWsgjFOtbqGSbemMbqoCavO0PWrYhaUmYhUbOKf6POXFBn3bdWKTDf844Gu2qeFlQp-vyJIYpgXpwlvNpqQqS02Ydm7uRluKeoja0szZWMWlcDiYLUQfUB-3Fxs355m5AmFXKXA2-97gR3heerAzYvpzsoHlQ"/>
+</div>
+<span class="font-mono text-[10px] text-stone-400">EB_SET_881</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm border border-outline-variant/10">
+<div class="aspect-[4/3] rounded overflow-hidden mb-3">
+<img alt="Early Blight Sample 2" class="w-full h-full object-cover" data-alt="Forest floor leaf showing natural decomposition that mimics early blight symptoms for model negative testing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVoE1XroEIOOcooE-DykxxT9eKkkf3M6_k6U8lmOAiV9LWPcNuRrr7hho9qIV2MGkKuoGS0HVyKsOqyUAchwGQBKg9eZOY2HuzMJ-KxZAdLZ8zPJO3W9b1QzLd5SaT-vLCfKXYivyuS__4HKaoZTbrCO87TajfWdWCqotOFIPxHmQqD6Jg9p_20OnB6AMXzQvB3KJicRSvHq_OHG7sclHNsG9WGzqid6nAALNNsFwecc2Au7pyF-zmP2F94e4c2rkXxtmUFanPFIw"/>
+</div>
+<span class="font-mono text-[10px] text-stone-400">EB_SET_882</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Scientific Journal Overlay Aesthetic -->
+<div class="relative py-12 px-10 bg-emerald-900 rounded-3xl overflow-hidden">
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h4 class="font-headline text-3xl font-bold text-white mb-4">Export Global Dataset</h4>
+<p class="text-emerald-200 text-sm leading-relaxed mb-6">
+                            Consolidate all labeled specimens into a single COCO JSON or Pascal VOC format. Current build includes 1,200 new high-resolution clinical images from the 2024 Monsoon study.
+                        </p>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-white text-emerald-900 font-bold rounded-xl hover:bg-emerald-50 transition-colors">Prepare Archive</button>
+<button class="px-8 py-3 border border-emerald-700 text-emerald-100 font-bold rounded-xl hover:bg-emerald-800 transition-colors">View Logs</button>
+</div>
+</div>
+<div class="hidden md:flex justify-end opacity-20">
+<span class="material-symbols-outlined text-[160px] text-white">microbiology</span>
+</div>
+</div>
+<!-- Background decorative element -->
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-emerald-700/30 rounded-full blur-3xl"></div>
+</div>
+</div>
+<!-- Sticky Status Footer -->
+<footer class="sticky bottom-0 w-full bg-white/80 backdrop-blur-md px-8 py-3 flex items-center justify-between border-t border-stone-100">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">System Online</span>
+</div>
+<div class="h-4 w-px bg-stone-200"></div>
+<p class="text-[10px] text-stone-400 font-medium">SERVER: AG-WEST-B14 (LATENCY: 14MS)</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Storage: 4.2TB / 10TB</span>
+<div class="w-32 h-1.5 bg-stone-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 42%;"></div>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

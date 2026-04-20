@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - PhytoScan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#53765c",
+                      "inverse-primary": "#7ada95",
+                      "surface": "#f8faf9",
+                      "surface-container-highest": "#e1e3e2",
+                      "tertiary": "#3b5d45",
+                      "on-secondary-fixed": "#0d1d2a",
+                      "on-primary-container": "#c6ffd0",
+                      "on-secondary-container": "#556474",
+                      "primary-container": "#147e43",
+                      "tertiary-fixed": "#c5eccc",
+                      "on-primary-fixed": "#00210c",
+                      "on-primary-fixed-variant": "#005228",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#d4e4f6",
+                      "primary-fixed": "#96f7af",
+                      "surface-container-low": "#f2f4f3",
+                      "tertiary-fixed-dim": "#aad0b1",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#191c1c",
+                      "surface-container": "#eceeed",
+                      "outline": "#707a6c",
+                      "outline-variant": "#bfcaba",
+                      "on-tertiary-fixed": "#00210e",
+                      "primary-fixed-dim": "#7ada95",
+                      "surface-container-high": "#e6e9e8",
+                      "on-tertiary-container": "#d4fcdb",
+                      "surface-tint": "#006d37",
+                      "on-surface-variant": "#40493d",
+                      "on-error-container": "#93000a",
+                      "background": "#f8faf9",
+                      "on-background": "#191c1c",
+                      "surface-bright": "#f8faf9",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#d8dada",
+                      "on-secondary-fixed-variant": "#394857",
+                      "secondary-container": "#d1e1f4",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#2e3131",
+                      "secondary-fixed-dim": "#b8c8da",
+                      "on-tertiary-fixed-variant": "#2c4e36",
+                      "surface-variant": "#e1e3e2",
+                      "secondary": "#50606f",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#006331",
+                      "inverse-on-surface": "#eff1f0"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.5rem",
+                      "lg": "1rem",
+                      "xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #006331 0%, #147e43 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<main class="flex-grow flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Background Organic Shape Decors -->
+<div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary-fixed-dim opacity-10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-72 h-72 bg-tertiary-fixed opacity-15 rounded-full blur-3xl"></div>
+<!-- Login Container (Bento-style layout) -->
+<div class="w-full max-w-4xl grid md:grid-cols-2 gap-0 overflow-hidden rounded-xl bg-surface-container-lowest shadow-[0_40px_60px_rgba(25,28,28,0.06)] relative z-10">
+<!-- Side Visual Panel -->
+<div class="hidden md:flex flex-col justify-between p-12 brand-gradient text-on-primary">
+<div>
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-4xl" data-icon="microscope">magnification_small</span>
+<h1 class="font-headline font-black text-2xl tracking-tighter">PhytoScan</h1>
+</div>
+<h2 class="font-headline font-bold text-4xl leading-tight tracking-tight mb-4">Protecting your harvest, scan by scan.</h2>
+<p class="text-on-primary-container/80 text-lg leading-relaxed max-w-xs">AI-powered pepper leaf analysis for precision agriculture and disease prevention.</p>
+</div>
+<div class="relative group">
+<div class="absolute inset-0 bg-black/10 rounded-xl blur-lg transition-all group-hover:blur-xl"></div>
+<img class="relative rounded-xl w-full h-48 object-cover shadow-2xl" data-alt="Hyper-realistic close-up of a vibrant healthy pepper plant leaf with high-tech digital UI elements showing scanning data and green diagnostics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnHfywi71jXl9yRpsfv4w19LJ00ucXDfhyOVCvjn8sl0Axnp0lLS-n8ZAQ6WVxW8uOyRg9WQXn7X_-fMi84FG2SyzILP-TUeD8lhBe5LQT9wTL-oBEYPXWtnV2ZCt4bQ4WRVaxwX7_6O-ly4rxxQOiZTt_uocDl6JX5z3cF9heBzXkfALIVOOMu-52GYDcUO2ec-uXQO_nGa7bduU5XV17Z2Zte3OV6XkGK0JRGTlAfEKG982OYSZZfej-eH-K1IOVsjXcQZuuEyQ"/>
+</div>
+</div>
+<!-- Form Panel -->
+<div class="p-8 md:p-12 flex flex-col justify-center">
+<div class="md:hidden flex items-center gap-2 mb-10">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="microscope">magnification_small</span>
+<h1 class="font-headline font-black text-xl tracking-tighter text-primary">PhytoScan</h1>
+</div>
+<div class="mb-10">
+<h3 class="font-headline font-bold text-3xl text-on-surface tracking-tight mb-2">Welcome Back</h3>
+<p class="text-secondary font-medium">Log in to manage your plantation health.</p>
+</div>
+<form class="space-y-6">
+<!-- Username Field -->
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.05em] text-outline ml-1">Username / Email</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="person">person</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border-none bg-surface-container-low focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline/60 transition-all" placeholder="Enter your email" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.05em] text-outline">Password</label>
+<a class="text-[10px] font-bold uppercase tracking-[0.05em] text-primary hover:text-primary-container transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-12 py-4 rounded-xl border-none bg-surface-container-low focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline/60 transition-all" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 text-outline hover:text-primary" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 space-y-4">
+<button class="w-full brand-gradient text-on-primary font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary-container/20 active:scale-[0.98] transition-all duration-150" type="submit">
+                            Login
+                        </button>
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="px-4 font-label text-[10px] font-bold uppercase tracking-widest text-outline">or connect with</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" type="button">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBthvXJ2CHx4wqL5hmStsMMBtDrhI5QrGhTwFVtUSJxe3xk4t2ZyrP8HZzgcZ29jntAS6oS0sfwEjCRviqGZVcEQKfqZMibpWcIC0R0Uev0Qs64UL85f42CG7lS5lKloOtiu7XcUrjGA-2DWK8ObLXCYfNYC3PJYdg-P5kDKIzX2TA6TU7RsSqMaMMfkOeSj4hVzGLwJsUMJmFbk0bzGJoK-iOl04yF4hUUvWjYnujW_KEQ5D1XsLSxU7YlKj_WMOGABcADHFAjhOM"/>
+<span class="font-label text-xs font-bold uppercase tracking-wider text-secondary">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="fingerprint">fingerprint</span>
+<span class="font-label text-xs font-bold uppercase tracking-wider text-secondary">Biometrics</span>
+</button>
+</div>
+</div>
+</form>
+<!-- Footer Text -->
+<p class="mt-12 text-center text-sm text-secondary font-medium">
+                    New to PhytoScan? 
+                    <a class="text-primary font-bold hover:underline" href="#">Join the Lab</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Support / Privacy Footer -->
+<footer class="p-8 text-center">
+<div class="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-[0.1em] text-outline/60">
+<a class="hover:text-primary transition-colors" href="#">Privacy Protocol</a>
+<a class="hover:text-primary transition-colors" href="#">Lab Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Scientific Support</a>
+</div>
+<p class="mt-4 text-[9px] text-outline/40 font-medium tracking-widest">© 2024 PHYTOSCAN AGRICULTURAL SOLUTIONS. ALL RIGHTS RESERVED.</p>
+</footer>
+</body></html>

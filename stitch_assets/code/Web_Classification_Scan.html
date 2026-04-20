@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PlantClassify | Botanical Lab Analysis</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1c",
+                    "background": "#f8faf9",
+                    "on-primary-container": "#c6ffd0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#394857",
+                    "secondary-fixed-dim": "#b8c8da",
+                    "on-background": "#191c1c",
+                    "inverse-on-surface": "#eff1f0",
+                    "surface-tint": "#006d37",
+                    "tertiary-fixed": "#c5eccc",
+                    "surface-container": "#eceeed",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-secondary-container": "#556474",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#aad0b1",
+                    "primary-fixed": "#96f7af",
+                    "inverse-surface": "#2e3131",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#3b5d45",
+                    "secondary-container": "#d1e1f4",
+                    "secondary-fixed": "#d4e4f6",
+                    "surface": "#f8faf9",
+                    "on-error-container": "#93000a",
+                    "secondary": "#50606f",
+                    "primary": "#006331",
+                    "on-primary-fixed-variant": "#005228",
+                    "primary-container": "#147e43",
+                    "surface-variant": "#e1e3e2",
+                    "primary-fixed-dim": "#7ada95",
+                    "on-secondary-fixed": "#0d1d2a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#00210c",
+                    "on-tertiary-fixed": "#00210e",
+                    "tertiary-container": "#53765c",
+                    "surface-bright": "#f8faf9",
+                    "outline-variant": "#bfcaba",
+                    "inverse-primary": "#7ada95",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f3",
+                    "surface-container-high": "#e6e9e8",
+                    "on-tertiary-fixed-variant": "#2c4e36",
+                    "surface-dim": "#d8dada",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#d4fcdb",
+                    "outline": "#707a6c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#40493d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .specimen-card-inset {
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-stone-50 dark:bg-slate-950 flex flex-col border-r border-stone-200 dark:border-slate-800 z-50">
+<div class="px-6 py-8">
+<h1 class="font-headline text-2xl font-black text-emerald-900 dark:text-emerald-50 tracking-tighter">PlantClassify</h1>
+<p class="font-label tracking-wide uppercase text-[10px] font-bold text-stone-500 mt-1">Precision Ag-Tech</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label text-[10px] uppercase font-bold tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-100 rounded-lg mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">biotech</span>
+<span class="font-label text-[10px] uppercase font-bold tracking-wide">Scan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label text-[10px] uppercase font-bold tracking-wide">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="font-label text-[10px] uppercase font-bold tracking-wide">Gallery</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">medication</span>
+<span class="font-label text-[10px] uppercase font-bold tracking-wide">Treatment</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label text-[10px] uppercase font-bold tracking-wide">Profile</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold rounded-xl active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                Start New Analysis
+            </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 w-full bg-stone-50/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 shadow-[inset_0_-1px_0_0_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Search cultivars..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-500 hover:bg-emerald-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-stone-500 hover:bg-emerald-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="h-full w-full object-cover" data-alt="close-up portrait of a female scientist in laboratory settings with natural soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzoTodx8mS0fdPeCKOolD8noXIsPfCDNFDTOJyzAwhcg9TRGvyFy-3sZH55wV9Sqpu6r3YG_g0QllXzQkb4dl1-YIykrskbXah3EHdjpYhwUMTVXSueNvTK-tu7jcipShVoeULL-k1SMOAmazgdxTEWgc4-PrQlHEP6lxFPCJstdg1xsawJ_N8po82kugDs2l92Hr6YzdYh3qVu7KnLq6lAVWs8vPZs_HQP3k5NA5SSUhGQHGhpTUbC5_uHYqrwTM3_jbtc-ymmBQ"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10">
+<h2 class="font-headline text-4xl font-extrabold text-on-surface tracking-tight mb-2">Leaf Classification Analysis</h2>
+<p class="text-on-surface-variant font-body text-lg">Upload high-resolution botanical specimens for deep-learning pathogen detection.</p>
+</div>
+<!-- Two-Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Upload & Preview -->
+<div class="lg:col-span-7 space-y-6">
+<div class="bg-surface-container-low rounded-xl p-8 border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center min-h-[400px] text-center group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">upload_file</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">Drop Specimen Image</h3>
+<p class="text-on-surface-variant text-sm max-w-xs mb-6">Support for RAW, TIFF, and JPEG formats. Ensure the leaf is centered with neutral lighting.</p>
+<button class="px-6 py-2 bg-surface-container-highest text-primary font-bold rounded-lg hover:bg-surface-variant transition-colors">
+                            Browse Local Storage
+                        </button>
+</div>
+<!-- Live Preview (Placeholder) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden specimen-card-inset">
+<div class="p-4 border-b border-surface-container flex justify-between items-center bg-surface-container-low">
+<span class="font-label text-[10px] uppercase font-black tracking-widest text-on-surface-variant">Active Preview: specimen_772.jpg</span>
+<div class="flex gap-2">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary">SCANNING IN PROGRESS</span>
+</div>
+</div>
+<div class="relative aspect-video bg-stone-200">
+<img class="w-full h-full object-cover" data-alt="high-detail macro photograph of a damaged bell pepper leaf with visible bacterial spots against a sterile grey laboratory background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA5lMOaSIrKBDcc-Q1o6Qk7s6EW0OEnEecWNtNhqTcKxi4-4X1XyL5GE5IB1PiBvDUY_h9fzQ6bkI0E65oUclanrb8IS9aT2Gc7aEJUq3cu42zxBM1d_FE57hbeWxFa7xWFbJ478b-emR2bINEGPcP-b6oB0AaUuutHOo0v4S1OGJ2M72jKnANy5J2rrcSRFxpgiWxe8fgo0CGhla3UtvRqoLD29YqQ7VO0GespEpDVs1gPuLb1toys-2NJ97UIx7rdDUUewIgcxM"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<!-- Analysis HUD Overlay -->
+<div class="w-48 h-48 border-2 border-primary/40 rounded-xl relative">
+<div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-primary"></div>
+<div class="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-primary"></div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: CNN Analysis Results -->
+<div class="lg:col-span-5 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="font-label text-[10px] uppercase font-bold text-stone-500 tracking-widest mb-1">Diagnosis Result</p>
+<h4 class="font-headline text-3xl font-extrabold text-on-surface leading-tight">Bacterial Spot</h4>
+<p class="text-emerald-700 font-medium text-sm mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span>
+                                    High Confidence Detection
+                                </p>
+</div>
+<div class="bg-primary/10 px-4 py-2 rounded-lg text-center">
+<span class="block text-primary font-headline text-2xl font-black">98%</span>
+<span class="font-label text-[9px] uppercase font-bold text-primary/70">CNN Score</span>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h5 class="font-label text-[10px] uppercase font-black text-on-surface-variant mb-3 tracking-widest">Symptom Assessment</h5>
+<div class="bg-surface-container-low p-4 rounded-lg border-l-4 border-primary">
+<p class="text-sm text-on-surface leading-relaxed">
+                                        Identified dark, water-soaked necrotic lesions surrounded by chlorotic halos. Patterning suggests <span class="font-bold">Xanthomonas campestris</span> progression.
+                                    </p>
+</div>
+</div>
+<div>
+<h5 class="font-label text-[10px] uppercase font-black text-on-surface-variant mb-3 tracking-widest">Recommended Treatment</h5>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<div class="mt-1 h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">check</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Copper-Based Bactericides</p>
+<p class="text-xs text-on-surface-variant">Apply spray every 7-10 days during humid periods.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-1 h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">check</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Precision Irrigation</p>
+<p class="text-xs text-on-surface-variant">Switch to drip irrigation to prevent foliar moisture.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-1 h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">check</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Sanitation Protocol</p>
+<p class="text-xs text-on-surface-variant">Prune infected foliage and sterilize tools with 70% Ethanol.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="pt-4 border-t border-surface-container">
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container font-bold rounded-lg hover:bg-secondary-fixed transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">description</span>
+                                    Generate Full Lab Report
+                                </button>
+</div>
+</div>
+</div>
+<!-- Environment Metadata -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary mb-2">thermostat</span>
+<span class="block font-label text-[9px] uppercase font-bold text-stone-500">Ambient Temp</span>
+<span class="text-lg font-bold">24.5°C</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary mb-2">humidity_percentage</span>
+<span class="block font-label text-[9px] uppercase font-bold text-stone-500">Humidity</span>
+<span class="text-lg font-bold">62%</span>
+</div>
+</div>
+</div>
+<!-- Historical Comparison (Bento style bottom section) -->
+<div class="lg:col-span-12 mt-4">
+<div class="bg-surface-container-low rounded-xl p-8">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h4 class="font-headline text-2xl font-bold text-on-surface tracking-tight">Historical Pathogen Comparison</h4>
+<p class="text-on-surface-variant text-sm">Tracking analysis trend for cultivar <span class="italic font-medium">Capsicum annuum</span> over current season.</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
+                                Export Dataset <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-outline-variant/20">
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-stone-500">Analysis ID</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-stone-500">Timestamp</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-stone-500">Classification</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-stone-500">Confidence</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-stone-500">Status</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-stone-500">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="group hover:bg-surface-container-highest/50 transition-colors">
+<td class="py-4 font-mono text-xs">#LAB-9921</td>
+<td class="py-4 text-sm">Oct 24, 2023 · 14:22</td>
+<td class="py-4">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded">Bacterial Spot</span>
+</td>
+<td class="py-4 font-bold text-sm">98.2%</td>
+<td class="py-4">
+<span class="flex items-center gap-1 text-[10px] font-bold text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> VERIFIED
+                                            </span>
+</td>
+<td class="py-4">
+<button class="text-stone-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-highest/50 transition-colors">
+<td class="py-4 font-mono text-xs">#LAB-9844</td>
+<td class="py-4 text-sm">Oct 12, 2023 · 09:15</td>
+<td class="py-4">
+<span class="px-2 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded">Healthy Tissue</span>
+</td>
+<td class="py-4 font-bold text-sm">99.7%</td>
+<td class="py-4">
+<span class="flex items-center gap-1 text-[10px] font-bold text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> VERIFIED
+                                            </span>
+</td>
+<td class="py-4">
+<button class="text-stone-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-highest/50 transition-colors">
+<td class="py-4 font-mono text-xs">#LAB-9701</td>
+<td class="py-4 text-sm">Sep 28, 2023 · 16:45</td>
+<td class="py-4">
+<span class="px-2 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold rounded">Early Blight</span>
+</td>
+<td class="py-4 font-bold text-sm">84.1%</td>
+<td class="py-4">
+<span class="flex items-center gap-1 text-[10px] font-bold text-stone-400">
+<span class="material-symbols-outlined text-[14px]">pending</span> MANUAL REVIEW
+                                            </span>
+</td>
+<td class="py-4">
+<button class="text-stone-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

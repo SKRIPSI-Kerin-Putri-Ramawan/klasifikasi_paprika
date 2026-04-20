@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PhytoScan | Classification History</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#53765c",
+                        "inverse-primary": "#7ada95",
+                        "surface": "#f8faf9",
+                        "surface-container-highest": "#e1e3e2",
+                        "tertiary": "#3b5d45",
+                        "on-secondary-fixed": "#0d1d2a",
+                        "on-primary-container": "#c6ffd0",
+                        "on-secondary-container": "#556474",
+                        "primary-container": "#147e43",
+                        "tertiary-fixed": "#c5eccc",
+                        "on-primary-fixed": "#00210c",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d4e4f6",
+                        "primary-fixed": "#96f7af",
+                        "surface-container-low": "#f2f4f3",
+                        "tertiary-fixed-dim": "#aad0b1",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1c",
+                        "surface-container": "#eceeed",
+                        "outline": "#707a6c",
+                        "outline-variant": "#bfcaba",
+                        "on-tertiary-fixed": "#00210e",
+                        "primary-fixed-dim": "#7ada95",
+                        "surface-container-high": "#e6e9e8",
+                        "on-tertiary-container": "#d4fcdb",
+                        "surface-tint": "#006d37",
+                        "on-surface-variant": "#40493d",
+                        "on-error-container": "#93000a",
+                        "background": "#f8faf9",
+                        "on-background": "#191c1c",
+                        "surface-bright": "#f8faf9",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d8dada",
+                        "on-secondary-fixed-variant": "#394857",
+                        "secondary-container": "#d1e1f4",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3131",
+                        "secondary-fixed-dim": "#b8c8da",
+                        "on-tertiary-fixed-variant": "#2c4e36",
+                        "surface-variant": "#e1e3e2",
+                        "secondary": "#50606f",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#006331",
+                        "inverse-on-surface": "#eff1f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 40px 60px -20px rgba(25, 28, 28, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#f8faf9] dark:bg-slate-900 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#006331] dark:text-emerald-400" data-icon="microscope">magnification_small</span>
+<h1 class="font-manrope font-black text-[#006331] dark:text-emerald-500 tracking-tighter text-xl">PhytoScan</h1>
+</div>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-outline-variant/20">
+<img alt="User" data-alt="professional portrait of a scientific researcher with soft lighting and neutral grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMognSCWkKxL3lXoeC3holOWLH-7oFe1xA5tmxo9FaGBCyh_njtJaZ2-yVdrqe5vsUJ9ULrZJJuvCoHFlqnWDIoc5khTqtSKal90osBOlBIVHDUPZyV3ESt8HYN0UyOoOYAP9R-JhaL4Pc5J59ZjS_iAELW2VEl2BwxW_3oKf_W70TtLx5eMMq1NrvbHU43vGz1LaEp4XzWC4TklWGMtzs3Ao-ll6gUxjo-zosRxCiMCCugdME-VYr4udyuv4gFqE5Oiiq7Xlbels"/>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto px-6 pt-8 pb-32">
+<!-- Header Section -->
+<header class="mb-10">
+<div class="flex items-baseline justify-between mb-2">
+<h2 class="font-headline font-extrabold text-3xl tracking-tight text-on-surface">Classification History</h2>
+<span class="font-label text-xs font-bold tracking-[0.1em] text-outline uppercase">24 RECORDS</span>
+</div>
+<p class="text-on-surface-variant max-w-lg leading-relaxed">Review and manage your botanical specimens. Detailed diagnostic logs from your laboratory field work.</p>
+</header>
+<!-- Bento Grid for History Items -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- History Card 1: Healthy -->
+<article class="group relative bg-surface-container-lowest rounded-xl p-4 editorial-shadow transition-all hover:translate-y-[-4px]">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img alt="Specimen" class="w-full h-full object-cover" data-alt="Macro close-up of a vibrant healthy green bell pepper leaf with clear vein structures and morning dew drops" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-XCNXmjTJJS63JwnYwWnUxKOjE9KevKcIE7wYbBzsWLSDgMNHe4HnXq0o26uv9waMcgk2UFfQEciHOO6TD5wtHuDa3mGy4M9CGhZpCs42qSe-svUIfw8mAuK4hY3m6YLdDTmb5FG0n_-nPmwB1mFa3e9q4fbsJ0XIABJCl967ezv9pUjQbTHVNfsEdFwDNO4UZ9sodsd9QSJ_igMa_YR1DL0M_0tRjEfxIfKE2F1zSZrMLPeZITgfHUeL_drYInkDyGyJ7R_yX3g"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label text-[10px] font-bold tracking-widest text-outline uppercase">OCT 24, 2023</span>
+<button class="text-outline-variant hover:text-error transition-colors p-1 active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<h3 class="font-headline font-bold text-lg text-primary">Healthy</h3>
+<p class="text-on-surface-variant text-sm font-medium">Capsicum Annuum</p>
+</div>
+<div class="inline-flex items-center gap-2 mt-2">
+<div class="h-1.5 w-16 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[98%]"></div>
+</div>
+<span class="font-label text-xs font-bold text-primary">98.2%</span>
+</div>
+</div>
+</div>
+</article>
+<!-- History Card 2: Leaf Curl -->
+<article class="group relative bg-surface-container-lowest rounded-xl p-4 editorial-shadow transition-all hover:translate-y-[-4px]">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img alt="Specimen" class="w-full h-full object-cover" data-alt="Close-up of a damaged pepper leaf showing significant yellowing and characteristic upward curling symptoms of viral infection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9y56N8qW9ceCdeskwrkwLPin5r_baL45v_lzMJnyNdW-N6oDe7fgxSzHAhWy9c3yXpaosFqxkQzeIgZOGLj2soaU5_BzxHDkmH7NnnQGpEUOlDX9rn4HhTy47AY6I5-3AZ9H1f9XrvBMtNC78XygOr2Wu5mc1BIRGvdZr59KOfwjlXmw_-liu2amhoNe19HFz2B80l7DJHxvBu3TC34MAIgs4JsXUPubAnDSUPmylPGPoxbqHbnNGXSxbscWkZ1t-YyFI14HPr8E"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label text-[10px] font-bold tracking-widest text-outline uppercase">OCT 22, 2023</span>
+<button class="text-outline-variant hover:text-error transition-colors p-1 active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<h3 class="font-headline font-bold text-lg text-error">Leaf Curl</h3>
+<p class="text-on-surface-variant text-sm font-medium">Viral Pathogen</p>
+</div>
+<div class="inline-flex items-center gap-2 mt-2">
+<div class="h-1.5 w-16 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full w-[84%]"></div>
+</div>
+<span class="font-label text-xs font-bold text-error">84.5%</span>
+</div>
+</div>
+</div>
+</article>
+<!-- History Card 3: Bacterial Spot -->
+<article class="group relative bg-surface-container-lowest rounded-xl p-4 editorial-shadow transition-all hover:translate-y-[-4px]">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img alt="Specimen" class="w-full h-full object-cover" data-alt="Top-down view of a leaf with small dark water-soaked necrotic spots consistent with bacterial infection in an agricultural setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBUtXN6YdxTvfvOfD4q6j1yuaicN5vcezO3HUY_JmecxF6Qlj2ulb4aCWGMD2Zm01SPN8ZzFRLomW-AffRH01Hq5OsxRkhjBrLUq6IWSmbfmbmApbUhYpzlLUM5pZF_KmNBMunX7li_P7z1OHC2F7T7AwiQQEXwIFdyO9Hrj5nWYFkppEXKW45_0hG5LTnSaIvkWcoTBUmw4iGFzLmlj95_gi-iqwN1SB9VBSoGXWroHY7n8-zkyFZp_7aP7j82n2hibRIzL7fggw"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label text-[10px] font-bold tracking-widest text-outline uppercase">OCT 19, 2023</span>
+<button class="text-outline-variant hover:text-error transition-colors p-1 active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<h3 class="font-headline font-bold text-lg text-secondary">Bacterial Spot</h3>
+<p class="text-on-surface-variant text-sm font-medium">Xanthomonas</p>
+</div>
+<div class="inline-flex items-center gap-2 mt-2">
+<div class="h-1.5 w-16 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[72%]"></div>
+</div>
+<span class="font-label text-xs font-bold text-secondary">72.1%</span>
+</div>
+</div>
+</div>
+</article>
+<!-- History Card 4: Healthy -->
+<article class="group relative bg-surface-container-lowest rounded-xl p-4 editorial-shadow transition-all hover:translate-y-[-4px]">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img alt="Specimen" class="w-full h-full object-cover" data-alt="Lush green healthy vegetation in a laboratory tray under controlled led growth lights with sharp focus on leaf textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk87eYFRaWV26p_HATsfnwiIGfVUkb6xvuscWz6dzeFj7qTWO7nWn70EjWgCu9eSDxMQbAMPJf8FrIVO27WDoboe53Px-JC303aZOf987FbQaVQ0jZHeC2JffjyJ1Ju0nCUKdADgNsAAVVD8AaWvkPJgIIXxQ4XEkiuJMI8ZUZ51vVCiiudVuN6p3CkUXT1u8HJtNhLyQn_gtuRfpOT7NL32aWvFmpGzCM7QesvxZem3Kc2TiOeMEokOL8-bYMUO-f6c9qD9luBzs"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label text-[10px] font-bold tracking-widest text-outline uppercase">OCT 15, 2023</span>
+<button class="text-outline-variant hover:text-error transition-colors p-1 active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<h3 class="font-headline font-bold text-lg text-primary">Healthy</h3>
+<p class="text-on-surface-variant text-sm font-medium">Capsicum Annuum</p>
+</div>
+<div class="inline-flex items-center gap-2 mt-2">
+<div class="h-1.5 w-16 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[99%]"></div>
+</div>
+<span class="font-label text-xs font-bold text-primary">99.8%</span>
+</div>
+</div>
+</div>
+</article>
+<!-- History Card 5: Powdery Mildew -->
+<article class="group relative bg-surface-container-lowest rounded-xl p-4 editorial-shadow transition-all hover:translate-y-[-4px]">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img alt="Specimen" class="w-full h-full object-cover" data-alt="Macro photo of a leaf surface covered in a white powdery fungal growth resembling dust or flour, high detail studio shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgDg9ZS1Bjv1AL46cl1O1esWs4t4yXjU7U2vxfhbR2Hxn3w5gO3sEsKES7oJnWs_zO6R7e6J-Axy9-PP9zBFpoikEQPwTAWppACRxS0-fT2hLX8WhJvoo1KmMfTraWMMZiwkqbW3WmdvXJ9eK2kGZdijOCrMFWUiWN_jp4sphSCYnGyROE3n7bqmBabsZPdGJ8an4n4q-ZgwM6LFKbOCuHH1vz5O_Ak98rEr4Ro3YwSFseYO-iMgKoTvRhc8nvDsSLZ92pMi2YYRg"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label text-[10px] font-bold tracking-widest text-outline uppercase">OCT 12, 2023</span>
+<button class="text-outline-variant hover:text-error transition-colors p-1 active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<h3 class="font-headline font-bold text-lg text-tertiary">Powdery Mildew</h3>
+<p class="text-on-surface-variant text-sm font-medium">Fungal Infection</p>
+</div>
+<div class="inline-flex items-center gap-2 mt-2">
+<div class="h-1.5 w-16 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full w-[91%]"></div>
+</div>
+<span class="font-label text-xs font-bold text-tertiary">91.4%</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Empty State / Add More Card -->
+<article class="group relative bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl p-4 flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary group-active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</div>
+<span class="font-headline font-bold text-sm text-on-surface-variant">Perform New Scan</span>
+</article>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 rounded-t-2xl shadow-[0_-10px_40px_rgba(25,28,28,0.06)]">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 py-2 px-4 hover:text-[#006331] dark:hover:text-emerald-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 py-2 px-4 hover:text-[#006331] dark:hover:text-emerald-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="biotech">biotech</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#147e43] text-white rounded-xl py-2 px-4 shadow-lg shadow-emerald-900/20 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 py-2 px-4 hover:text-[#006331] dark:hover:text-emerald-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold">Gallery</span>
+</a>
+</nav>
+</body></html>

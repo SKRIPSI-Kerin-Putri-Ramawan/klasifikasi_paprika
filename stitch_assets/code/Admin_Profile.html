@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Profile - PhytoScan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#53765c",
+            "inverse-primary": "#7ada95",
+            "surface": "#f8faf9",
+            "surface-container-highest": "#e1e3e2",
+            "tertiary": "#3b5d45",
+            "on-secondary-fixed": "#0d1d2a",
+            "on-primary-container": "#c6ffd0",
+            "on-secondary-container": "#556474",
+            "primary-container": "#147e43",
+            "tertiary-fixed": "#c5eccc",
+            "on-primary-fixed": "#00210c",
+            "on-primary-fixed-variant": "#005228",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#d4e4f6",
+            "primary-fixed": "#96f7af",
+            "surface-container-low": "#f2f4f3",
+            "tertiary-fixed-dim": "#aad0b1",
+            "error-container": "#ffdad6",
+            "on-surface": "#191c1c",
+            "surface-container": "#eceeed",
+            "outline": "#707a6c",
+            "outline-variant": "#bfcaba",
+            "on-tertiary-fixed": "#00210e",
+            "primary-fixed-dim": "#7ada95",
+            "surface-container-high": "#e6e9e8",
+            "on-tertiary-container": "#d4fcdb",
+            "surface-tint": "#006d37",
+            "on-surface-variant": "#40493d",
+            "on-error-container": "#93000a",
+            "background": "#f8faf9",
+            "on-background": "#191c1c",
+            "surface-bright": "#f8faf9",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#d8dada",
+            "on-secondary-fixed-variant": "#394857",
+            "secondary-container": "#d1e1f4",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#2e3131",
+            "secondary-fixed-dim": "#b8c8da",
+            "on-tertiary-fixed-variant": "#2c4e36",
+            "surface-variant": "#e1e3e2",
+            "secondary": "#50606f",
+            "on-tertiary": "#ffffff",
+            "primary": "#006331",
+            "inverse-on-surface": "#eff1f0"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8faf9;
+      color: #191c1c;
+    }
+    h1, h2, h3 {
+      font-family: 'Manrope', sans-serif;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+    }
+    .primary-gradient {
+      background: linear-gradient(135deg, #006331 0%, #147e43 100%);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#f8faf9] dark:bg-slate-900 z-40">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#006331] dark:text-emerald-400" data-icon="microscope">magnification_small</span>
+<span class="font-manrope font-black text-[#006331] dark:text-emerald-500 tracking-tighter text-xl">PhytoScan</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-outline-variant/20">
+<img alt="User profile avatar" data-alt="professional headshot of an Indonesian man in his 40s wearing a clean white lab coat with a warm approachable expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBY_T36CqKNxP943GyCGwfGEi7qQTY5o9NiqrCKRNh-Vo7EwJGYQVjtsG3ng00MCU--Y43GLPmAFH1A8IA5SLeecCay75WqEX6QpLTBAIcoblUzXGLpoDh8xypIX9N8Z1H3duXnW-TJCPBl6voSz08Ez07dnJYH-UuFGScC88YJ1jHpJoaaofS__BBNZewxpkUUX-AnbV9l1XXqXFLqo5S7Ci1n2r8uNzpIumV73K6HhUKA0SxqZkazB9CNRfcfhPOFIdVhnNdNqQ"/>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-6 pt-8 pb-32">
+<!-- Profile Hero Section: Organic Asymmetry -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-12">
+<!-- Profile Picture (Specimen Card Style) -->
+<div class="md:col-span-5 lg:col-span-4 group">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_40px_60px_rgba(25,28,28,0.06)] relative overflow-hidden">
+<div class="aspect-square w-full rounded-lg overflow-hidden bg-surface-container-low mb-6">
+<img class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500" data-alt="high resolution close up portrait of Budi Santoso, middle aged male laboratory administrator in professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzAOVWLIgscwxgrs1oQoojPQLHKci-bQNUZMe-g2xgd9fndorl-nJn-HB91DvuddINDdGa-uFlnJHD8qqzoKdi12WqfPiI39oUdHzredf4E0Q4yQFQkMMakc5vKm7SLN0Id9KGNfc-teOH37dJ2bxhFlttV4Bp9gGJx0MhwM4856sQ5ht2Q6Cxpw87f7bIoFVfpryHbZQoWTEzL1Q8NjksS-pvt0EBFO0Xj_ZlJHROq9ivAI8zBHX52bryLdsKT0M1ckkXNlHhvsg"/>
+</div>
+<div class="absolute top-8 right-8">
+<span class="bg-primary text-white text-[10px] font-bold tracking-[0.1em] px-3 py-1 rounded-full uppercase">ADMIN</span>
+</div>
+<button class="w-full py-3 bg-surface-container-high hover:bg-surface-container-highest transition-colors rounded-xl flex items-center justify-center gap-2 text-on-surface-variant font-medium text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+            Update Photo
+          </button>
+</div>
+</div>
+<!-- Identity Details -->
+<div class="md:col-span-7 lg:col-span-8 pt-4">
+<div class="mb-8">
+<p class="text-xs font-bold tracking-[0.15em] text-primary mb-2 uppercase">Biological Lab Administrator</p>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-2">Budi Santoso</h1>
+<p class="text-on-surface-variant text-lg">budi.santoso@phytoscan.io</p>
+</div>
+<!-- Bento Grid Stats/Quick Info -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="block text-[10px] font-bold tracking-widest text-outline uppercase mb-1">Joined</span>
+<span class="text-lg font-bold text-on-surface">Oct 2023</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="block text-[10px] font-bold tracking-widest text-outline uppercase mb-1">Status</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-lg font-bold text-on-surface">Verified</span>
+</div>
+</div>
+</div>
+<!-- Actions Container (Tonal Layering) -->
+<div class="bg-surface-container-low p-1 rounded-xl flex flex-col gap-1">
+<button class="w-full group flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<div class="text-left">
+<p class="font-bold text-on-surface">Change Password</p>
+<p class="text-xs text-on-surface-variant">Secure your lab access account</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full group flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg hover:bg-error-container/30 transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<div class="text-left">
+<p class="font-bold text-error">Logout</p>
+<p class="text-xs text-on-error-container/70">Terminate current session</p>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Security & Activity Insights Section -->
+<section class="mt-16">
+<h2 class="text-2xl font-bold tracking-tight mb-6">Security Logs</h2>
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<span class="font-bold text-on-surface">Active Sessions</span>
+</div>
+<span class="text-xs font-bold px-2 py-1 bg-primary-container text-on-primary-container rounded-md">2 DEVICES</span>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-on-surface-variant pt-1" data-icon="laptop_mac">laptop_mac</span>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-bold text-on-surface">MacBook Pro 16"</p>
+<span class="text-[10px] font-bold text-primary bg-primary-fixed-dim/30 px-2 py-0.5 rounded uppercase">Current</span>
+</div>
+<p class="text-sm text-on-surface-variant">Jakarta, Indonesia • Chrome Browser</p>
+</div>
+</div>
+<div class="flex items-start gap-4 opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant pt-1" data-icon="smartphone">smartphone</span>
+<div class="flex-1">
+<p class="font-bold text-on-surface">iPhone 15 Pro</p>
+<p class="text-sm text-on-surface-variant">Surabaya, Indonesia • PhytoScan Mobile App</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 rounded-t-2xl shadow-[0_-10px_40px_rgba(25,28,28,0.06)] border-t border-[#bfcaba]/20">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 py-2 px-4 hover:text-[#006331] dark:hover:text-emerald-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 py-2 px-4 hover:text-[#006331] dark:hover:text-emerald-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold mt-1">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 py-2 px-4 hover:text-[#006331] dark:hover:text-emerald-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#147e43] text-white rounded-xl py-2 px-4 shadow-lg shadow-emerald-900/20 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-[10px] font-inter uppercase tracking-[0.05em] font-bold mt-1">Gallery</span>
+</a>
+</nav>
+</body></html>

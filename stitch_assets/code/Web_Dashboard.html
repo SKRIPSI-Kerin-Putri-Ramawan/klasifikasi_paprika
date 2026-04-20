@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Botanical Lab - PlantClassify</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface": "#191c1c",
+                      "background": "#f8faf9",
+                      "on-primary-container": "#c6ffd0",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#394857",
+                      "secondary-fixed-dim": "#b8c8da",
+                      "on-background": "#191c1c",
+                      "inverse-on-surface": "#eff1f0",
+                      "surface-tint": "#006d37",
+                      "tertiary-fixed": "#c5eccc",
+                      "surface-container": "#eceeed",
+                      "surface-container-highest": "#e1e3e2",
+                      "on-secondary-container": "#556474",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#aad0b1",
+                      "primary-fixed": "#96f7af",
+                      "inverse-surface": "#2e3131",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#3b5d45",
+                      "secondary-container": "#d1e1f4",
+                      "secondary-fixed": "#d4e4f6",
+                      "surface": "#f8faf9",
+                      "on-error-container": "#93000a",
+                      "secondary": "#50606f",
+                      "primary": "#006331",
+                      "on-primary-fixed-variant": "#005228",
+                      "primary-container": "#147e43",
+                      "surface-variant": "#e1e3e2",
+                      "primary-fixed-dim": "#7ada95",
+                      "on-secondary-fixed": "#0d1d2a",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#00210c",
+                      "on-tertiary-fixed": "#00210e",
+                      "tertiary-container": "#53765c",
+                      "surface-bright": "#f8faf9",
+                      "outline-variant": "#bfcaba",
+                      "inverse-primary": "#7ada95",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f2f4f3",
+                      "surface-container-high": "#e6e9e8",
+                      "on-tertiary-fixed-variant": "#2c4e36",
+                      "surface-dim": "#d8dada",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#d4fcdb",
+                      "outline": "#707a6c",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#40493d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<aside class="fixed left-0 top-0 h-screen w-64 bg-stone-50 dark:bg-slate-950 flex flex-col h-full border-r border-stone-200 dark:border-slate-800 z-50">
+<div class="px-6 py-8">
+<h1 class="font-manrope text-2xl font-black text-emerald-900 dark:text-emerald-50">PlantClassify</h1>
+<p class="font-inter tracking-wide uppercase text-[10px] font-bold text-stone-500 mt-1">Precision Ag-Tech</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-100 rounded-lg mx-2 cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Scan</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">History</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="potted_plant">potted_plant</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Gallery</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="medication">medication</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Treatment</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Profile</span>
+</div>
+</nav>
+<div class="p-4 mt-auto">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span>Start New Analysis</span>
+</button>
+</div>
+</aside>
+<div class="ml-64 min-h-screen flex flex-col">
+<header class="w-full sticky top-0 z-40 bg-stone-50/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-8 py-3 bg-stone-100 dark:bg-slate-900 shadow-[inset_0_-1px_0_0_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search experiments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full">
+<span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">System Active</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-primary transition-colors" data-icon="settings">settings</span>
+<div class="h-8 w-8 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Researcher Profile" data-alt="Researcher Profile portrait of a man in lab gear with neutral expression and clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj2HncUJHwC4ISY1gkFnf6HnuBz9u4Ip5j_EmrS8RSpRtMDlQ8TGXZxBHPm4rGSSnBSmcCPrUCRqaIx8EkBIIj2pyfxW6dLDHTEuP1j-tTtYI52R8wJm6Ry3P5bI27Uwvrz4ztS1wa5N39XNccwvPoK5gGj3TETR0Jwz4bPIuPAjE9ZB1cOqgFeGPyCePslLc8PDY8tatxKAn-Rv8x3kD2TywD1F43cfxsblZ5dAS48Z2IcIkewdtckv4WaG9Ov09ojSNqZolAzOw"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 p-8 bg-surface space-y-8">
+<header class="max-w-6xl mx-auto flex justify-between items-end">
+<div>
+<h2 class="text-display-lg font-headline font-bold text-on-surface tracking-tight">Lab Overview</h2>
+<p class="text-on-surface-variant font-body">Deep learning analysis metrics and neural engine status.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-secondary-container text-on-secondary-container font-semibold rounded-xl hover:opacity-90 transition-opacity">Export Report</button>
+<button class="px-4 py-2 bg-primary text-on-primary font-semibold rounded-xl hover:opacity-90 transition-opacity">Re-calibrate Engine</button>
+</div>
+</header>
+<section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl" data-icon="model_training">model_training</span>
+</div>
+<p class="text-label-sm font-label font-bold text-on-surface-variant tracking-[0.1em] uppercase mb-4">Model Accuracy</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-headline font-extrabold text-primary tracking-tighter">96.5%</span>
+<span class="text-emerald-600 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 1.2%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl" data-icon="database">database</span>
+</div>
+<p class="text-label-sm font-label font-bold text-on-surface-variant tracking-[0.1em] uppercase mb-4">Dataset Size</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-headline font-extrabold text-on-surface tracking-tighter">2,500</span>
+<span class="text-stone-500 text-xs font-medium uppercase tracking-wider">Samples</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl" data-icon="bug_report">bug_report</span>
+</div>
+<p class="text-label-sm font-label font-bold text-on-surface-variant tracking-[0.1em] uppercase mb-4">Disease Types</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-headline font-extrabold text-tertiary tracking-tighter">4</span>
+<span class="text-stone-500 text-xs font-medium uppercase tracking-wider">Classified</span>
+</div>
+</div>
+</section>
+<section class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-8 bg-surface-container-low rounded-xl p-8">
+<div class="flex justify-between items-center mb-10">
+<h3 class="text-headline-md font-bold text-on-surface tracking-tight">System Usage</h3>
+<div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Scans</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary"></span> Confidence</span>
+</div>
+</div>
+<div class="h-64 flex items-end gap-2 relative">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+<div class="border-t border-on-surface-variant"></div>
+<div class="border-t border-on-surface-variant"></div>
+<div class="border-t border-on-surface-variant"></div>
+<div class="border-t border-on-surface-variant"></div>
+</div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[40%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[65%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[55%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[85%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[95%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[75%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[80%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[60%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[45%]"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary/30 transition-colors rounded-t-lg h-[92%] relative">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded font-bold">142 Scans</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<div class="lg:col-span-4 space-y-6">
+<h3 class="text-headline-md font-bold text-on-surface tracking-tight px-2">Recent Scan</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm ring-1 ring-black/[0.05]">
+<div class="aspect-video relative group">
+<img class="w-full h-full object-cover" data-alt="close-up high-resolution image of a diseased pepper leaf with prominent brown fungal spots and yellowing edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0M7_2r_RPFKlBUY0A2FYlmYvhqSoNGQTm44EhzklwguyETtE63rbkjziJEiVf1CgbU8s_-x3bUAZK7oP1smBKrEqa59hx-EePHh7YXDuc8wA0_zfJnQ99HaqJw2ex7ORk4qKmWXFdFym2Qm7wcgKDEkSFFF5ZRVXA7uaQHwanm1qGYqk1jZ5N-O8fY0ZjPVfR4ZRzS3Vs2Sn-Hb0_mJNOuvxHo6TzfzW6cuveND33xmzguobg3wrE17OMGQzWCLOQCte9ZtPWOWM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<span class="text-white text-xs font-bold uppercase tracking-widest">High Res Sample #882</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-manrope text-lg font-bold text-on-surface leading-tight">Bacterial Spot</h4>
+<p class="text-label-sm font-label text-stone-500 uppercase tracking-widest mt-1">Capsicum annuum</p>
+</div>
+<div class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-xs font-black">
+                                    98% CONF.
+                                </div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-3 bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<div class="text-xs">
+<p class="font-bold text-on-surface">Urgent Treatment Required</p>
+<p class="text-stone-500">Spread probability: High</p>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-highest text-on-surface-variant font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+                                    View Full Analysis
+                                    <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-6xl mx-auto">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-headline-md font-bold text-on-surface tracking-tight">Classification Logs</h3>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="filter_list">filter_list</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="download">download</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-12 gap-4 items-center p-4 bg-surface-container-lowest rounded-xl hover:shadow-md transition-shadow">
+<div class="col-span-1">
+<div class="h-10 w-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-800">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+</div>
+<div class="col-span-4">
+<p class="text-sm font-bold text-on-surface">Tomato Early Blight</p>
+<p class="text-xs text-stone-500">Solanum lycopersicum</p>
+</div>
+<div class="col-span-3">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Timestamp</p>
+<p class="text-xs text-stone-500">Oct 24, 2023 • 14:22</p>
+</div>
+<div class="col-span-2">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Status</p>
+<span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded-full">REVIEWED</span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Details</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 items-center p-4 bg-surface-container-lowest rounded-xl hover:shadow-md transition-shadow">
+<div class="col-span-1">
+<div class="h-10 w-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-800">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+</div>
+<div class="col-span-4">
+<p class="text-sm font-bold text-on-surface">Pepper Bell Healthy</p>
+<p class="text-xs text-stone-500">Capsicum annuum</p>
+</div>
+<div class="col-span-3">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Timestamp</p>
+<p class="text-xs text-stone-500">Oct 24, 2023 • 12:45</p>
+</div>
+<div class="col-span-2">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Status</p>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase">Archived</span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Details</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

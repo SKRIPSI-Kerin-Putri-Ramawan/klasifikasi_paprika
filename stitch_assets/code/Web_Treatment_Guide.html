@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Treatment Guide | Botanical Lab</title>
+<!-- Google Fonts: Manrope for headlines, Inter for body -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1c",
+                    "background": "#f8faf9",
+                    "on-primary-container": "#c6ffd0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#394857",
+                    "secondary-fixed-dim": "#b8c8da",
+                    "on-background": "#191c1c",
+                    "inverse-on-surface": "#eff1f0",
+                    "surface-tint": "#006d37",
+                    "tertiary-fixed": "#c5eccc",
+                    "surface-container": "#eceeed",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-secondary-container": "#556474",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#aad0b1",
+                    "primary-fixed": "#96f7af",
+                    "inverse-surface": "#2e3131",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#3b5d45",
+                    "secondary-container": "#d1e1f4",
+                    "secondary-fixed": "#d4e4f6",
+                    "surface": "#f8faf9",
+                    "on-error-container": "#93000a",
+                    "secondary": "#50606f",
+                    "primary": "#006331",
+                    "on-primary-fixed-variant": "#005228",
+                    "primary-container": "#147e43",
+                    "surface-variant": "#e1e3e2",
+                    "primary-fixed-dim": "#7ada95",
+                    "on-secondary-fixed": "#0d1d2a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#00210c",
+                    "on-tertiary-fixed": "#00210e",
+                    "tertiary-container": "#53765c",
+                    "surface-bright": "#f8faf9",
+                    "outline-variant": "#bfcaba",
+                    "inverse-primary": "#7ada95",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f3",
+                    "surface-container-high": "#e6e9e8",
+                    "on-tertiary-fixed-variant": "#2c4e36",
+                    "surface-dim": "#d8dada",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#d4fcdb",
+                    "outline": "#707a6c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#40493d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8faf9; color: #191c1c; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-stone-50 dark:bg-slate-950 flex flex-col border-r border-stone-200 dark:border-slate-800 z-50">
+<div class="p-8">
+<div class="font-manrope text-2xl font-black text-emerald-900 dark:text-emerald-50 tracking-tighter">PlantClassify</div>
+<p class="font-inter tracking-wide uppercase text-[10px] font-bold text-stone-500 mt-1">Precision Ag-Tech</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Scan</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">history</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">History</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Gallery</span>
+</div>
+<!-- Active Tab: Treatment -->
+<div class="flex items-center gap-3 px-4 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-100 rounded-lg mx-2 transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medication</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Treatment</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-slate-400 mx-2 hover:bg-stone-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-inter tracking-wide uppercase text-[10px] font-bold">Profile</span>
+</div>
+</nav>
+<div class="p-4 mt-auto">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                Start New Analysis
+            </button>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-40 bg-stone-50/80 dark:bg-slate-950/80 backdrop-blur-xl ml-64 flex justify-between items-center px-8 py-3 shadow-[inset_0_-1px_0_0_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Search knowledge base..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-primary transition-colors">settings</span>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-stone-200">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface leading-none">Dr. Aris Thorne</p>
+<p class="text-[10px] uppercase tracking-widest text-stone-500 font-bold">Senior Pathologist</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional portrait of a researcher in a lab coat with a clean clinical background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfRUH8wDXVgC-9r4HPF7QzU-beunbctr8K23jFFDLLGttyLPtDeEe271_iE5baNbFBfyFcAotr1gysWfsW8OS59TChiZJUtzJN7nNAgGJ93eFWk2eamhnId36xP-JUgOt36UCZCp56ZyZRDFzK3ju-SFEl67BRQhLbMiJ92DIYcoMBch6ksAQ1nS2YBJR32-Uq6y55Sqf0PjaSNI_K-whv92RZdlSGa1Tc4Pfzzxu1-LHaUtsSKK4gMiJfuUxSq_jks0qErtd7xMQ"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 p-8 max-w-7xl">
+<!-- Header Section -->
+<section class="mb-12">
+<div class="flex items-end justify-between">
+<div>
+<h1 class="font-headline text-display-lg text-primary tracking-tight font-extrabold text-5xl mb-2">Treatment Guide</h1>
+<p class="text-on-surface-variant font-body max-w-2xl text-lg leading-relaxed">
+                        Verified intervention protocols for clinical-grade plant pathology management. Access laboratory-standard procedures for chemical, mechanical, and environmental containment.
+                    </p>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Verified by Lab
+                    </span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Protocols -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Disease Card 1: Bacterial Spot -->
+<div class="xl:col-span-8 space-y-8">
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="flex flex-col md:flex-row h-full">
+<div class="md:w-1/3 relative h-64 md:h-auto">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="extreme close-up of a leaf with dark circular necrotic lesions caused by bacterial spot disease" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOHCrUZRq3covxID1Jw72IilPFP5N0id4rTTCpP82HnUgohGv6MTxupmLl6M61T9GxRbwxIflicJxhlNBPT6Au4EG5V6MRUcvLjwo6n4i5zrDGn4PibrCzRlulfwD4tn-j01HO1lBzQ9nwTi3EVTTqdWcgpk8eI2wk3NS08sOxgO8-RmbvlrzT4LhMlHtCkWxE2U4377Mlkd9yg8esN2TA--wNyODgHQ5ssC40OeLE_okmgJyWjEcBuws9CbE4K7pkw0St5cAx274"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<span class="bg-error text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded w-fit mb-2">Critical Risk</span>
+<h3 class="text-white font-headline text-2xl font-bold">Bacterial Spot</h3>
+<p class="text-stone-300 text-xs font-medium italic">Xanthomonas campestris pv. vesicatoria</p>
+</div>
+</div>
+<div class="md:w-2/3 p-8 flex flex-col justify-between">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="space-y-3">
+<h4 class="text-primary font-bold text-[10px] uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">science</span>
+                                        Chemical
+                                    </h4>
+<p class="text-on-surface-variant text-sm leading-snug">Copper-based bactericides at 14-day intervals. Streptomycin rotation recommended in non-resistant zones.</p>
+</div>
+<div class="space-y-3">
+<h4 class="text-secondary font-bold text-[10px] uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">content_cut</span>
+                                        Mechanical
+                                    </h4>
+<p class="text-on-surface-variant text-sm leading-snug">Pruning of symptomatic foliage under 30% total biomass. Incineration of infected waste required.</p>
+</div>
+<div class="space-y-3">
+<h4 class="text-tertiary font-bold text-[10px] uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">thermostat</span>
+                                        Environment
+                                    </h4>
+<p class="text-on-surface-variant text-sm leading-snug">Maintain RH &lt; 75%. Eliminate overhead irrigation to prevent splash dispersal of bacteria.</p>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[9px] uppercase font-black text-stone-400">Success Rate</span>
+<span class="text-lg font-bold text-primary">82%</span>
+</div>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-[82%] h-full bg-primary"></div>
+</div>
+</div>
+<button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:translate-x-1 transition-transform">
+                                    View Detailed Protocol
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Disease Card 2: Leaf Curl -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="flex flex-col md:flex-row h-full">
+<div class="md:w-1/3 relative h-64 md:h-auto">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="distorted thickened red and yellow leaves of a peach tree affected by leaf curl fungus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-nKMmj55NX7uBo-IFJ8shZI6zv_yagcdeVJGn5EV3RFW--7LRpQcYb6wbPLWjHbdD5fWTqKRmxS5gRTcl4SlWSenJqsaeIMGKJvRo4bJu9hgAgkL-SrpOc988TWn-qfwrRsz5BxsuplTyoZdqmNg6wcfV_P64VQIbnPZg-8hXJ5G6Jwvkkz_Xqzs5jv9wEdwaSp1qsSbrzv2IToAurldPHCAPhsUA394CIrBDBKf03mFcItJdPKAGyFaXfgZ1akbJfUJgsdR8bno"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<span class="bg-secondary-fixed-dim text-on-secondary-fixed text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded w-fit mb-2">Seasonal Risk</span>
+<h3 class="text-white font-headline text-2xl font-bold">Leaf Curl</h3>
+<p class="text-stone-300 text-xs font-medium italic">Taphrina deformans</p>
+</div>
+</div>
+<div class="md:w-2/3 p-8 flex flex-col justify-between">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="space-y-3">
+<h4 class="text-primary font-bold text-[10px] uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">science</span>
+                                        Chemical
+                                    </h4>
+<p class="text-on-surface-variant text-sm leading-snug">Apply lime-sulfur or chlorothalonil during late autumn dormancy phase before bud break.</p>
+</div>
+<div class="space-y-3">
+<h4 class="text-secondary font-bold text-[10px] uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">content_cut</span>
+                                        Mechanical
+                                    </h4>
+<p class="text-on-surface-variant text-sm leading-snug">Thinning of over-dense canopies to improve airflow. Removal of fallen leaves in winter.</p>
+</div>
+<div class="space-y-3">
+<h4 class="text-tertiary font-bold text-[10px] uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">thermostat</span>
+                                        Environment
+                                    </h4>
+<p class="text-on-surface-variant text-sm leading-snug">Rain shielding for small specimen plants during wet spring periods. Soil nitrogen regulation.</p>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[9px] uppercase font-black text-stone-400">Success Rate</span>
+<span class="text-lg font-bold text-primary">94%</span>
+</div>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-[94%] h-full bg-primary"></div>
+</div>
+</div>
+<button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:translate-x-1 transition-transform">
+                                    View Detailed Protocol
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Sidebar: Stats & Recent Reports -->
+<div class="xl:col-span-4 space-y-8">
+<!-- Lab Verification Status -->
+<div class="bg-surface-container-highest p-8 rounded-xl">
+<h4 class="font-headline font-bold text-xl text-on-surface mb-6">Protocol Integrity</h4>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="bg-primary-container/20 p-3 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">biotech</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Lab-Tested Methods</p>
+<p class="text-xs text-on-surface-variant">All treatments verified by ISO-17025 facilities.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-secondary-container/20 p-3 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">update</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Weekly Updates</p>
+<p class="text-xs text-on-surface-variant">Protocols updated every 7 days based on mutation tracking.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Alerts -->
+<div class="bg-surface-container-low p-6 rounded-xl">
+<h4 class="font-headline font-bold text-lg text-on-surface mb-4">Emerging Pathologies</h4>
+<div class="space-y-4">
+<div class="p-4 bg-white rounded-lg border-l-4 border-error shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-black uppercase text-error">New Threat</span>
+<span class="text-[10px] text-stone-400">2h ago</span>
+</div>
+<p class="text-sm font-bold text-on-surface mb-1">Fusarium Wilt Variant B</p>
+<p class="text-xs text-on-surface-variant">Rapid spread detected in Zone 4. Review protocol 4.2B.</p>
+</div>
+<div class="p-4 bg-white rounded-lg border-l-4 border-secondary shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-black uppercase text-secondary">Mutation Alert</span>
+<span class="text-[10px] text-stone-400">6h ago</span>
+</div>
+<p class="text-sm font-bold text-on-surface mb-1">Downy Mildew</p>
+<p class="text-xs text-on-surface-variant">Observed resistance to Group 40 fungicides.</p>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-outline-variant/30 text-[10px] font-black uppercase tracking-widest text-on-surface-variant rounded-lg hover:bg-surface-container-highest transition-colors">
+                        All Global Alerts
+                    </button>
+</div>
+<!-- Interactive Analysis Tool (Contextual Suggestion) -->
+<div class="relative rounded-xl overflow-hidden group">
+<img class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700" data-alt="scientific laboratory bench with microscopes and high-tech plant samples in petri dishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxhcrCHNmWZz2lmC4h0QU1gvyFymhFKUbxA4lyxdOS56MTUAHNGeksgZR74vLrQlbBP2bK-bQ6bgnp_KeV3omS8zE8LsHAiTM_Xh490_qv0l9gGNDBg8b-TEdXkYw36f77jTePEOTFaIPKkZGzZBiwelZG6xNv1-zgZqyP34DGjffIp3FZ_-id9iIXT3zg9xHNqkPmxNrbaDstemStcw8-omhWWo18DWJLX81T-QVUnegdejeLQI2dneI1fGXllwqfwA3sNDBCVXY"/>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center p-8 text-center">
+<span class="material-symbols-outlined text-white text-5xl mb-4">analytics</span>
+<h4 class="text-white font-headline text-xl font-bold mb-2">Analysis Sandbox</h4>
+<p class="text-primary-fixed text-sm mb-6">Simulate intervention success rates based on your local microclimate data.</p>
+<button class="bg-white text-primary px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest shadow-xl">Launch Simulator</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Meta-Data -->
+<footer class="ml-64 px-8 py-12 border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center opacity-60">
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold uppercase tracking-widest">System Status: Nominal</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Version: 2.4.0-Lab</span>
+</div>
+<div class="flex items-center gap-8 mt-4 md:mt-0">
+<a class="text-[10px] font-bold uppercase tracking-widest hover:text-primary" href="#">Methodology</a>
+<a class="text-[10px] font-bold uppercase tracking-widest hover:text-primary" href="#">Ethical Guidelines</a>
+<a class="text-[10px] font-bold uppercase tracking-widest hover:text-primary" href="#">Contact Bio-Security</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -15,12 +15,12 @@ const columns: ColumnDef<Profile>[] = [
   {
     accessorKey: "id",
     header: "ID Pengguna",
-    cell: ({ row }) => <div className="text-xs text-slate-500 font-mono truncate max-w-[150px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="text-[10px] text-stone-400 font-mono truncate max-w-[150px] uppercase font-bold tracking-tight">{row.getValue("id")}</div>,
   },
   {
     accessorKey: "full_name",
     header: "Nama Lengkap",
-    cell: ({ row }) => <div className="font-medium text-slate-900">{row.getValue("full_name") || "Tanpa Nama"}</div>,
+    cell: ({ row }) => <div className="font-bold text-on-surface">{row.getValue("full_name") || "Tanpa Nama"}</div>,
   },
   {
     accessorKey: "role",
@@ -28,10 +28,10 @@ const columns: ColumnDef<Profile>[] = [
     cell: ({ row }) => {
       const role = row.getValue("role") as string
       return (
-        <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+        <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${
           role === 'admin' 
-            ? 'bg-red-100 text-red-700 border border-red-200' 
-            : 'bg-slate-100 text-slate-700 border border-slate-200'
+            ? 'bg-rose-50 text-rose-700 border border-rose-100' 
+            : 'bg-emerald-50 text-emerald-700 border border-emerald-100'
         }`}>
           {role === 'admin' ? 'Administrator' : 'Peneliti'}
         </span>
@@ -57,10 +57,10 @@ export default function AdminUsersPage() {
   }, [])
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <div>
-        <h2 className="text-3xl font-heading font-black text-slate-900 tracking-tight">Manajemen Pengguna</h2>
-        <p className="text-slate-500 mt-2">Daftar semua pengguna terdaftar di platform.</p>
+        <h2 className="text-3xl font-heading font-black text-on-surface tracking-tight">Manajemen Pengguna</h2>
+        <p className="text-on-surface-variant font-medium mt-2">Daftar semua pengguna terdaftar di platform PhytoScan.</p>
       </div>
       
       {loading ? (

@@ -9,12 +9,14 @@ export default function AdminLayout({
 }) {
   return (
     <ClientOnly>
-      <div className="flex min-h-screen bg-slate-50" suppressHydrationWarning>
+      <div className="flex min-h-screen bg-surface" suppressHydrationWarning>
         <AdminSidebar />
         <div className="ml-72 flex-1 flex flex-col min-h-screen">
           <AdminHeader />
-          <main className="flex-1 p-8">
-            {children}
+          <main className="flex-1">
+            <div className="p-8">
+              {children}
+            </div>
           </main>
         </div>
       </div>

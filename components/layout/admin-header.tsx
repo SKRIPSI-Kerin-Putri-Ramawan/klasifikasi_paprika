@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { createSupabaseClient } from "@/utils/supabase/client"
 import { useRouter } from "next/navigation"
@@ -7,6 +8,26 @@ import { useRouter } from "next/navigation"
 export function AdminHeader() {
   const supabase = createSupabaseClient()
   const router = useRouter()
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("avatar_url")
+          .eq("id", user.id)
+          .single()
+        
+        if (profile?.avatar_url) {
+          setAvatarUrl(profile.avatar_url)
+        }
+      }
+    }
+
+    fetchProfile()
+  }, [])
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -41,18 +62,19 @@ export function AdminHeader() {
         </div>
         
         <div className="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-slate-800">
-          <button className="p-2.5 text-slate-400 hover:text-emerald-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">
-            <span className="material-symbols-outlined text-[20px]">notifications</span>
-          </button>
           <button onClick={handleLogout} className="p-2.5 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-all" title="Keluar Mode Admin">
             <span className="material-symbols-outlined text-[20px]">logout</span>
           </button>
-          <div className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700 ml-2 shadow-sm hover:border-emerald-500 transition-colors cursor-pointer">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj2HncUJHwC4ISY1gkFnf6HnuBz9u4Ip5j_EmrS8RSpRtMDlQ8TGXZxBHPm4rGSSnBSmcCPrUCRqaIx8EkBIIj2pyfxW6dLDHTEuP1j-tTtYI52R8wJm6Ry3P5bI27Uwvrz4ztS1wa5N39XNccwvPoK5gGj3TETR0Jwz4bPIuPAjE9ZB1cOqgFeGPyCePslLc8PDY8tatxKAn-Rv8x3kD2TywD1F43cfxsblZ5dAS48Z2IcIkewdtckv4WaG9Ov09ojSNqZolAzOw"
-              alt="Profil Admin"
-              className="w-full h-full object-cover"
-            />
+          <div className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700 ml-2 shadow-sm hover:border-emerald-500 transition-colors cursor-pointer bg-slate-100 flex items-center justify-center">
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt="Profil Admin"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="material-symbols-outlined text-slate-400">person</span>
+            )}
           </div>
         </div>
       </div>

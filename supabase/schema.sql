@@ -73,3 +73,16 @@ CREATE POLICY "Allow public read-only access" ON nutrition FOR SELECT USING (tru
 -- Classification history: anyone can insert, but only authenticated can view theirs (adjust based on needs)
 CREATE POLICY "Allow anyone to insert classifications" ON classifications FOR INSERT WITH CHECK (true);
 CREATE POLICY "Allow anyone to view classifications" ON classifications FOR SELECT USING (true);
+
+-- Storage Policies for 'scans' bucket
+-- These policies allow public read access and authenticated upload access to the 'scans' bucket.
+CREATE POLICY "Allow public read access to scans" 
+ON storage.objects FOR SELECT 
+USING (bucket_id = 'scans');
+
+CREATE POLICY "Allow authenticated users to upload to scans" 
+ON storage.objects FOR INSERT 
+WITH CHECK (
+  bucket_id = 'scans' 
+  AND auth.role() = 'authenticated'
+);

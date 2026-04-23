@@ -11,7 +11,7 @@ export default function AuthenticatedLayout({
     <ClientOnly>
       <div className="flex min-h-screen bg-surface" suppressHydrationWarning>
         <Sidebar />
-        <div className="ml-64 flex-1 flex flex-col min-h-screen">
+        <div className="ml-72 flex-1 flex flex-col min-h-screen">
           <Header />
           <main className="flex-1">
             {children}

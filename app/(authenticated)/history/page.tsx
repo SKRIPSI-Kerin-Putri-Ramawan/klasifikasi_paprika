@@ -1,19 +1,25 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { supabase } from "@/lib/supabase"
+import { createSupabaseClient } from "@/utils/supabase/client"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 export default function HistoryPage() {
-  const [logs, setLogs] = useState([])
+  const supabase = createSupabaseClient()
+  const [logs, setLogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchLogs() {
       try {
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) return
+
         const { data, error } = await supabase
           .from("classifications")
           .select("*")
+          .eq("user_id", user.id)
           .order("created_at", { ascending: false })
         
         if (error) throw error
@@ -27,6 +33,23 @@ export default function HistoryPage() {
 
     fetchLogs()
   }, [])
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Apakah Anda yakin ingin menghapus data klasifikasi ini?")) return
+
+    try {
+      const { error } = await supabase
+        .from("classifications")
+        .delete()
+        .eq("id", id)
+      
+      if (error) throw error
+      setLogs(logs.filter(log => log.id !== id))
+    } catch (error) {
+      console.error("Error deleting log:", error)
+      alert("Gagal menghapus data.")
+    }
+  }
 
   return (
     <div className="p-8 space-y-8 bg-surface">
@@ -81,9 +104,22 @@ export default function HistoryPage() {
                   </div>
                   <div className="pt-4 border-t border-stone-50 flex justify-between items-center">
                     <span className="text-xs font-medium text-stone-500 font-sans italic italic-custom">ID: {log.id.slice(0, 8)}</span>
-                    <button className="p-2 bg-stone-50 rounded-xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
-                      <span className="material-symbols-outlined text-sm">visibility</span>
-                    </button>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={() => handleDelete(log.id)}
+                        className="p-2 bg-stone-50 rounded-xl hover:bg-red-50 hover:text-red-700 transition-colors"
+                        title="Hapus"
+                      >
+                        <span className="material-symbols-outlined text-sm">delete</span>
+                      </button>
+                      <Link 
+                        href={`/history/${log.id}`}
+                        className="p-2 bg-stone-50 rounded-xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                        title="Lihat Detail"
+                      >
+                        <span className="material-symbols-outlined text-sm">visibility</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

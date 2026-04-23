@@ -1,47 +1,84 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { createSupabaseClient } from "@/utils/supabase/client"
+import { useRouter } from "next/navigation"
 
 export function Header() {
+  const supabase = createSupabaseClient()
+  const router = useRouter()
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("avatar_url")
+          .eq("id", user.id)
+          .single()
+        
+        if (profile?.avatar_url) {
+          setAvatarUrl(profile.avatar_url)
+        }
+      }
+    }
+
+    fetchProfile()
+  }, [])
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+    router.push('/login')
+    router.refresh()
+  }
+
   return (
     <header className={cn(
-      "w-full sticky top-0 z-40 bg-stone-50/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-8 py-3 shadow-[inset_0_-1px_0_0_rgba(0,0,0,0.05)]",
-      "h-16"
+      "w-full sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl flex justify-between items-center px-10 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)] border-b border-stone-100",
+      "h-[76px]"
     )}>
       <div className="flex items-center gap-6">
-        <div className="relative">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">
+        <div className="relative group">
+          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-emerald-500 transition-colors">
             search
           </span>
           <input
             type="text"
-            className="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary/20"
+            className="pl-12 pr-4 py-2.5 bg-stone-50 hover:bg-stone-100 border border-transparent focus:border-emerald-200 rounded-xl text-sm w-72 focus:ring-4 focus:ring-emerald-500/10 transition-all outline-none text-stone-700 placeholder:text-stone-400 font-medium"
             placeholder="Cari data eksperimen..."
           />
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full">
-          <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-          <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">
+      <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full shadow-sm">
+          <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+          <span className="text-[10px] font-black text-emerald-800 uppercase tracking-widest">
             Sistem Aktif
           </span>
         </div>
         
-        <div className="flex items-center gap-3">
-          <button className="p-2 text-stone-500 hover:text-primary transition-colors">
-            <span className="material-symbols-outlined">notifications</span>
+        <div className="flex items-center gap-3 pl-6 border-l border-stone-200">
+          <button 
+            onClick={handleLogout} 
+            className="p-2.5 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all" 
+            title="Keluar"
+          >
+            <span className="material-symbols-outlined text-[20px]">logout</span>
           </button>
-          <button className="p-2 text-stone-500 hover:text-primary transition-colors">
-            <span className="material-symbols-outlined">settings</span>
-          </button>
-          <div className="h-8 w-8 rounded-full overflow-hidden border-2 border-primary/20 ml-2">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj2HncUJHwC4ISY1gkFnf6HnuBz9u4Ip5j_EmrS8RSpRtMDlQ8TGXZxBHPm4rGSSnBSmcCPrUCRqaIx8EkBIIj2pyfxW6dLDHTEuP1j-tTtYI52R8wJm6Ry3P5bI27Uwvrz4ztS1wa5N39XNccwvPoK5gGj3TETR0Jwz4bPIuPAjE9ZB1cOqgFeGPyCePslLc8PDY8tatxKAn-Rv8x3kD2TywD1F43cfxsblZ5dAS48Z2IcIkewdtckv4WaG9Ov09ojSNqZolAzOw"
-              alt="Profil Peneliti"
-              className="w-full h-full object-cover"
-            />
+          <div className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-stone-200 ml-2 shadow-sm hover:border-emerald-400 transition-colors cursor-pointer bg-stone-100 flex items-center justify-center">
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt="Profil Peneliti"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="material-symbols-outlined text-stone-400">person</span>
+            )}
           </div>
         </div>
       </div>

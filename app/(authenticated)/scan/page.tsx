@@ -2,10 +2,13 @@
 
 import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
-import { supabase } from "@/lib/supabase"
+import { createSupabaseClient } from "@/utils/supabase/client"
+import { useRouter } from "next/navigation"
 
 
 export default function ScanPage() {
+  const supabase = createSupabaseClient()
+  const router = useRouter()
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [showResults, setShowResults] = useState(false)
@@ -34,21 +37,22 @@ export default function ScanPage() {
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string)
-        startAnalysis()
-      }
-      reader.readAsDataURL(file)
+      const objectUrl = URL.createObjectURL(file)
+      setImagePreview(objectUrl)
+      startAnalysis(file)
     }
   }
 
   const saveClassification = async (result: string, confidence: number, imageUrl: string) => {
     try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) throw new Error("User not authenticated")
+
       const { data, error } = await supabase
         .from('classifications')
         .insert([
           { 
+            user_id: user.id,
             result, 
             confidence: confidence / 100, 
             image_url: imageUrl,
@@ -63,17 +67,39 @@ export default function ScanPage() {
     }
   }
 
-  const startAnalysis = () => {
+  const startAnalysis = async (fileToUpload: File | Blob) => {
     setIsAnalyzing(true)
     setShowResults(false)
-    // Simulate deep learning analysis
-    setTimeout(() => {
-      setIsAnalyzing(false)
-      setShowResults(true)
+    
+    try {
+      const fileExt = fileToUpload instanceof File ? fileToUpload.name.split('.').pop() : 'jpg'
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
+      const filePath = `public/${fileName}`
       
-      // Auto-save result to Supabase
-      saveClassification("Bercak Bakteri", 98.4, imagePreview || "https://placeholder.com")
-    }, 3000)
+      const { error: uploadError } = await supabase.storage
+        .from('scans')
+        .upload(filePath, fileToUpload)
+        
+      if (uploadError) throw uploadError
+      
+      const { data: { publicUrl } } = supabase.storage
+        .from('scans')
+        .getPublicUrl(filePath)
+
+      // Simulate deep learning analysis
+      setTimeout(() => {
+        setIsAnalyzing(false)
+        setShowResults(true)
+        
+        // Auto-save result to Supabase
+        saveClassification("Bercak Bakteri", 98.4, publicUrl)
+      }, 3000)
+
+    } catch (err) {
+      console.error("Upload error:", err)
+      alert("Gagal mengunggah gambar. Silakan coba lagi.")
+      setIsAnalyzing(false)
+    }
   }
 
   const toggleCamera = async () => {
@@ -115,10 +141,15 @@ export default function ScanPage() {
       canvas.height = videoRef.current.videoHeight
       const ctx = canvas.getContext("2d")
       ctx?.drawImage(videoRef.current, 0, 0)
-      const dataUrl = canvas.toDataURL("image/jpeg")
-      setImagePreview(dataUrl)
-      toggleCamera()
-      startAnalysis()
+      
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const objectUrl = URL.createObjectURL(blob)
+          setImagePreview(objectUrl)
+          toggleCamera()
+          startAnalysis(blob)
+        }
+      }, "image/jpeg", 0.9)
     }
   }
 
@@ -302,7 +333,7 @@ export default function ScanPage() {
 
                 <div className="pt-4 border-t border-surface-container">
                   <button 
-                    onClick={() => alert("Laporan telah disimpan ke Riwayat Klasifikasi.")}
+                    onClick={() => router.push('/history')}
                     className="w-full py-3 bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg"
                   >
                     <span className="material-symbols-outlined">description</span>

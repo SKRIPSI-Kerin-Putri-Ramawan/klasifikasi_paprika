@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabase"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
 
 const morphologyData = [
   { label: "Jenis Daun", value: "Daun Tunggal", desc: "Satu helaian pada satu petiolus (tangkai).", icon: "potted_plant" },

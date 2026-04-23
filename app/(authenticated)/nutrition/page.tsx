@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabase"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
 
 const nutritionData = [
   { 

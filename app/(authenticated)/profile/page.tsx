@@ -373,27 +373,7 @@ export default function ProfilePage() {
             </div>
           </section>
 
-          {/* Additional Info Bento */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-primary/5 p-6 rounded-xl border border-primary/10 flex items-center gap-4 group hover:bg-primary/10 transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined">network_check</span>
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-0.5">Model AI</p>
-                <p className="font-heading font-black text-on-surface leading-tight">YOLOv8 & CNN</p>
-              </div>
-            </div>
-            <div className="bg-secondary-container/10 p-6 rounded-xl border border-secondary/10 flex items-center gap-4 group hover:bg-secondary-container/20 transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-secondary text-on-secondary-container flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined">verified</span>
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-secondary uppercase tracking-widest mb-0.5">Sertifikasi</p>
-                <p className="font-heading font-black text-on-surface leading-tight">Peneliti Terverifikasi</p>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

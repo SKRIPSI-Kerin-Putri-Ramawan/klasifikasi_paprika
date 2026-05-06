@@ -14,7 +14,7 @@ export default function LandingPage() {
             </div>
             <div>
               <h1 className="text-xl font-heading font-black text-emerald-950 flex items-center gap-1">
-                Phyto<span className="text-emerald-600">Scan</span>
+                PapriCare
               </h1>
               <p className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-800/60 -mt-1">
                 Klasifikasi Paprika
@@ -25,7 +25,6 @@ export default function LandingPage() {
           <div className="hidden md:flex items-center gap-8">
             <Link href="#features" className="text-sm font-bold text-on-surface-variant hover:text-primary transition-colors">Fitur</Link>
             <Link href="#how-it-works" className="text-sm font-bold text-on-surface-variant hover:text-primary transition-colors">Cara Kerja</Link>
-            <Link href="/encyclopedia" className="text-sm font-bold text-on-surface-variant hover:text-primary transition-colors">Ensiklopedi</Link>
           </div>
 
           <div className="flex items-center gap-4">
@@ -59,17 +58,13 @@ export default function LandingPage() {
             </h1>
             
             <p className="text-lg text-emerald-900/60 font-sans leading-relaxed max-w-xl">
-              Solusi cerdas untuk deteksi dini penyakit tanaman paprika. Optimalkan hasil panen Anda dengan analisis akurat berbasis kecerdasan buatan.
+              Solusi cerdas untuk deteksi dini penyakit daun paprika. Optimalkan hasil panen Anda dengan analisis akurat berbasis kecerdasan buatan.
             </p>
             
             <div className="flex flex-wrap gap-4 pt-4">
               <Link href="/dashboard" className="px-8 py-4 bg-emerald-600 text-white font-black rounded-2xl shadow-2xl shadow-emerald-600/30 hover:bg-emerald-700 transition-all active:scale-95 flex items-center gap-3">
                 Mulai Sekarang Gratis
                 <span className="material-symbols-outlined">arrow_forward</span>
-              </Link>
-              <Link href="/scan" className="px-8 py-4 bg-white text-emerald-900 font-black rounded-2xl shadow-xl shadow-black/5 hover:bg-emerald-50 transition-all flex items-center gap-3 border border-emerald-900/5">
-                Coba Demo Scan
-                <span className="material-symbols-outlined">camera</span>
               </Link>
             </div>
 
@@ -121,10 +116,9 @@ export default function LandingPage() {
             <h3 className="text-4xl md:text-5xl font-heading font-black text-emerald-950">Semua yang Anda Butuhkan <br /> Untuk Tanaman Anda</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: "Klasifikasi AI", desc: "Identifikasi jenis penyakit melalui foto daun secara instan dengan akurasi tinggi.", icon: "shutter_speed", color: "bg-red-50 text-red-600" },
-              { title: "Ensiklopedi Digital", desc: "Database lengkap mengenai berbagai penyakit, gejala, dan cara pencegahan.", icon: "auto_stories", color: "bg-emerald-50 text-emerald-600" },
               { title: "Riwayat Analisis", desc: "Simpan dan pantau riwayat kesehatan tanaman Anda secara terperinci.", icon: "history", color: "bg-blue-50 text-blue-600" },
               { title: "Saran Penanganan", desc: "Rekomendasi perawatan yang tepat berdasarkan diagnosa hasil klasifikasi AI.", icon: "medication", color: "bg-amber-50 text-amber-600" }
             ].map((feature, i) => (
@@ -176,7 +170,7 @@ export default function LandingPage() {
             <div className="space-y-10">
               <div className="space-y-4">
                  <h2 className="text-sm font-black text-emerald-600 uppercase tracking-[0.3em]">Langkah Mudah</h2>
-                 <h3 className="text-4xl md:text-5xl font-heading font-black text-emerald-950 leading-tight">3 Langkah Menggunakan <br /> PhytoScan</h3>
+                  <h3 className="text-4xl md:text-5xl font-heading font-black text-emerald-950 leading-tight">3 Langkah Menggunakan <br /> PapriCare</h3>
               </div>
 
               <div className="space-y-8">
@@ -214,7 +208,7 @@ export default function LandingPage() {
                   <span className="material-symbols-outlined text-emerald-950 text-3xl">psychiatry</span>
                 </div>
                 <div>
-                  <h1 className="text-2xl font-heading font-black">PhytoScan</h1>
+                  <h1 className="text-2xl font-heading font-black">PapriCare</h1>
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Powered by Advanced AI</p>
                 </div>
               </div>
@@ -228,7 +222,6 @@ export default function LandingPage() {
               <ul className="space-y-3 text-sm text-white/60 font-bold">
                 <li><Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
                 <li><Link href="/scan" className="hover:text-white transition-colors">Scan AI</Link></li>
-                <li><Link href="/encyclopedia" className="hover:text-white transition-colors">Ensiklopedi</Link></li>
               </ul>
             </div>
 
@@ -237,7 +230,7 @@ export default function LandingPage() {
               <ul className="space-y-3 text-sm text-white/60 font-medium">
                 <li className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">mail</span>
-                  hello@phytoscan.ai
+                  hello@papricare.ai
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">location_on</span>
@@ -249,7 +242,7 @@ export default function LandingPage() {
 
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">
-              © 2026 PhytoScan. All rights Reserved.
+              © 2026 PapriCare. All rights Reserved.
             </p>
             <div className="flex gap-6 text-[10px] font-black text-white/20 uppercase tracking-widest">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

@@ -50,7 +50,7 @@ export default function AdminDashboardPage() {
         <h2 className="text-4xl font-heading font-black text-on-surface tracking-tight">Executive Dashboard</h2>
         <p className="text-on-surface-variant font-medium mt-2 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          Live monitoring platform PhytoScan.
+          Live monitoring platform PapriCare.
         </p>
       </header>
       

@@ -52,7 +52,7 @@ export default function RegisterPage() {
               <div className="w-10 h-10 bg-on-primary-container rounded-lg flex items-center justify-center">
                 <span className="material-symbols-outlined text-primary text-2xl">science</span>
               </div>
-              <span className="font-heading text-2xl font-black tracking-tighter text-on-primary-container">PhytoScan</span>
+              <span className="font-heading text-2xl font-black tracking-tighter text-on-primary-container">PapriCare</span>
             </div>
             
             <div className="space-y-6">
@@ -76,7 +76,7 @@ export default function RegisterPage() {
           <div className="w-full max-w-sm space-y-10">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-3xl font-heading font-black text-on-surface tracking-tight">Daftar Akun Baru.</h3>
-              <p className="text-on-surface-variant font-sans text-sm">Lengkapi data Anda untuk mengakses portal PhytoScan.</p>
+              <p className="text-on-surface-variant font-sans text-sm">Lengkapi data Anda untuk mengakses portal PapriCare.</p>
             </div>
 
             <form className="space-y-6" onSubmit={handleRegister}>
@@ -117,7 +117,7 @@ export default function RegisterPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full bg-surface-container-low border-none rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-stone-400 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-                    placeholder="pakar@paprika.lab.id"
+                    placeholder="pakar@papricare.ai"
                   />
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function RegisterPage() {
       </main>
       
       <div className="fixed bottom-8 left-8 hidden lg:block">
-        <p className="text-[9px] font-bold text-on-surface-variant uppercase tracking-[0.3em] font-sans">PhytoScan Platform Registrasi v4.2.1-Lab</p>
+        <p className="text-[9px] font-bold text-on-surface-variant uppercase tracking-[0.3em] font-sans">PapriCare Platform Registrasi v4.2.1-Lab</p>
       </div>
     </div>
   )

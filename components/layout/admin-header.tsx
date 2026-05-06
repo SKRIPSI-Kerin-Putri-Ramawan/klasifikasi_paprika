@@ -65,7 +65,10 @@ export function AdminHeader() {
           <button onClick={handleLogout} className="p-2.5 text-stone-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all" title="Keluar Mode Admin">
             <span className="material-symbols-outlined text-[20px]">logout</span>
           </button>
-          <div className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-stone-200 ml-2 shadow-sm hover:border-emerald-400 transition-colors cursor-pointer bg-stone-100 flex items-center justify-center">
+          <div 
+            onClick={() => router.push('/profile')}
+            className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-stone-200 ml-2 shadow-sm hover:border-emerald-400 transition-colors cursor-pointer bg-stone-100 flex items-center justify-center"
+          >
             {avatarUrl ? (
               <img
                 src={avatarUrl}

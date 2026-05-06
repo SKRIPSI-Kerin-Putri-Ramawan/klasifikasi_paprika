@@ -57,7 +57,7 @@ export default function LoginPage() {
               <div className="w-10 h-10 bg-on-primary-container rounded-lg flex items-center justify-center">
                 <span className="material-symbols-outlined text-primary text-2xl">biotech</span>
               </div>
-              <span className="font-heading text-2xl font-black tracking-tighter text-on-primary-container">PhytoScan</span>
+              <span className="font-heading text-2xl font-black tracking-tighter text-on-primary-container">PapriCare</span>
             </div>
             
             <div className="space-y-6">
@@ -68,40 +68,27 @@ export default function LoginPage() {
                 Transformasi Agrikultur Melalui <span className="text-primary">Visi Komputer.</span>
               </h1>
               <p className="text-on-primary-container/70 text-lg leading-relaxed font-sans max-w-sm">
-                Identifikasi kualitas dan jenis paprika dengan akurasi kelas laboratorium secara instan menggunakan AI.
+                Identifikasi kualitas dan jenis penyakit daun paprika dengan akurasi kelas laboratorium secara instan.
               </p>
             </div>
           </div>
 
           <div className="relative z-10 space-y-10">
-            <div className="grid grid-cols-3 gap-6 pt-10 border-t border-on-primary-container/10">
+            <div className="grid grid-cols-2 gap-6 pt-10 border-t border-on-primary-container/10">
               <div>
-                <p className="text-2xl font-heading font-black text-on-primary-container">12rb+</p>
-                <p className="text-[9px] uppercase tracking-widest text-on-primary-container/60 font-bold">Sampel Tervalidasi</p>
+                <p className="text-2xl font-heading font-black text-on-primary-container">Deteksi Cepat</p>
+                <p className="text-[9px] uppercase tracking-widest text-on-primary-container/60 font-bold">Identifikasi penyakit daun dalam hitungan detik</p>
               </div>
               <div>
-                <p className="text-2xl font-heading font-black text-on-primary-container">99.4%</p>
-                <p className="text-[9px] uppercase tracking-widest text-on-primary-container/60 font-bold">Akurasi Model</p>
-              </div>
-              <div>
-                <p className="text-2xl font-heading font-black text-on-primary-container">24</p>
-                <p className="text-[9px] uppercase tracking-widest text-on-primary-container/60 font-bold">Spesies Terdaftar</p>
+                <p className="text-2xl font-heading font-black text-on-primary-container">Akurasi Klasifikasi</p>
+                <p className="text-[9px] uppercase tracking-widest text-on-primary-container/60 font-bold">Prediksi penyakit menggunakan model CNN</p>
               </div>
             </div>
 
             <div className="bg-primary/20 backdrop-blur-md p-6 rounded-xl border border-on-primary-container/10">
-              <p className="text-on-primary-container text-sm font-medium italic font-sans mb-4">
-                "Integrasi AI ke dalam studi lapangan kami telah meningkatkan akurasi klasifikasi sebesar 42% pada kuartal ini."
+              <p className="text-on-primary-container text-sm font-medium italic font-sans leading-relaxed">
+                "Membantu petani dalam mengidentifikasi patogen pada tanaman paprika secara dini untuk hasil panen yang lebih optimal dan berkualitas."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg overflow-hidden border border-on-primary-container/30">
-                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG--hHwX6ej3zDi-SDiUvA4TtOnVJNZflw-Yqai5zC0aFBgwWPzi32n5y2o9-Y1tCzNnPtaBFW-DQfAloQbgT7dJzgj_5xf9kJEs274g2ZWEhX__fjzM3WlVOi7QGQLMBS2w13YAHzV0fH46X1CW0R3tKFPAswMCCx6VXyso6j-8P20-5nvRQOYoOgLT3TAPlg_A8sDXphEwk_noBSoPzVMmOaZJSh_kZtFgko8qxUW6HFju5CXF7JQuutK23JHjQ1RZQxvcxfdJ4" alt="Dr Aris" className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-on-primary-container uppercase tracking-wider font-sans">Dr. Elena Aris</p>
-                  <p className="text-[10px] text-on-primary-container/60 font-medium font-sans">Patologis Utama</p>
-                </div>
-              </div>
             </div>
           </div>
           
@@ -111,9 +98,10 @@ export default function LoginPage() {
         {/* Right Side: Login Form */}
         <div className="w-full flex items-center justify-center p-12 bg-surface">
           <div className="w-full max-w-sm space-y-10">
-            <div className="space-y-2 text-center md:text-left">
-              <h3 className="text-3xl font-heading font-black text-on-surface tracking-tight">Selamat Datang.</h3>
-              <p className="text-on-surface-variant font-sans text-sm">Masukkan kredensial Anda untuk mengakses dashboard lab.</p>
+            <div className="space-y-4 text-center">
+              <div className="mx-auto w-12 h-1.5 bg-primary rounded-full mb-2"></div>
+              <h3 className="text-4xl font-heading font-black text-on-surface tracking-tight">Selamat Datang.</h3>
+              <p className="text-on-surface-variant font-sans text-[10px] uppercase tracking-[0.2em] font-black opacity-60">Portal Analisis Penyakit Paprika</p>
             </div>
 
             <form className="space-y-6" onSubmit={handleLogin}>
@@ -136,7 +124,7 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full bg-surface-container-low border-none rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-stone-400 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-                    placeholder="pakar@paprika.lab.id"
+                    placeholder="pakar@papricare.ai"
                   />
                 </div>
               </div>
@@ -178,30 +166,12 @@ export default function LoginPage() {
             </form>
 
             
-            <div className="pt-8 space-y-4">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-outline-variant/30"></div>
-                </div>
-                <div className="relative flex justify-center">
-                  <span className="bg-surface px-4 text-[10px] font-bold text-stone-400 uppercase tracking-widest font-sans">Baru di PhytoScan?</span>
-                </div>
-              </div>
-
-              <a 
-                href="/register" 
-                className="w-full py-4 rounded-xl border-2 border-primary/20 text-primary font-heading font-bold text-lg hover:bg-primary/5 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-              >
-                Ajukan Akses Peneliti
-                <span className="material-symbols-outlined text-xl">person_add</span>
-              </a>
-            </div>
           </div>
         </div>
       </main>
       
       <div className="fixed bottom-8 left-8 hidden lg:block">
-        <p className="text-[9px] font-bold text-on-surface-variant uppercase tracking-[0.3em] font-sans">PhytoScan Platform Analisis v4.2.1-Lab</p>
+        <p className="text-[9px] font-bold text-on-surface-variant uppercase tracking-[0.3em] font-sans">PapriCare Platform Analisis v4.2.1-Lab</p>
       </div>
     </div>
   )

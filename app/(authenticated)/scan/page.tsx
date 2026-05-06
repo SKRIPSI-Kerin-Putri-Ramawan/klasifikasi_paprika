@@ -358,19 +358,7 @@ export default function ScanPage() {
             </div>
           ) : null}
 
-          {/* Environment Stats (Always show if results or analyzing but let's keep them here) */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
-              <span className="material-symbols-outlined text-primary mb-2">thermostat</span>
-              <span className="block text-[9px] font-sans font-bold text-stone-500 uppercase tracking-widest">Suhu Kalibrasi</span>
-              <span className="text-lg font-bold font-heading">24.5°C</span>
-            </div>
-            <div className="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
-              <span className="material-symbols-outlined text-primary mb-2">humidity_percentage</span>
-              <span className="block text-[9px] font-sans font-bold text-stone-500 uppercase tracking-widest">Kelembapan</span>
-              <span className="text-lg font-bold font-heading">62%</span>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

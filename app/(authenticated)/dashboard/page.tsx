@@ -156,14 +156,8 @@ export default function DashboardPage() {
             <span className="text-emerald-400 italic font-serif">Capsicum Annuum</span>
           </h1>
           <p className="text-emerald-100/80 font-sans text-lg max-w-lg leading-relaxed">
-            Identifikasi penyakit, pelajari siklus hidup, dan temukan cara terbaik untuk merawat tanaman paprika Anda dengan teknologi AI PhytoScan.
+            Identifikasi penyakit daun, pelajari siklus hidup, dan temukan cara terbaik untuk merawat tanaman paprika Anda dengan teknologi AI PapriCare.
           </p>
-          <div className="flex gap-4 pt-4">
-            <Link href="/encyclopedia" className="px-8 py-3 bg-white text-emerald-900 font-black rounded-xl hover:bg-emerald-50 transition-colors flex items-center gap-2 shadow-xl active:scale-95 transition-transform">
-              Jelajahi Wawasan
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </Link>
-          </div>
         </div>
       </section>
 

@@ -161,15 +161,7 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
             </div>
           </section>
 
-          <div className="pt-4">
-            <button 
-              onClick={() => router.push('/treatment')}
-              className="w-full py-4 bg-primary text-white font-black rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-primary/20 hover:opacity-90 active:scale-95 transition-all uppercase tracking-widest text-xs"
-            >
-              <span className="material-symbols-outlined">medication</span>
-              Lihat Panduan Penanganan Lengkap
-            </button>
-          </div>
+
         </div>
       </div>
     </div>

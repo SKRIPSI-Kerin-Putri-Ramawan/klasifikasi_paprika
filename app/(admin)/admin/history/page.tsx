@@ -58,7 +58,7 @@ export default function AdminHistoryPage() {
     },
     {
       accessorKey: "image_url",
-      header: "Specimen",
+      header: "Citra Daun",
       cell: ({ row }) => (
         <div className="w-12 h-12 rounded-xl overflow-hidden bg-stone-100 border border-stone-100 shadow-sm">
           <img 
@@ -88,7 +88,7 @@ export default function AdminHistoryPage() {
     },
     {
       accessorKey: "result",
-      header: "Identifikasi",
+      header: "Hasil Klasifikasi",
       cell: ({ row }) => (
         <div className="font-black text-on-surface flex items-center gap-2">
           <div className={cn(
@@ -119,38 +119,6 @@ export default function AdminHistoryPage() {
         )
       },
     },
-    {
-      accessorKey: "status",
-      header: "Status",
-      cell: ({ row }) => {
-        const status = row.getValue("status") as string
-        return (
-          <span className={cn(
-            "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border",
-            status === 'VERIFIED' 
-              ? 'bg-emerald-50 text-emerald-700 border-emerald-100/50' 
-              : 'bg-amber-50 text-amber-700 border-amber-100/50'
-          )}>
-            {status}
-          </span>
-        )
-      },
-    },
-    {
-      id: "actions",
-      header: "Aksi",
-      cell: ({ row }) => (
-        <div className="flex items-center gap-2">
-          <button 
-            onClick={() => handleDelete(row.original.id)}
-            className="p-2 bg-stone-50 text-stone-400 hover:bg-red-50 hover:text-red-700 rounded-xl transition-all group"
-            title="Hapus Data"
-          >
-            <span className="material-symbols-outlined text-sm group-hover:scale-110 transition-transform">delete</span>
-          </button>
-        </div>
-      ),
-    },
   ]
 
   useEffect(() => {
@@ -173,7 +141,7 @@ export default function AdminHistoryPage() {
       <div className="flex justify-between items-end">
         <div>
           <h2 className="text-3xl font-heading font-black text-on-surface tracking-tight">Database Klasifikasi</h2>
-          <p className="text-on-surface-variant font-medium mt-2">Log lengkap seluruh aktivitas identifikasi spesimen PhytoScan.</p>
+          <p className="text-on-surface-variant font-medium mt-2">Log lengkap seluruh aktivitas identifikasi spesimen PapriCare.</p>
         </div>
         <div className="flex gap-2">
           <div className="px-4 py-2 bg-emerald-50 text-emerald-700 text-xs font-black rounded-xl border border-emerald-100 flex items-center gap-2">

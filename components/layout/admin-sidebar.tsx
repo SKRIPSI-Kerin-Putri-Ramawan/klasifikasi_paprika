@@ -21,11 +21,8 @@ export function AdminSidebar() {
         </div>
         <div>
           <h1 className="font-heading text-xl font-black text-emerald-950 tracking-tighter">
-            PhytoScan Admin
+            PapriCare Admin
           </h1>
-          <p className="font-sans tracking-[0.15em] uppercase text-[9px] font-bold text-emerald-600/70">
-            Precision Ag-Tech
-          </p>
         </div>
       </div>
 

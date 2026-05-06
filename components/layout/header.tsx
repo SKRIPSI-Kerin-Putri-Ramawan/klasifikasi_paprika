@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { createSupabaseClient } from "@/utils/supabase/client"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
 export function Header() {
   const supabase = createSupabaseClient()
   const router = useRouter()
+  const pathname = usePathname()
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
 
   useEffect(() => {
@@ -41,16 +42,18 @@ export function Header() {
       "h-[76px]"
     )}>
       <div className="flex items-center gap-6">
-        <div className="relative group">
-          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-emerald-500 transition-colors">
-            search
-          </span>
-          <input
-            type="text"
-            className="pl-12 pr-4 py-2.5 bg-stone-50 hover:bg-stone-100 border border-transparent focus:border-emerald-200 rounded-xl text-sm w-72 focus:ring-4 focus:ring-emerald-500/10 transition-all outline-none text-stone-700 placeholder:text-stone-400 font-medium"
-            placeholder="Cari data eksperimen..."
-          />
-        </div>
+        {pathname === '/history' && (
+          <div className="relative group">
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-emerald-500 transition-colors">
+              search
+            </span>
+            <input
+              type="text"
+              className="pl-12 pr-4 py-2.5 bg-stone-50 hover:bg-stone-100 border border-transparent focus:border-emerald-200 rounded-xl text-sm w-72 focus:ring-4 focus:ring-emerald-500/10 transition-all outline-none text-stone-700 placeholder:text-stone-400 font-medium"
+              placeholder="Cari data eksperimen..."
+            />
+          </div>
+        )}
       </div>
 
       <div className="flex items-center gap-6">
@@ -69,7 +72,10 @@ export function Header() {
           >
             <span className="material-symbols-outlined text-[20px]">logout</span>
           </button>
-          <div className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-stone-200 ml-2 shadow-sm hover:border-emerald-400 transition-colors cursor-pointer bg-stone-100 flex items-center justify-center">
+          <div 
+            onClick={() => router.push('/profile')}
+            className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-stone-200 ml-2 shadow-sm hover:border-emerald-400 transition-colors cursor-pointer bg-stone-100 flex items-center justify-center"
+          >
             {avatarUrl ? (
               <img
                 src={avatarUrl}

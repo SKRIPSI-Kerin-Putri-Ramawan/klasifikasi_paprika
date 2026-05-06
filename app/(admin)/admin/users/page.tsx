@@ -60,7 +60,7 @@ export default function AdminUsersPage() {
     <div className="space-y-10">
       <div>
         <h2 className="text-3xl font-heading font-black text-on-surface tracking-tight">Manajemen Pengguna</h2>
-        <p className="text-on-surface-variant font-medium mt-2">Daftar semua pengguna terdaftar di platform PhytoScan.</p>
+        <p className="text-on-surface-variant font-medium mt-2">Daftar semua pengguna terdaftar di platform PapriCare.</p>
       </div>
       
       {loading ? (

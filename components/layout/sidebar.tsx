@@ -10,8 +10,6 @@ const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: "dashboard" },
   { name: "Pemindaian", href: "/scan", icon: "biotech" },
   { name: "Riwayat", href: "/history", icon: "history", hasDropdown: true },
-  { name: "Penanganan", href: "/treatment", icon: "medication" },
-  { name: "Profil", href: "/profile", icon: "account_circle" },
 ]
 
 export function Sidebar() {
@@ -51,11 +49,8 @@ export function Sidebar() {
         </div>
         <div>
           <h1 className="font-heading text-2xl font-black text-emerald-950 tracking-tighter">
-            PhytoScan
+            PapriCare
           </h1>
-          <p className="font-sans tracking-[0.15em] uppercase text-[9px] font-bold text-emerald-600/70">
-            Precision Ag-Tech
-          </p>
         </div>
       </div>
 

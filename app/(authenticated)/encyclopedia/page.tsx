@@ -178,7 +178,7 @@ export default function EncyclopediaPage() {
           <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 rounded-[3rem] p-16 md:p-24 text-white relative overflow-hidden flex flex-col items-center">
             <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
             <h3 className="text-4xl md:text-5xl font-heading font-black mb-6 relative z-10">Siap Menjaga Tanaman Anda?</h3>
-            <p className="text-emerald-100 max-w-lg mb-10 text-lg font-medium relative z-10">Gunakan kecerdasan buatan PhytoScan untuk mendeteksi kesehatan tanaman Anda dalam hitungan detik.</p>
+            <p className="text-emerald-100 max-w-lg mb-10 text-lg font-medium relative z-10">Gunakan kecerdasan buatan PapriCare untuk mendeteksi kesehatan tanaman Anda dalam hitungan detik.</p>
             <Link 
               href="/scan" 
               className="px-12 py-5 bg-white text-emerald-900 font-black rounded-2xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl relative z-10"

@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { Modal } from "@/components/ui/modal"
-import { supabase } from "@/lib/supabase"
 
 type DetailItem = {
   type: 'variety' | 'nutrition' | 'anatomy' | 'internal'
@@ -51,62 +50,21 @@ const varieties = [
   },
 ]
 
-const nutritionalBenefits = [
-  { title: "Super Vitamin C", desc: "Paprika merah mengandung 3x lebih banyak Vitamin C daripada jeruk. Sangat baik untuk sistem imun.", icon: "shutter_speed", color: "text-red-600", bg: "bg-red-50" },
-  { title: "Antioksidan Tinggi", desc: "Kaya akan beta-karoten dan likopen yang membantu melindungi sel tubuh dari radikal bebas.", icon: "auto_fix_high", color: "text-orange-600", bg: "bg-orange-50" },
-  { title: "Kesehatan Mata", desc: "Mengandung Lutein dan Zeaxanthin yang terbukti menjaga kesehatan retina dan penglihatan.", icon: "visibility", color: "text-emerald-600", bg: "bg-emerald-50" },
+const damageFactors = [
+  { title: "Serangan Hama", desc: "Hama seperti thrips, tungau, dan aphids dapat menyebabkan daun keriting, berlubang, menguning, hingga pertumbuhan tanaman terganggu.", icon: "bug_report", color: "text-red-600", bg: "bg-red-50" },
+  { title: "Penyakit Jamur & Bakteri", desc: "Penyakit seperti bercak daun bakteri, antraknosa, dan layu fusarium dapat menyebabkan bercak hitam, daun menguning, hingga kerontokan daun.", icon: "science", color: "text-amber-600", bg: "bg-amber-50" },
+  { title: "Faktor Lingkungan", desc: "Kekurangan air, kelebihan air, suhu ekstrem, dan kurang cahaya matahari dapat merusak kondisi daun paprika.", icon: "thermostat", color: "text-blue-600", bg: "bg-blue-50" },
+  { title: "Kekurangan Nutrisi", desc: "Kurangnya magnesium, kalsium, dan unsur hara lainnya dapat menyebabkan daun menguning serta pertumbuhan tidak optimal.", icon: "eco", color: "text-emerald-600", bg: "bg-emerald-50" },
 ]
 
 
-const anatomyItems: DetailItem[] = [
-  { 
-    type: 'anatomy', 
-    title: "Margin Daun", 
-    subtitle: "Entire (Rata)", 
-    description: "Tepi daun paprika umumnya rata (entire), tidak bergerigi. Ini adalah karakteristik kunci dari genus Capsicum.",
-    icon: "straighten",
-    bg: "bg-emerald-100",
-    color: "text-emerald-700",
-    extra: [{ label: "Tipe", value: "Integer" }, { label: "Kondisi Normal", value: "Mulus tanpa robekan" }]
-  },
-  { 
-    type: 'anatomy', 
-    title: "Ujung Daun", 
-    subtitle: "Acutus (Runcing)", 
-    description: "Memiliki ujung yang meruncing untuk memudahkan tetesan air jatuh (drip tip), mengurangi risiko pertumbuhan jamur.",
-    icon: "architecture",
-    bg: "bg-emerald-100",
-    color: "text-emerald-700",
-  },
-  { 
-    type: 'anatomy', 
-    title: "Urat Daun", 
-    subtitle: "Pinnate (Menyirip)", 
-    description: "Pola pertulangan menyirip (pinnate) yang mendistribusikan nutrisi secara efisien ke seluruh helaian daun.",
-    icon: "account_tree",
-    bg: "bg-emerald-100",
-    color: "text-emerald-700",
-  },
-  { 
-    type: 'internal', 
-    title: "Kutikula", 
-    subtitle: "Waxy Layer", 
-    description: "Lapisan lilin transparan yang mencegah penguapan air berlebih dan menghambat perkecambahan spora jamur pada permukaan daun.",
-    importance: "Kutikula yang tipis membuat tanaman lebih rentan terhadap Bacterial Spot.",
-    icon: "layers",
-    bg: "bg-blue-50",
-    color: "text-blue-600"
-  },
-  { 
-    type: 'internal', 
-    title: "Stomata", 
-    subtitle: "Mulut Daun", 
-    description: "Pori-pori kecil untuk respirasi dan fotosintesis. Sel penjaga mengontrol buka-tutup pori berdasarkan kelembapan.",
-    importance: "Titik lemah: Bakteri pathogen seringkali berenang masuk melalui stomata saat kondisi lembap.",
-    icon: "air",
-    bg: "bg-teal-50",
-    color: "text-teal-600"
-  },
+const leafCareTips = [
+  { title: "Penyiraman Teratur", desc: "Siram tanaman secukupnya dan hindari genangan air.", icon: "water_drop" },
+  { title: "Cukup Sinar Matahari", desc: "Pastikan tanaman mendapat cahaya 6–8 jam per hari.", icon: "wb_sunny" },
+  { title: "Gunakan Pupuk", desc: "Berikan pupuk secara berkala sesuai kebutuhan tanaman.", icon: "eco" },
+  { title: "Periksa Daun", desc: "Cek daun secara rutin untuk mendeteksi gejala penyakit.", icon: "fact_check" },
+  { title: "Buang Daun Terinfeksi", desc: "Pangkas daun yang terkena penyakit agar tidak menyebar.", icon: "content_cut" },
+  { title: "Jaga Kebersihan", desc: "Bersihkan area sekitar tanaman dari gulma dan hama.", icon: "cleaning_services" },
 ]
 
 
@@ -114,21 +72,8 @@ const anatomyItems: DetailItem[] = [
 
 export default function DashboardPage() {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null)
-  const [latestAnalysis, setLatestAnalysis] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
-
   useEffect(() => {
-    async function fetchLatest() {
-      const { data, error } = await supabase
-        .from('classifications')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .limit(1)
-      
-      if (data && data.length > 0) setLatestAnalysis(data[0])
-      setLoading(false)
-    }
-    fetchLatest()
+    // Other side effects if any
   }, [])
 
 
@@ -149,14 +94,14 @@ export default function DashboardPage() {
         
         <div className="relative z-10 p-12 max-w-2xl space-y-6">
           <span className="px-4 py-1 bg-emerald-500/20 backdrop-blur-md rounded-full text-emerald-300 text-[10px] font-black uppercase tracking-[0.3em] border border-emerald-500/30">
-            Pusat Informasi Botani
+            Sistem Deteksi
           </span>
           <h1 className="text-5xl font-heading font-black text-white leading-tight">
-            Jelajahi Dunia <br/>
-            <span className="text-emerald-400 italic font-serif">Capsicum Annuum</span>
+            PapriCare Smart Detection <br/>
+            <span className="text-emerald-400 italic font-serif">Paprika Leaf Disease</span>
           </h1>
           <p className="text-emerald-100/80 font-sans text-lg max-w-lg leading-relaxed">
-            Identifikasi penyakit daun, pelajari siklus hidup, dan temukan cara terbaik untuk merawat tanaman paprika Anda dengan teknologi AI PapriCare.
+            Scan daun paprika Anda untuk mengetahui kondisi daun dan mendeteksi potensi penyakit secara cepat dan mudah.
           </p>
         </div>
       </section>
@@ -201,111 +146,58 @@ export default function DashboardPage() {
           </div>
 
 
-          {/* Nutritional Benefits Section */}
+          {/* Damage Factors Section */}
           <div className="bg-surface-container-low rounded-3xl p-8 border border-outline-variant/5">
-                <div className="flex justify-between items-center mb-8">
-                  <h3 className="text-xl font-heading font-black text-on-surface tracking-tight">Nutrisi & Manfaat Kesehatan</h3>
-                  <Link href="/nutrition" className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline">Lihat Detail Gizi</Link>
+                <div className="mb-8">
+                  <h3 className="text-xl font-heading font-black text-on-surface tracking-tight">Faktor Penyebab Daun Paprika Rusak</h3>
+                  <p className="text-xs text-on-surface-variant font-medium mt-1 leading-relaxed">Kerusakan daun paprika dapat disebabkan oleh hama, penyakit, faktor lingkungan, dan kekurangan nutrisi yang memengaruhi pertumbuhan tanaman.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {nutritionalBenefits.map((benefit) => (
-                    <button 
-                      key={benefit.title} 
-                      onClick={() => setSelectedDetail({
-                        type: 'nutrition',
-                        title: benefit.title,
-                        description: benefit.desc,
-                        icon: benefit.icon,
-                        bg: benefit.bg,
-                        color: benefit.color
-                      })}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {damageFactors.map((factor) => (
+                    <div 
+                      key={factor.title} 
                       className="p-6 bg-white rounded-2xl border border-stone-100 shadow-sm space-y-4 group hover:border-emerald-200 transition-all text-left"
                     >
-                      <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110", benefit.bg)}>
-                        <span className={cn("material-symbols-outlined", benefit.color)}>{benefit.icon}</span>
+                      <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110", factor.bg)}>
+                        <span className={cn("material-symbols-outlined", factor.color)}>{factor.icon}</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-on-surface mb-2">{benefit.title}</h4>
-                        <p className="text-xs text-on-surface-variant leading-relaxed font-sans">{benefit.desc}</p>
+                        <h4 className="font-bold text-on-surface mb-2">{factor.title}</h4>
+                        <p className="text-xs text-on-surface-variant leading-relaxed font-sans">{factor.desc}</p>
                       </div>
-                    </button>
+                    </div>
                   ))}
                 </div>
-
           </div>
         </div>
 
         {/* Info Bento (Right) */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-emerald-50 rounded-3xl p-8 border border-emerald-100 flex flex-col items-center text-center">
-            <span className="material-symbols-outlined text-emerald-600 text-5xl mb-4">psychiatry</span>
-            <h3 className="text-xl font-heading font-black text-emerald-900 mb-2">Anatomi Daun</h3>
-            <p className="text-emerald-800/70 text-sm font-sans mb-6">Daun paprika memiliki pola venasi menyirip yang kompleks. Bercak terkecil di area ini seringkali menjadi indikasi awal infeksi patogen.</p>
-            <ul className="w-full space-y-2 mb-6">
-              {anatomyItems.map((item) => (
-                <li key={item.title}>
-                  <button 
-                    onClick={() => setSelectedDetail(item)}
-                    className="w-full flex items-center justify-between p-3 bg-white/60 rounded-xl text-xs font-bold text-emerald-800 hover:bg-white transition-colors group"
-                  >
-                    <span>{item.title}</span>
-                    <span className="px-2 py-0.5 bg-emerald-100 rounded group-hover:bg-emerald-200">{item.subtitle}</span>
-                  </button>
-                </li>
+          <div className="bg-emerald-50 rounded-3xl p-8 border border-emerald-100 flex flex-col items-center text-center h-full">
+            <span className="material-symbols-outlined text-emerald-600 text-5xl mb-4">potted_plant</span>
+            <h3 className="text-xl font-heading font-black text-emerald-900 mb-2">Tips Perawatan Daun Paprika</h3>
+            <p className="text-emerald-800/70 text-sm font-sans mb-8 leading-relaxed">Menjaga kesehatan daun paprika agar tetap sehat dan terhindar dari penyakit.</p>
+            
+            <div className="w-full space-y-4 text-left">
+              {leafCareTips.map((tip, index) => (
+                <div key={tip.title} className="flex gap-4 p-4 bg-white/60 rounded-2xl border border-emerald-100/50 hover:bg-white transition-all group">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-emerald-600 text-lg">{tip.icon}</span>
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-xs font-black text-emerald-900 flex items-center gap-2">
+                      <span className="text-[10px] text-emerald-600/50">{index + 1}.</span>
+                      {tip.title}
+                    </h4>
+                    <p className="text-[10px] text-emerald-800/60 font-medium leading-relaxed">{tip.desc}</p>
+                  </div>
+                </div>
               ))}
-            </ul>
-
-            <Link 
-              href="/anatomy"
-              className="w-full py-3 bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-emerald-700 transition-colors text-center shadow-lg shadow-emerald-900/10 active:scale-95 transition-transform"
-            >
-              Eksplorasi Lengkap
-            </Link>
-
+            </div>
           </div>
 
-          <div className="bg-surface-container-lowest rounded-3xl p-8 border border-outline-variant/10 shadow-sm space-y-6">
-            <h4 className="text-sm font-heading font-black text-on-surface tracking-tight uppercase">Analisis Terakhir</h4>
-            <div className="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/5">
-              {loading ? (
-                <div className="py-8 text-center animate-pulse text-stone-300">...</div>
-              ) : latestAnalysis ? (
-                <>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center", latestAnalysis.result === 'Sehat' ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700")}>
-                      <span className="material-symbols-outlined">{latestAnalysis.result === 'Sehat' ? 'verified' : 'warning'}</span>
-                    </div>
-                    <div>
-                      <p className="text-xs font-black text-on-surface">{latestAnalysis.result}</p>
-                      <p className="text-[10px] text-stone-500 font-bold">
-                        {new Date(latestAnalysis.created_at).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} • {(latestAnalysis.confidence * 100).toFixed(1)}%
-                      </p>
-                    </div>
-                  </div>
-                  <Link href="/history" className="block w-full py-2 bg-on-surface text-surface text-[10px] font-black uppercase tracking-widest rounded-lg hover:opacity-90 text-center">
-                    Buka Riwayat
-                  </Link>
-                </>
-              ) : (
-                <div className="py-8 text-center space-y-4">
-                  <p className="text-[10px] text-stone-400 font-bold italic">Belum ada analisis</p>
-                  <Link href="/scan" className="block w-full py-2 bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg hover:bg-emerald-700 text-center">
-                    Mulai Scan
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <div className="space-y-4 pt-4 border-t border-outline-variant/10">
-              <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest">Tips Perawatan</p>
-              <div className="flex items-start gap-3">
-                 <span className="material-symbols-outlined text-primary text-lg">water_drop</span>
-                 <p className="text-[11px] text-on-surface-variant leading-tight">Pastikan penyiraman dilakukan pada pangkal batang, bukan pada permukaan daun.</p>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
 
       {/* Anatomy Modal */}
       <Modal 

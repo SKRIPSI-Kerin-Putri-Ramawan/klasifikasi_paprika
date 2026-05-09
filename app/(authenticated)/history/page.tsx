@@ -58,16 +58,7 @@ export default function HistoryPage() {
           <h2 className="text-4xl font-heading font-bold text-on-surface tracking-tight">Riwayat Klasifikasi</h2>
           <p className="text-on-surface-variant font-sans">Arsip lengkap dari semua log analisis spesimen botani.</p>
         </div>
-        <div className="flex gap-2">
-          <button className="px-4 py-2 bg-surface-container-highest text-on-surface-variant font-semibold rounded-xl hover:opacity-90 transition-all border border-outline-variant/30 flex items-center gap-2">
-            <span className="material-symbols-outlined text-sm">filter_list</span>
-            Filter
-          </button>
-          <button className="px-4 py-2 bg-primary text-on-primary font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg flex items-center gap-2">
-            <span className="material-symbols-outlined text-sm">download</span>
-            Ekspor Semua
-          </button>
-        </div>
+
       </header>
 
       <section className="max-w-6xl mx-auto">

@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 import { useState } from "react"
 import { createSupabaseClient } from "@/utils/supabase/client"
 import { useRouter } from "next/navigation"
@@ -160,13 +162,13 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <a 
+              <Link 
                 href="/login" 
                 className="w-full py-4 rounded-xl border-2 border-primary/20 text-primary font-heading font-bold text-lg hover:bg-primary/5 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
               >
                 Masuk ke Portal
                 <span className="material-symbols-outlined text-xl">login</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

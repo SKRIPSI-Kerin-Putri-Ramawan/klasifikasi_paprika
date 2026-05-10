@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { createSupabaseClient } from "@/utils/supabase/client"
@@ -164,6 +166,25 @@ export default function LoginPage() {
                 {!loading && <span className="material-symbols-outlined text-xl">arrow_forward</span>}
               </button>
             </form>
+
+            <div className="pt-8 space-y-4">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-outline-variant/30"></div>
+                </div>
+                <div className="relative flex justify-center">
+                  <span className="bg-surface px-4 text-[10px] font-bold text-stone-400 uppercase tracking-widest font-sans">Belum Punya Akses?</span>
+                </div>
+              </div>
+
+              <Link 
+                href="/register" 
+                className="w-full py-4 rounded-xl border-2 border-primary/20 text-primary font-heading font-bold text-lg hover:bg-primary/5 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              >
+                Daftar Akun Baru
+                <span className="material-symbols-outlined text-xl">person_add</span>
+              </Link>
+            </div>
 
             
           </div>

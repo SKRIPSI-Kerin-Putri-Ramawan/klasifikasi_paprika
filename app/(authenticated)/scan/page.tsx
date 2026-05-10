@@ -14,7 +14,14 @@ export default function ScanPage() {
   const [showResults, setShowResults] = useState(false)
   const [isCameraActive, setIsCameraActive] = useState(false)
   const [stream, setStream] = useState<MediaStream | null>(null)
-  
+  const [predictionResult, setPredictionResult] = useState<{
+    class: string;
+    confidence: number;
+    title: string;
+    description: string;
+    treatments: { title: string; desc: string }[];
+  } | null>(null)
+
   const fileInputRef = useRef<HTMLInputElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -86,14 +93,30 @@ export default function ScanPage() {
         .from('scans')
         .getPublicUrl(filePath)
 
-      // Simulate deep learning analysis
-      setTimeout(() => {
+      // Call Python backend API
+      const formData = new FormData()
+      formData.append('file', fileToUpload)
+
+      const response = await fetch('http://localhost:5000/predict', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (!response.ok) throw new Error("Gagal menghubungi server analisis")
+      
+      const result = await response.json()
+      
+      if (result.status === 'success') {
+        setPredictionResult(result)
+        
         setIsAnalyzing(false)
         setShowResults(true)
         
         // Auto-save result to Supabase
-        saveClassification("Bercak Bakteri", 98.4, publicUrl)
-      }, 3000)
+        saveClassification(result.class, result.confidence * 100, publicUrl)
+      } else {
+        throw new Error(result.error || "Gagal melakukan analisis")
+      }
 
     } catch (err) {
       console.error("Upload error:", err)
@@ -283,19 +306,26 @@ export default function ScanPage() {
 
         {/* Right Column: Results - Conditional Rendering */}
         <div className="lg:col-span-5 space-y-6">
-          {showResults ? (
+          {showResults && predictionResult ? (
             <div className="bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-outline-variant/10 animate-in zoom-in-95 duration-500">
               <div className="flex justify-between items-start mb-8 text-sans">
                 <div>
                   <p className="text-[10px] font-sans font-bold text-stone-500 uppercase tracking-widest mb-1">Hasil Diagnosis AI</p>
-                  <h4 className="text-3xl font-heading font-extrabold text-on-surface leading-tight">Bercak Bakteri</h4>
-                  <p className="text-emerald-700 font-medium text-sm mt-1 flex items-center gap-1 font-sans">
-                    <span className="material-symbols-outlined text-sm">verified</span>
-                    Terdeteksi (Status: Kritis)
+                  <h4 className="text-3xl font-heading font-extrabold text-on-surface leading-tight">{predictionResult.title}</h4>
+                  <p className={cn(
+                    "font-medium text-sm mt-1 flex items-center gap-1 font-sans",
+                    predictionResult.class === 'Healthy' ? "text-emerald-700" : "text-error"
+                  )}>
+                    <span className="material-symbols-outlined text-sm">
+                      {predictionResult.class === 'Healthy' ? 'verified' : 'warning'}
+                    </span>
+                    {predictionResult.class === 'Healthy' ? 'Terdeteksi (Status: Sehat)' : 'Terdeteksi (Status: Kritis)'}
                   </p>
                 </div>
                 <div className="bg-primary/10 px-4 py-2 rounded-lg text-center">
-                  <span className="block text-primary text-2xl font-black font-heading">98.4%</span>
+                  <span className="block text-primary text-2xl font-black font-heading">
+                    {(predictionResult.confidence * 100).toFixed(1)}%
+                  </span>
                   <span className="text-[9px] font-sans font-bold text-primary/70 uppercase">Skor CNN</span>
                 </div>
               </div>
@@ -305,31 +335,29 @@ export default function ScanPage() {
                   <h5 className="text-[10px] font-sans font-black text-on-surface-variant mb-3 uppercase tracking-widest">Penjelasan Patogen</h5>
                   <div className="bg-surface-container-low p-4 rounded-lg border-l-4 border-primary">
                     <p className="text-sm text-on-surface-variant leading-relaxed font-sans italic">
-                      "Analisis neural mendeteksi lesi nekrotik basah dengan halo klorotik pada kutikula daun, sangat konsisten dengan isolat <span className="font-bold">Xanthomonas campestris</span>."
+                      "{predictionResult.description}"
                     </p>
                   </div>
                 </div>
 
-                <div>
-                  <h5 className="text-[10px] font-sans font-black text-on-surface-variant mb-3 uppercase tracking-widest">Tindakan Segera</h5>
-                  <ul className="space-y-3 font-sans">
-                    {[
-                      { title: "Karantina Spesimen", desc: "Pisahkan tanaman yang terinfeksi untuk mencegah penyebaran lateral." },
-                      { title: "Bakterisida Tembaga", desc: "Semprotkan pada seluruh permukaan daun setiap 10 hari." },
-                      { title: "Sterilisasi Alat", desc: "Bersihkan gunting pangkas dengan alkohol 70% setelah penggunaan." }
-                    ].map((treat, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <div className="mt-1 h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                          <span className="material-symbols-outlined text-primary text-sm">check</span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold text-on-surface">{treat.title}</p>
-                          <p className="text-xs text-on-surface-variant">{treat.desc}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {predictionResult.treatments.length > 0 && (
+                  <div>
+                    <h5 className="text-[10px] font-sans font-black text-on-surface-variant mb-3 uppercase tracking-widest">Tindakan Segera</h5>
+                    <ul className="space-y-3 font-sans">
+                      {predictionResult.treatments.map((treat, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <div className="mt-1 h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                            <span className="material-symbols-outlined text-primary text-sm">check</span>
+                          </div>
+                          <div>
+                            <p className="text-sm font-bold text-on-surface">{treat.title}</p>
+                            <p className="text-xs text-on-surface-variant">{treat.desc}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="pt-4 border-t border-surface-container">
                   <button 

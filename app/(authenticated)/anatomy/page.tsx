@@ -28,7 +28,7 @@ export default function AnatomyPage() {
     fetchAnatomy()
   }, [])
   return (
-    <div className="min-h-screen bg-stone-50 pb-24">
+    <div className="min-h-screen bg-surface pb-24">
       {/* Hero Section */}
       <section className="bg-emerald-950 py-24 px-8 text-center space-y-6 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
@@ -49,7 +49,7 @@ export default function AnatomyPage() {
       <div className="max-w-6xl mx-auto px-8 -mt-12 relative z-20 space-y-16">
         
         {/* Morphology Section */}
-        <div className="bg-white rounded-[2.5rem] p-10 shadow-xl border border-stone-100">
+        <div className="bg-card rounded-[2.5rem] p-10 shadow-xl border border-outline/5">
            <div className="flex items-center gap-4 mb-10">
               <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center">
                  <span className="material-symbols-outlined text-emerald-700">visibility</span>
@@ -59,13 +59,13 @@ export default function AnatomyPage() {
            
            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {morphologyData.map((m) => (
-                <div key={m.label} className="space-y-3 p-6 rounded-2xl bg-stone-50 border border-stone-100/50 hover:border-emerald-200 transition-colors">
-                   <span className="material-symbols-outlined text-emerald-600 text-2xl">{m.icon}</span>
+                <div key={m.label} className="space-y-3 p-6 rounded-2xl bg-surface-container-low border border-outline/10 hover:border-emerald-500/30 transition-colors">
+                   <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-2xl">{m.icon}</span>
                    <div>
-                      <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest">{m.label}</p>
+                      <p className="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest">{m.label}</p>
                       <h4 className="text-lg font-bold text-on-surface">{m.value}</h4>
                    </div>
-                   <p className="text-xs text-stone-500 leading-relaxed font-sans">{m.desc}</p>
+                   <p className="text-xs text-on-surface-variant leading-relaxed font-sans">{m.desc}</p>
                 </div>
               ))}
            </div>
@@ -85,7 +85,7 @@ export default function AnatomyPage() {
                 </div>
               ) : internalAnatomy.length > 0 ? (
                 internalAnatomy.map((a) => (
-                  <div key={a.name} className="bg-white rounded-[2rem] p-8 border border-stone-100 shadow-sm overflow-hidden relative group">
+                  <div key={a.name} className="bg-card rounded-[2rem] p-8 border border-outline/5 shadow-sm overflow-hidden relative group">
                     <div className={cn("absolute top-0 right-0 w-24 h-24 opacity-5 transition-transform group-hover:scale-150 group-hover:opacity-10", a.color)}></div>
                     <div className="flex gap-6">
                         <div className={cn("w-16 h-16 rounded-3xl shrink-0 flex items-center justify-center shadow-lg transform transition-transform group-hover:rotate-12", a.color)}>
@@ -93,14 +93,14 @@ export default function AnatomyPage() {
                         </div>
                         <div className="space-y-4">
                           <div>
-                              <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">{a.function}</p>
+                              <p className="text-[10px] font-black text-on-surface-variant uppercase tracking-widest mb-1">{a.function}</p>
                               <h3 className="text-2xl font-heading font-black text-on-surface">{a.name}</h3>
                           </div>
-                          <p className="text-sm text-stone-600 leading-relaxed font-sans">{a.description || a.desc}</p>
-                          <div className="pt-4 border-t border-stone-50">
+                          <p className="text-sm text-on-surface-variant/80 leading-relaxed font-sans">{a.description || a.desc}</p>
+                          <div className="pt-4 border-t border-outline/5">
                               <div className="flex items-start gap-3">
                                 <span className="material-symbols-outlined text-amber-500 text-md">warning</span>
-                                <p className="text-[11px] font-bold text-stone-500 font-sans italic italic-custom">
+                                <p className="text-[11px] font-bold text-on-surface-variant/60 font-sans italic italic-custom">
                                     <span className="text-on-surface uppercase tracking-tighter mr-1">Relevansi Diagnosa:</span>
                                     {a.importance}
                                   </p>

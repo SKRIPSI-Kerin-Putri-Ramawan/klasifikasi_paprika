@@ -92,10 +92,9 @@ export default function HistoryPage() {
                 </Link>
               </div>
             </div>
-          ) : logs.length > 0 ? (
             logs.map((log) => (
-              <div key={log.id} className="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all group">
-                <div className="relative h-48 bg-stone-100">
+              <div key={log.id} className="bg-card rounded-3xl overflow-hidden border border-outline/5 shadow-sm hover:shadow-xl transition-all group">
+                <div className="relative h-48 bg-muted">
                   <img src={log.image_url} alt={log.result} className="w-full h-full object-cover" />
                   <div className="absolute top-4 left-4">
                     <span className={cn("px-3 py-1 rounded-full text-[10px] font-black text-white uppercase tracking-widest", 
@@ -108,29 +107,29 @@ export default function HistoryPage() {
                 <div className="p-6 space-y-4">
                   <div className="flex justify-between items-start">
                     <div>
-                      <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1" suppressHydrationWarning>
+                      <p className="text-[10px] font-black text-on-surface-variant uppercase tracking-widest mb-1" suppressHydrationWarning>
                         {log.created_at ? new Date(log.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Tanggal tidak tersedia'}
                       </p>
                       <h4 className="text-xl font-heading font-black text-on-surface">{log.result || 'Hasil tidak tersedia'}</h4>
                     </div>
                     <div className="text-right">
-                      <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">Akurasi</p>
+                      <p className="text-[10px] font-black text-on-surface-variant uppercase tracking-widest mb-1">Akurasi</p>
                       <p className="text-lg font-bold text-emerald-600">{(log.confidence * 100).toFixed(1)}%</p>
                     </div>
                   </div>
-                  <div className="pt-4 border-t border-stone-50 flex justify-between items-center">
-                    <span className="text-xs font-medium text-stone-500 font-sans italic italic-custom">ID: {log.id ? String(log.id).slice(0, 8) : 'N/A'}</span>
+                  <div className="pt-4 border-t border-outline/5 flex justify-between items-center">
+                    <span className="text-xs font-medium text-on-surface-variant/60 font-sans italic italic-custom">ID: {log.id ? String(log.id).slice(0, 8) : 'N/A'}</span>
                     <div className="flex gap-2">
                       <button 
                         onClick={() => handleDelete(log.id)}
-                        className="p-2 bg-stone-50 rounded-xl hover:bg-red-50 hover:text-red-700 transition-colors"
+                        className="p-2 bg-muted/50 rounded-xl hover:bg-error/10 hover:text-error transition-colors"
                         title="Hapus"
                       >
                         <span className="material-symbols-outlined text-sm">delete</span>
                       </button>
                       <Link 
                         href={`/history/${log.id}`}
-                        className="p-2 bg-stone-50 rounded-xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                        className="p-2 bg-muted/50 rounded-xl hover:bg-primary/10 hover:text-primary transition-colors"
                         title="Lihat Detail"
                       >
                         <span className="material-symbols-outlined text-sm">visibility</span>

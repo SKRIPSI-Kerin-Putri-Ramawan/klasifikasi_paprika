@@ -13,8 +13,8 @@ const nutritionData = [
     vitA: "3131 IU", 
     fiber: "2.1g", 
     desc: "Tertinggi dalam Vitamin A dan Likopen.",
-    accent: "text-red-700",
-    bg: "bg-red-50"
+    accent: "text-red-700 dark:text-red-400",
+    bg: "bg-red-50 dark:bg-red-950/20"
   },
   { 
     color: "Kuning", 
@@ -23,8 +23,8 @@ const nutritionData = [
     vitA: "200 IU", 
     fiber: "1.7g", 
     desc: "Kandungan Vitamin C paling dominan.",
-    accent: "text-yellow-700",
-    bg: "bg-yellow-50"
+    accent: "text-yellow-700 dark:text-yellow-400",
+    bg: "bg-yellow-50 dark:bg-yellow-950/20"
   },
   { 
     color: "Hijau", 
@@ -33,8 +33,8 @@ const nutritionData = [
     vitA: "370 IU", 
     fiber: "1.7g", 
     desc: "Rendah kalori, kaya klorofil & Vitamin K.",
-    accent: "text-emerald-700",
-    bg: "bg-emerald-50"
+    accent: "text-emerald-700 dark:text-emerald-400",
+    bg: "bg-emerald-50 dark:bg-emerald-950/20"
   },
 ]
 
@@ -43,15 +43,15 @@ const healthBenefitsFallback = [
     title: "Benteng Imunitas",
     desc: "Kandungan Vitamin C yang sangat tinggi membantu produksi sel darah putih untuk melawan infeksi patogen dan virus.",
     icon: "shield_with_heart",
-    color: "text-blue-600",
-    bg: "bg-blue-50"
+    color: "text-blue-600 dark:text-blue-400",
+    bg: "bg-blue-50 dark:bg-blue-950/20"
   },
   {
     title: "Kesehatan Retina",
     desc: "Lutein dan Zeaxanthin melindungi mata dari kerusakan oksidatif dan menurunkan risiko katarak.",
     icon: "visibility",
-    color: "text-emerald-600",
-    bg: "bg-emerald-50"
+    color: "text-emerald-600 dark:text-emerald-400",
+    bg: "bg-emerald-50 dark:bg-emerald-950/20"
   },
 ]
 
@@ -71,7 +71,7 @@ export default function NutritionPage() {
     fetchNutrition()
   }, [])
   return (
-    <div className="min-h-screen bg-stone-50 pb-24">
+    <div className="min-h-screen bg-surface pb-24">
       {/* Hero Section */}
       <section className="bg-emerald-950 py-24 px-8 text-center space-y-6 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
@@ -97,25 +97,25 @@ export default function NutritionPage() {
             <div key={data.color} className={cn("rounded-3xl p-8 shadow-xl border border-white/20 transition-transform hover:-translate-y-2", data.bg)}>
               <div className="flex justify-between items-start mb-6">
                 <h3 className={cn("text-3xl font-heading font-black", data.accent)}>Paprika {data.color}</h3>
-                <span className="material-symbols-outlined text-stone-300">nutrition</span>
+                <span className="material-symbols-outlined text-on-surface-variant/30">nutrition</span>
               </div>
-              <p className="text-stone-600 text-sm font-sans italic mb-8">"{data.desc}"</p>
+              <p className="text-on-surface-variant text-sm font-sans italic mb-8">"{data.desc}"</p>
               
               <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-stone-200/50">
-                  <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest font-sans">Kalori</span>
+                <div className="flex justify-between items-center py-3 border-b border-outline-variant/10">
+                  <span className="text-[10px] font-black text-on-surface-variant/50 uppercase tracking-widest font-sans">Kalori</span>
                   <span className="font-bold text-on-surface">{data.calories} kcal</span>
                 </div>
-                <div className="flex justify-between items-center py-3 border-b border-stone-200/50">
-                  <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest font-sans">Vitamin C</span>
-                  <span className="font-bold text-emerald-600">{data.vitC}</span>
+                <div className="flex justify-between items-center py-3 border-b border-outline-variant/10">
+                  <span className="text-[10px] font-black text-on-surface-variant/50 uppercase tracking-widest font-sans">Vitamin C</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400">{data.vitC}</span>
                 </div>
-                <div className="flex justify-between items-center py-3 border-b border-stone-200/50">
-                  <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest font-sans">Vitamin A</span>
-                  <span className="font-bold text-orange-600">{data.vitA}</span>
+                <div className="flex justify-between items-center py-3 border-b border-outline-variant/10">
+                  <span className="text-[10px] font-black text-on-surface-variant/50 uppercase tracking-widest font-sans">Vitamin A</span>
+                  <span className="font-bold text-orange-600 dark:text-orange-400">{data.vitA}</span>
                 </div>
-                <div className="flex justify-between items-center py-3 border-b border-stone-200/50">
-                  <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest font-sans">Serat</span>
+                <div className="flex justify-between items-center py-3 border-b border-outline-variant/10">
+                  <span className="text-[10px] font-black text-on-surface-variant/50 uppercase tracking-widest font-sans">Serat</span>
                   <span className="font-bold text-on-surface">{data.fiber}</span>
                 </div>
               </div>
@@ -136,13 +136,13 @@ export default function NutritionPage() {
                 Menganalisis Profil Nutrisi...
               </div>
             ) : (nutrition.length > 0 ? nutrition : healthBenefitsFallback).map((benefit) => (
-              <div key={benefit.title || benefit.name} className="bg-white p-8 rounded-[2rem] border border-stone-100 shadow-sm flex gap-6 group hover:shadow-md transition-shadow">
-                <div className={cn("w-16 h-16 rounded-2xl shrink-0 flex items-center justify-center transition-transform group-hover:scale-110", benefit.bg_color || benefit.bg || "bg-emerald-50")}>
-                  <span className={cn("material-symbols-outlined text-3xl", benefit.accent_color || benefit.color || "text-emerald-600")}>{benefit.icon || 'nutrition'}</span>
+              <div key={benefit.title || benefit.name} className="bg-card p-8 rounded-[2rem] border border-outline/5 shadow-sm flex gap-6 group hover:shadow-md transition-shadow">
+                <div className={cn("w-16 h-16 rounded-2xl shrink-0 flex items-center justify-center transition-transform group-hover:scale-110", benefit.bg_color || benefit.bg || "bg-emerald-50 dark:bg-emerald-950/20")}>
+                  <span className={cn("material-symbols-outlined text-3xl", benefit.accent_color || benefit.color || "text-emerald-600 dark:text-emerald-400")}>{benefit.icon || 'nutrition'}</span>
                 </div>
                 <div className="space-y-2">
                   <h4 className="text-xl font-bold text-on-surface tracking-tight">{benefit.name || benefit.title}</h4>
-                  <p className="text-sm text-stone-500 leading-relaxed font-sans">{benefit.benefit || benefit.desc}</p>
+                  <p className="text-sm text-on-surface-variant leading-relaxed font-sans">{benefit.benefit || benefit.desc}</p>
                 </div>
               </div>
             ))}
@@ -150,19 +150,19 @@ export default function NutritionPage() {
         </section>
 
         {/* Fact Sheet Table */}
-        <section className="bg-white rounded-[2rem] p-10 border border-stone-100 shadow-sm overflow-hidden">
+        <section className="bg-card rounded-[2rem] p-10 border border-outline/5 shadow-sm overflow-hidden">
           <h3 className="text-2xl font-heading font-black text-on-surface mb-8 tracking-tight">Data Gizi Lengkap (per 100g)</h3>
           <div className="overflow-x-auto">
             <table className="w-full font-sans text-sm">
-              <thead className="bg-stone-50">
+              <thead className="bg-surface-container-high/50">
                 <tr className="text-left">
-                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-stone-400">Parameter</th>
-                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-stone-400">Paprika Merah</th>
-                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-stone-400">Paprika Kuning</th>
-                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-stone-400">Paprika Hijau</th>
+                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-on-surface-variant/50">Parameter</th>
+                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-on-surface-variant/50">Paprika Merah</th>
+                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-on-surface-variant/50">Paprika Kuning</th>
+                  <th className="py-4 px-6 font-black text-[10px] uppercase tracking-widest text-on-surface-variant/50">Paprika Hijau</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100">
+              <tbody className="divide-y divide-outline-variant/10">
                 <tr>
                   <td className="py-4 px-6 font-bold text-on-surface">Protein</td>
                   <td className="py-4 px-6">0.99g</td>
@@ -196,9 +196,9 @@ export default function NutritionPage() {
               </tbody>
             </table>
           </div>
-          <div className="mt-8 p-6 bg-emerald-50 rounded-2xl flex items-start gap-4">
-            <span className="material-symbols-outlined text-emerald-600">info</span>
-            <p className="text-[11px] text-emerald-800 leading-relaxed font-medium italic italic-custom">
+          <div className="mt-8 p-6 bg-emerald-50 dark:bg-emerald-950/20 rounded-2xl flex items-start gap-4">
+            <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400">info</span>
+            <p className="text-[11px] text-emerald-800 dark:text-emerald-200/70 leading-relaxed font-medium italic italic-custom">
                *Data gizi diambil berdasarkan rata-rata referensi nutrisi standar USDA. Nilai dapat sedikit bervariasi bergantung pada metode bercocok tanam dan kesegaran produk saat dikonsumsi.
             </p>
           </div>

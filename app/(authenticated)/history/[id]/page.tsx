@@ -48,9 +48,9 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
   if (!log) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-surface">
-        <span className="material-symbols-outlined text-6xl text-stone-200 mb-4">sentiment_dissatisfied</span>
-        <h2 className="text-2xl font-bold text-stone-800 mb-2">Data Tidak Ditemukan</h2>
-        <p className="text-stone-500 mb-6">Riwayat klasifikasi mungkin telah dihapus.</p>
+        <span className="material-symbols-outlined text-6xl text-outline-variant mb-4">sentiment_dissatisfied</span>
+        <h2 className="text-2xl font-bold text-on-surface mb-2">Data Tidak Ditemukan</h2>
+        <p className="text-on-surface-variant mb-6">Riwayat klasifikasi mungkin telah dihapus.</p>
         <Link href="/history" className="px-6 py-2 bg-primary text-white rounded-xl font-bold shadow-lg">
           Kembali ke Riwayat
         </Link>
@@ -70,10 +70,10 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
           <p className="text-on-surface-variant font-sans">Detail diagnosa spesimen botani - ID: {log.id}</p>
         </div>
         <div className="flex gap-3">
-          <button className="p-2 bg-white border border-stone-100 rounded-xl hover:bg-stone-50 transition-all text-stone-500">
+          <button className="p-2 bg-surface-container-low border border-outline/10 rounded-xl hover:bg-surface-container-high transition-all text-on-surface-variant">
             <span className="material-symbols-outlined">share</span>
           </button>
-          <button className="p-2 bg-white border border-stone-100 rounded-xl hover:bg-stone-50 transition-all text-stone-500">
+          <button className="p-2 bg-surface-container-low border border-outline/10 rounded-xl hover:bg-surface-container-high transition-all text-on-surface-variant">
             <span className="material-symbols-outlined">print</span>
           </button>
         </div>
@@ -82,8 +82,8 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Specimen Profile */}
         <div className="space-y-6">
-          <div className="bg-white rounded-3xl overflow-hidden shadow-xl border border-stone-100">
-            <div className="relative aspect-square bg-stone-100">
+          <div className="bg-card rounded-3xl overflow-hidden shadow-xl border border-outline/10">
+            <div className="relative aspect-square bg-surface-container-low">
               <img src={log.image_url} alt={log.result} className="w-full h-full object-cover" />
               <div className="absolute top-6 left-6">
                 <span className={cn("px-4 py-1.5 rounded-full text-xs font-black text-white uppercase tracking-widest shadow-lg", 
@@ -105,13 +105,13 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
                 </div>
               </div>
               
-              <div className="pt-6 border-t border-stone-50 grid grid-cols-2 gap-4">
+              <div className="pt-6 border-t border-outline/5 grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">Spesies</p>
+                  <p className="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest mb-1">Spesies</p>
                   <p className="font-bold text-on-surface italic">{log.species || 'Capsicum annuum'}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">Tanggal Scan</p>
+                  <p className="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest mb-1">Tanggal Scan</p>
                   <p className="font-bold text-on-surface">
                     {new Date(log.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </p>
@@ -141,15 +141,15 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
           </section>
 
           <section className="space-y-6">
-            <h4 className="text-[10px] font-black text-stone-400 uppercase tracking-[0.2em]">Rangkuman Rekomendasi</h4>
+            <h4 className="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-[0.2em]">Rangkuman Rekomendasi</h4>
             <div className="space-y-4">
               {[
                 { title: "Karantina Spesimen", desc: "Pisahkan tanaman yang terinfeksi untuk mencegah penyebaran lateral.", icon: "shutter_speed" },
                 { title: "Manajemen Nutrisi", desc: "Berikan asupan NPK yang seimbang untuk meningkatkan daya tahan.", icon: "precision_manufacturing" },
                 { title: "Monitoring Rutin", desc: "Lakukan scan ulang setiap 3 hari untuk memantau progres pemulihan.", icon: "analytics" }
               ].map((item, idx) => (
-                <div key={idx} className="flex gap-4 p-4 bg-white rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-stone-50 rounded-xl flex items-center justify-center shrink-0">
+                <div key={idx} className="flex gap-4 p-4 bg-card rounded-2xl border border-outline/10 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center shrink-0">
                     <span className="material-symbols-outlined text-emerald-600">{item.icon}</span>
                   </div>
                   <div>

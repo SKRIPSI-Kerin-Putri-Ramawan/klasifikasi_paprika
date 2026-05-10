@@ -14,13 +14,13 @@ export function AdminSidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 bg-white flex flex-col border-r border-stone-100 z-50 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
+    <aside className="fixed left-0 top-0 h-screen w-72 bg-background flex flex-col border-r border-outline/10 z-50 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
       <div className="px-8 py-10 flex items-center gap-3">
         <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-600/20">
           <span className="material-symbols-outlined text-white text-xl">admin_panel_settings</span>
         </div>
         <div>
-          <h1 className="font-heading text-xl font-black text-emerald-950 tracking-tighter">
+          <h1 className="font-heading text-xl font-black text-emerald-950 dark:text-emerald-50 tracking-tighter">
             PapriCare Admin
           </h1>
         </div>
@@ -36,8 +36,8 @@ export function AdminSidebar() {
               className={cn(
                 "flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 ease-in-out group relative overflow-hidden",
                 isActive
-                  ? "bg-emerald-50 text-emerald-700 shadow-sm"
-                  : "text-stone-500 hover:bg-stone-50 hover:text-stone-900"
+                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 shadow-sm"
+                  : "text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface"
               )}
             >
               {isActive && (
@@ -61,7 +61,7 @@ export function AdminSidebar() {
       </nav>
       
       <div className="p-6 mt-auto">
-        <Link href="/dashboard" className="w-full py-3.5 bg-stone-100 text-stone-600 font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-50 hover:text-emerald-700 transition-all border border-stone-200 shadow-sm active:scale-95">
+        <Link href="/dashboard" className="w-full py-3.5 bg-surface-container-low text-on-surface-variant font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 hover:text-emerald-700 dark:hover:text-emerald-400 transition-all border border-outline/10 shadow-sm active:scale-95">
           <span className="material-symbols-outlined text-[20px]">public</span>
           <span className="text-xs uppercase tracking-wider font-bold">Beralih ke App</span>
         </Link>

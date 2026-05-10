@@ -281,7 +281,7 @@ export default function ScanPage() {
                   </div>
                 )}
               </div>
-              <div className="relative aspect-video bg-stone-200">
+              <div className="relative aspect-video bg-muted">
                 {imagePreview && (
                   <img 
                     className={cn("w-full h-full object-cover", isAnalyzing && "opacity-40 grayscale")} 
@@ -320,7 +320,7 @@ export default function ScanPage() {
             <div className="bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-outline-variant/10 animate-in zoom-in-95 duration-500">
               <div className="flex justify-between items-start mb-8 text-sans">
                 <div>
-                  <p className="text-[10px] font-sans font-bold text-stone-500 uppercase tracking-widest mb-1">Hasil Diagnosis AI</p>
+                  <p className="text-[10px] font-sans font-bold text-on-surface-variant uppercase tracking-widest mb-1">Hasil Diagnosis AI</p>
                   <h4 className="text-3xl font-heading font-extrabold text-on-surface leading-tight">{predictionResult.title}</h4>
                   <p className={cn(
                     "font-medium text-sm mt-1 flex items-center gap-1 font-sans",
@@ -382,8 +382,8 @@ export default function ScanPage() {
             </div>
           ) : !isAnalyzing && !imagePreview ? (
             <div className="bg-surface-container-lowest rounded-xl p-12 shadow-sm border border-outline-variant/10 text-center flex flex-col items-center justify-center min-h-[400px]">
-              <span className="material-symbols-outlined text-stone-200 text-6xl mb-4">search_insights</span>
-              <p className="text-stone-400 font-sans font-medium italic">
+              <span className="material-symbols-outlined text-outline-variant text-6xl mb-4">search_insights</span>
+              <p className="text-on-surface-variant font-sans font-medium italic">
                 Sistem menunggu input spesimen.<br/>Unggah foto untuk memulai analisis neural.
               </p>
             </div>

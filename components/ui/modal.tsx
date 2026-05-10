@@ -38,15 +38,15 @@ export function Modal({ isOpen, onClose, title, children, className }: ModalProp
       
       {/* Modal Content */}
       <div className={cn(
-        "relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 fade-in duration-300",
+        "relative w-full max-w-2xl bg-background rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 fade-in duration-300 border border-outline/10",
         className
       )}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-emerald-50">
-          <h2 className="text-xl font-heading font-black text-emerald-900">{title}</h2>
+        <div className="flex items-center justify-between p-6 border-b border-outline/5">
+          <h2 className="text-xl font-heading font-black text-on-surface">{title}</h2>
           <button 
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors"
+            className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors"
           >
             <span className="material-symbols-outlined">close</span>
           </button>

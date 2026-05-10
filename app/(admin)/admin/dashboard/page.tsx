@@ -57,12 +57,12 @@ export default function AdminDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Main Metrics */}
         <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-[2rem] border border-stone-100 shadow-sm flex flex-col justify-between min-h-[200px] group hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
+          <div className="bg-card p-8 rounded-[2rem] border border-outline/10 shadow-sm flex flex-col justify-between min-h-[200px] group hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
             <div className="flex justify-between items-start">
-              <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 transition-transform group-hover:scale-110">
+              <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 transition-transform group-hover:scale-110">
                 <span className="material-symbols-outlined text-2xl">group</span>
               </div>
-              <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-widest">Active Members</span>
+              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full uppercase tracking-widest">Active Members</span>
             </div>
             <div>
               <p className="text-[10px] font-black text-stone-400 uppercase tracking-[0.2em] mb-1">Total Peneliti</p>
@@ -72,12 +72,12 @@ export default function AdminDashboardPage() {
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-[2rem] border border-stone-100 shadow-sm flex flex-col justify-between min-h-[200px] group hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
+          <div className="bg-card p-8 rounded-[2rem] border border-outline/10 shadow-sm flex flex-col justify-between min-h-[200px] group hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
             <div className="flex justify-between items-start">
-              <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 transition-transform group-hover:scale-110">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 transition-transform group-hover:scale-110">
                 <span className="material-symbols-outlined text-2xl">biotech</span>
               </div>
-              <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-widest">Successful Scans</span>
+              <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1 rounded-full uppercase tracking-widest">Successful Scans</span>
             </div>
             <div>
               <p className="text-[10px] font-black text-stone-400 uppercase tracking-[0.2em] mb-1">Total Klasifikasi</p>
@@ -107,7 +107,7 @@ export default function AdminDashboardPage() {
 
         {/* Recent Activity Sidebar */}
         <div className="lg:col-span-4 space-y-8">
-          <div className="bg-surface-container-low rounded-[2rem] p-8 border border-stone-100 flex flex-col min-h-full">
+          <div className="bg-surface-container-low rounded-[2rem] p-8 border border-outline/10 flex flex-col min-h-full">
             <div className="flex justify-between items-center mb-8">
               <h3 className="text-sm font-heading font-black text-on-surface tracking-tight uppercase">Aktivitas Terbaru</h3>
               <Link href="/admin/history" className="text-[10px] font-black text-emerald-600 hover:underline tracking-widest">SEMUA</Link>
@@ -116,14 +116,14 @@ export default function AdminDashboardPage() {
             <div className="space-y-6 flex-grow">
               {loading ? (
                 <div className="space-y-4">
-                  {[1, 2, 3].map(i => <div key={i} className="h-16 bg-stone-100 animate-pulse rounded-2xl" />)}
+                  {[1, 2, 3].map(i => <div key={i} className="h-16 bg-surface-container-highest/10 animate-pulse rounded-2xl" />)}
                 </div>
               ) : recentClassifications.length > 0 ? (
                 recentClassifications.map((item, idx) => (
                   <div key={item.id} className="flex items-center gap-4 group">
                     <div className={cn(
                       "w-10 h-10 rounded-xl flex items-center justify-center shrink-0",
-                      item.result === 'Sehat' ? "bg-emerald-100 text-emerald-600" : "bg-rose-100 text-rose-600"
+                      item.result === 'Sehat' ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400" : "bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400"
                     )}>
                       <span className="material-symbols-outlined text-xl">
                         {item.result === 'Sehat' ? 'check_circle' : 'warning'}
@@ -145,8 +145,8 @@ export default function AdminDashboardPage() {
               )}
             </div>
 
-            <div className="mt-10 pt-8 border-t border-stone-200/60">
-              <div className="p-6 bg-white rounded-2xl border border-stone-100 shadow-sm space-y-4">
+            <div className="mt-10 pt-8 border-t border-outline/10">
+              <div className="p-6 bg-card rounded-2xl border border-outline/10 shadow-sm space-y-4">
                 <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">shield</span>
                   Status Sistem

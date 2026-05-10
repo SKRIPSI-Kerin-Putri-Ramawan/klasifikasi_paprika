@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils"
 import { createSupabaseClient } from "@/utils/supabase/client"
 import { useRouter, usePathname } from "next/navigation"
 
+import { ThemeToggle } from "@/components/theme-toggle"
+
 export function Header() {
   const supabase = createSupabaseClient()
   const router = useRouter()
@@ -38,18 +40,18 @@ export function Header() {
 
   return (
     <header className={cn(
-      "w-full sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl flex justify-between items-center px-10 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)] border-b border-stone-100",
+      "w-full sticky top-0 z-40 bg-background/80 backdrop-blur-2xl flex justify-between items-center px-10 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)] border-b border-outline/10",
       "h-[76px]"
     )}>
       <div className="flex items-center gap-6">
         {pathname === '/history' && (
           <div className="relative group">
-            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-emerald-500 transition-colors">
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 dark:text-slate-500 group-focus-within:text-emerald-500 transition-colors">
               search
             </span>
             <input
               type="text"
-              className="pl-12 pr-4 py-2.5 bg-stone-50 hover:bg-stone-100 border border-transparent focus:border-emerald-200 rounded-xl text-sm w-72 focus:ring-4 focus:ring-emerald-500/10 transition-all outline-none text-stone-700 placeholder:text-stone-400 font-medium"
+              className="pl-12 pr-4 py-2.5 bg-surface-container-low hover:bg-surface-container-high border border-outline/10 focus:border-emerald-500/50 rounded-xl text-sm w-72 focus:ring-4 focus:ring-emerald-500/10 transition-all outline-none text-on-surface placeholder:text-on-surface-variant font-medium"
               placeholder="Cari data eksperimen..."
             />
           </div>
@@ -57,24 +59,25 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-6">
-        <div className="flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full shadow-sm">
+        <div className="flex items-center gap-2 px-4 py-1.5 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/50 rounded-full shadow-sm">
           <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
-          <span className="text-[10px] font-black text-emerald-800 uppercase tracking-widest">
+          <span className="text-[10px] font-black text-emerald-800 dark:text-emerald-400 uppercase tracking-widest">
             Sistem Aktif
           </span>
         </div>
         
-        <div className="flex items-center gap-3 pl-6 border-l border-stone-200">
+        <div className="flex items-center gap-3 pl-6 border-l border-stone-200 dark:border-slate-800">
+          <ThemeToggle />
           <button 
             onClick={handleLogout} 
-            className="p-2.5 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all" 
+            className="p-2.5 text-stone-400 dark:text-slate-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-all" 
             title="Keluar"
           >
             <span className="material-symbols-outlined text-[20px]">logout</span>
           </button>
           <div 
             onClick={() => router.push('/profile')}
-            className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-stone-200 ml-2 shadow-sm hover:border-emerald-400 transition-colors cursor-pointer bg-stone-100 flex items-center justify-center"
+            className="h-10 w-10 mt-0.5 rounded-full overflow-hidden border-2 border-outline/20 ml-2 shadow-sm hover:border-emerald-400 transition-colors cursor-pointer bg-surface-container flex items-center justify-center"
           >
             {avatarUrl ? (
               <img

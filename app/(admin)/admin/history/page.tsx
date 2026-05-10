@@ -49,7 +49,7 @@ export default function AdminHistoryPage() {
             <span className="text-sm font-bold text-on-surface">
               {date.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })}
             </span>
-            <span className="text-[10px] text-stone-400 font-medium">
+            <span className="text-[10px] text-on-surface-variant/60 font-medium">
               {date.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}
             </span>
           </div>
@@ -60,7 +60,7 @@ export default function AdminHistoryPage() {
       accessorKey: "image_url",
       header: "Citra Daun",
       cell: ({ row }) => (
-        <div className="w-12 h-12 rounded-xl overflow-hidden bg-stone-100 border border-stone-100 shadow-sm">
+        <div className="w-12 h-12 rounded-xl overflow-hidden bg-surface-container-low border border-outline/10 shadow-sm">
           <img 
             src={row.getValue("image_url")} 
             alt="Specimen" 
@@ -79,7 +79,7 @@ export default function AdminHistoryPage() {
             <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
               <span className="material-symbols-outlined text-[14px] text-emerald-700">person</span>
             </div>
-            <span className="text-sm font-medium text-stone-600">
+            <span className="text-sm font-medium text-on-surface-variant">
               {profile?.full_name || "Sistem / Anonim"}
             </span>
           </div>
@@ -106,10 +106,10 @@ export default function AdminHistoryPage() {
         const conf = parseFloat(row.getValue("confidence"))
         return (
           <div className="flex flex-col gap-1">
-            <div className="text-[11px] text-stone-700 font-black font-mono tracking-tighter">
+            <div className="text-[11px] text-on-surface-variant font-black font-mono tracking-tighter">
               {(conf * 100).toFixed(1)}%
             </div>
-            <div className="w-16 h-1 bg-stone-100 rounded-full overflow-hidden">
+            <div className="w-16 h-1 bg-surface-container-low rounded-full overflow-hidden">
               <div 
                 className="h-full bg-emerald-500 rounded-full transition-all" 
                 style={{ width: `${conf * 100}%` }}

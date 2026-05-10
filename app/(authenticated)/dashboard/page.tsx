@@ -24,37 +24,37 @@ const varieties = [
     name: "Paprika Merah", 
     desc: "Memiliki rasa termanis dan kandungan Vitamin C tertinggi. Merupakan tahap matang sempurna.", 
     image: "/red-paprika.png",
-    light: "bg-red-50",
-    text: "text-red-700" 
+    light: "bg-red-50 dark:bg-red-950/20",
+    text: "text-red-700 dark:text-red-400" 
   },
   { 
     name: "Paprika Kuning", 
     desc: "Rasa lebih ringan dari merah, kaya akan zat besi dan nutrisi potasium untuk pertumbuhan.", 
     image: "/yellow-paprika.png",
-    light: "bg-yellow-50",
-    text: "text-yellow-700" 
+    light: "bg-yellow-50 dark:bg-yellow-950/20",
+    text: "text-yellow-700 dark:text-yellow-400" 
   },
   { 
     name: "Paprika Hijau", 
     desc: "Paprika yang dipanen lebih awal. Memiliki rasa sedikit pahit dan tajam yang khas.", 
     image: "/green-paprika.png",
-    light: "bg-emerald-50",
-    text: "text-emerald-700" 
+    light: "bg-emerald-50 dark:bg-emerald-950/20",
+    text: "text-emerald-700 dark:text-emerald-400" 
   },
   { 
     name: "Paprika Oranye", 
     desc: "Varian perantara dengan tekstur renyah dan kandungan beta-karoten yang tinggi.", 
     image: "/orange-paprika.png",
-    light: "bg-orange-50",
-    text: "text-orange-700" 
+    light: "bg-orange-50 dark:bg-orange-950/20",
+    text: "text-orange-700 dark:text-orange-400" 
   },
 ]
 
 const damageFactors = [
-  { title: "Serangan Hama", desc: "Hama seperti thrips, tungau, dan aphids dapat menyebabkan daun keriting, berlubang, menguning, hingga pertumbuhan tanaman terganggu.", icon: "bug_report", color: "text-red-600", bg: "bg-red-50" },
-  { title: "Penyakit Jamur & Bakteri", desc: "Penyakit seperti bercak daun bakteri, antraknosa, dan layu fusarium dapat menyebabkan bercak hitam, daun menguning, hingga kerontokan daun.", icon: "science", color: "text-amber-600", bg: "bg-amber-50" },
-  { title: "Faktor Lingkungan", desc: "Kekurangan air, kelebihan air, suhu ekstrem, dan kurang cahaya matahari dapat merusak kondisi daun paprika.", icon: "thermostat", color: "text-blue-600", bg: "bg-blue-50" },
-  { title: "Kekurangan Nutrisi", desc: "Kurangnya magnesium, kalsium, dan unsur hara lainnya dapat menyebabkan daun menguning serta pertumbuhan tidak optimal.", icon: "eco", color: "text-emerald-600", bg: "bg-emerald-50" },
+  { title: "Serangan Hama", desc: "Hama seperti thrips, tungau, dan aphids dapat menyebabkan daun keriting, berlubang, menguning, hingga pertumbuhan tanaman terganggu.", icon: "bug_report", color: "text-red-600 dark:text-red-400", bg: "bg-red-50 dark:bg-red-950/30" },
+  { title: "Penyakit Jamur & Bakteri", desc: "Penyakit seperti bercak daun bakteri, antraknosa, dan layu fusarium dapat menyebabkan bercak hitam, daun menguning, hingga kerontokan daun.", icon: "science", color: "text-amber-600 dark:text-amber-400", bg: "bg-amber-50 dark:bg-amber-950/30" },
+  { title: "Faktor Lingkungan", desc: "Kekurangan air, kelebihan air, suhu ekstrem, dan kurang cahaya matahari dapat merusak kondisi daun paprika.", icon: "thermostat", color: "text-blue-600 dark:text-blue-400", bg: "bg-blue-50 dark:bg-blue-950/30" },
+  { title: "Kekurangan Nutrisi", desc: "Kurangnya magnesium, kalsium, dan unsur hara lainnya dapat menyebabkan daun menguning serta pertumbuhan tidak optimal.", icon: "eco", color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-50 dark:bg-emerald-950/30" },
 ]
 
 
@@ -130,7 +130,7 @@ export default function DashboardPage() {
                   bg: v.light,
                   color: v.text
                 })}
-                className={cn("p-6 rounded-2xl border border-outline-variant/10 transition-all hover:shadow-lg flex items-center gap-6 text-left group", v.light)}
+                className={cn("p-6 rounded-2xl border border-outline/5 transition-all hover:shadow-lg flex items-center gap-6 text-left group", v.light)}
               >
                 <div className="w-24 h-24 rounded-xl overflow-hidden shadow-md shrink-0 group-hover:scale-105 transition-transform">
                   <img src={v.image} alt={v.name} className="w-full h-full object-cover" />
@@ -156,7 +156,7 @@ export default function DashboardPage() {
                   {damageFactors.map((factor) => (
                     <div 
                       key={factor.title} 
-                      className="p-6 bg-white rounded-2xl border border-stone-100 shadow-sm space-y-4 group hover:border-emerald-200 transition-all text-left"
+                      className="p-6 bg-card rounded-2xl border border-outline/5 shadow-sm space-y-4 group hover:border-emerald-500/30 transition-all text-left"
                     >
                       <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110", factor.bg)}>
                         <span className={cn("material-symbols-outlined", factor.color)}>{factor.icon}</span>
@@ -171,25 +171,24 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Info Bento (Right) */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-emerald-50 rounded-3xl p-8 border border-emerald-100 flex flex-col items-center text-center h-full">
+          <div className="bg-emerald-50 dark:bg-emerald-950/20 rounded-3xl p-8 border border-emerald-100 dark:border-emerald-900/30 flex flex-col items-center text-center h-full">
             <span className="material-symbols-outlined text-emerald-600 text-5xl mb-4">potted_plant</span>
-            <h3 className="text-xl font-heading font-black text-emerald-900 mb-2">Tips Perawatan Daun Paprika</h3>
-            <p className="text-emerald-800/70 text-sm font-sans mb-8 leading-relaxed">Menjaga kesehatan daun paprika agar tetap sehat dan terhindar dari penyakit.</p>
+            <h3 className="text-xl font-heading font-black text-emerald-900 dark:text-emerald-100 mb-2">Tips Perawatan Daun Paprika</h3>
+            <p className="text-emerald-800/70 dark:text-emerald-300/70 text-sm font-sans mb-8 leading-relaxed">Menjaga kesehatan daun paprika agar tetap sehat dan terhindar dari penyakit.</p>
             
             <div className="w-full space-y-4 text-left">
               {leafCareTips.map((tip, index) => (
-                <div key={tip.title} className="flex gap-4 p-4 bg-white/60 rounded-2xl border border-emerald-100/50 hover:bg-white transition-all group">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-emerald-600 text-lg">{tip.icon}</span>
+                <div key={tip.title} className="flex gap-4 p-4 bg-surface-container/20 dark:bg-emerald-950/20 backdrop-blur-sm rounded-2xl border border-outline/10 dark:border-emerald-800/20 hover:bg-surface-container/40 dark:hover:bg-emerald-900/40 transition-all group">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-lg">{tip.icon}</span>
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-xs font-black text-emerald-900 flex items-center gap-2">
-                      <span className="text-[10px] text-emerald-600/50">{index + 1}.</span>
+                    <h4 className="text-xs font-black text-emerald-900 dark:text-emerald-100 flex items-center gap-2">
+                      <span className="text-[10px] text-emerald-600/50 dark:text-emerald-400/40">{index + 1}.</span>
                       {tip.title}
                     </h4>
-                    <p className="text-[10px] text-emerald-800/60 font-medium leading-relaxed">{tip.desc}</p>
+                    <p className="text-[10px] text-emerald-800/60 dark:text-emerald-300/60 font-medium leading-relaxed">{tip.desc}</p>
                   </div>
                 </div>
               ))}
@@ -207,7 +206,7 @@ export default function DashboardPage() {
       >
         {selectedDetail && (
           <div className="space-y-6">
-            <div className={cn("aspect-video rounded-3xl flex items-center justify-center overflow-hidden border", selectedDetail.bg, "border-black/5")}>
+            <div className={cn("aspect-video rounded-3xl flex items-center justify-center overflow-hidden border", selectedDetail.bg, "border-outline/5")}>
               {selectedDetail.image ? (
                 <img src={selectedDetail.image} alt={selectedDetail.title} className="w-2/3 h-2/3 object-contain drop-shadow-2xl" />
               ) : (
@@ -221,14 +220,14 @@ export default function DashboardPage() {
                   {selectedDetail.subtitle}
                 </span>
               )}
-              <p className="text-stone-600 leading-relaxed font-sans">{selectedDetail.description}</p>
+              <p className="text-on-surface-variant leading-relaxed font-sans">{selectedDetail.description}</p>
               
               {selectedDetail.importance && (
-                <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100 flex gap-4">
+                <div className="p-4 bg-amber-50 dark:bg-amber-950/20 rounded-2xl border border-amber-100 dark:border-amber-900/30 flex gap-4">
                    <span className="material-symbols-outlined text-amber-600">warning</span>
                    <div>
-                      <p className="text-[10px] font-black text-amber-900 uppercase tracking-widest">Pentingnya Diagnosa</p>
-                      <p className="text-xs text-amber-800/80">{selectedDetail.importance}</p>
+                      <p className="text-[10px] font-black text-amber-900 dark:text-amber-400 uppercase tracking-widest">Pentingnya Diagnosa</p>
+                      <p className="text-xs text-amber-800/80 dark:text-amber-200/70">{selectedDetail.importance}</p>
                    </div>
                 </div>
               )}
@@ -236,8 +235,8 @@ export default function DashboardPage() {
               {selectedDetail.extra && (
                 <div className="grid grid-cols-2 gap-4">
                   {selectedDetail.extra.map((ex) => (
-                    <div key={ex.label} className="p-4 rounded-2xl bg-stone-50 border border-stone-100">
-                      <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">{ex.label}</p>
+                    <div key={ex.label} className="p-4 rounded-2xl bg-surface-container-low border border-outline/5">
+                      <p className="text-[10px] font-black text-on-surface-variant uppercase tracking-widest mb-1">{ex.label}</p>
                       <p className="text-sm font-bold text-on-surface">{ex.value}</p>
                     </div>
                   ))}

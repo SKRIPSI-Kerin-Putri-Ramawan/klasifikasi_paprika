@@ -28,7 +28,7 @@ export default function EncyclopediaPage() {
     fetchDiseases()
   }, [])
   return (
-    <div className="min-h-screen bg-stone-50 pb-20">
+    <div className="min-h-screen bg-surface pb-20">
       {/* Dynamic Header */}
       <div className="h-[60vh] relative flex items-center justify-center overflow-hidden">
         <video 
@@ -39,16 +39,16 @@ export default function EncyclopediaPage() {
           {/* Fallback image if no video */}
           <img src="/pepper-dashboard.png" alt="Pepper banner" className="w-full h-full object-cover" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-950/40 to-stone-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-950/40 to-surface"></div>
         <div className="relative z-10 text-center space-y-4 px-6">
           <span className="px-4 py-1 bg-white/20 backdrop-blur-md rounded-full text-white text-[10px] font-black uppercase tracking-[0.4em] border border-white/30">
             Pusat Pengetahuan
           </span>
-          <h1 className="text-6xl md:text-8xl font-heading font-black text-emerald-950 tracking-tighter leading-tight">
+          <h1 className="text-6xl md:text-8xl font-heading font-black text-on-surface tracking-tighter leading-tight">
             Wawasan <br/>
-            <span className="text-emerald-700">Paprika</span>
+            <span className="text-emerald-700 dark:text-emerald-400">Paprika</span>
           </h1>
-          <p className="max-w-xl mx-auto text-emerald-900/70 font-sans text-lg font-medium">
+          <p className="max-w-xl mx-auto text-on-surface-variant font-sans text-lg font-medium">
             Dari sejarah kuno hingga tantangan modern di tanah Serambi Mekkah.
           </p>
         </div>
@@ -60,18 +60,18 @@ export default function EncyclopediaPage() {
         <section className="space-y-12">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             <div className="md:w-1/3 sticky top-24">
-              <h2 className="text-4xl font-heading font-black text-emerald-900 leading-tight">Jejak Langkah <br/>Sang Primadona</h2>
-              <p className="text-stone-500 mt-4 font-sans italic italic-custom text-sm">"Perjalanan ribuan kilometer dari belahan bumi barat menuju meja makan kita."</p>
+              <h2 className="text-4xl font-heading font-black text-on-surface leading-tight">Jejak Langkah <br/>Sang Primadona</h2>
+              <p className="text-on-surface-variant mt-4 font-sans italic italic-custom text-sm">"Perjalanan ribuan kilometer dari belahan bumi barat menuju meja makan kita."</p>
             </div>
             <div className="md:w-2/3 space-y-8">
               {historyTimeline.map((item, idx) => (
                 <div key={idx} className="flex gap-6 group">
                   <div className="flex flex-col items-center">
-                    <div className="w-4 h-4 rounded-full bg-emerald-600 border-4 border-white shadow-sm"></div>
-                    {idx < historyTimeline.length - 1 && <div className="w-[2px] h-full bg-emerald-100"></div>}
+                    <div className="w-4 h-4 rounded-full bg-emerald-600 border-4 border-surface shadow-sm"></div>
+                    {idx < historyTimeline.length - 1 && <div className="w-[2px] h-full bg-emerald-100 dark:bg-emerald-900/40"></div>}
                   </div>
                   <div className="pb-10">
-                    <span className="text-emerald-700 font-black font-heading text-xl">{item.year}</span>
+                    <span className="text-emerald-700 dark:text-emerald-400 font-black font-heading text-xl">{item.year}</span>
                     <h4 className="text-lg font-bold text-on-surface mb-2">{item.event}</h4>
                     <p className="text-on-surface-variant font-sans leading-relaxed">{item.desc}</p>
                   </div>
@@ -143,8 +143,8 @@ export default function EncyclopediaPage() {
         {/* Section: Disease Knowledge */}
         <section className="space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <h2 className="text-4xl font-heading font-black text-emerald-950">Mengenali Musuh Tak Kasat Mata</h2>
-            <p className="text-stone-500 font-sans">Ketahui jenis penyakit yang paling sering menyerang daun paprika Anda untuk penanganan dini.</p>
+            <h2 className="text-4xl font-heading font-black text-on-surface">Mengenali Musuh Tak Kasat Mata</h2>
+            <p className="text-on-surface-variant font-sans">Ketahui jenis penyakit yang paling sering menyerang daun paprika Anda untuk penanganan dini.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -154,12 +154,12 @@ export default function EncyclopediaPage() {
               </div>
             ) : diseases.length > 0 ? (
               diseases.map((d) => (
-                <div key={d.name} className="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-xl transition-all group flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                <div key={d.name} className="bg-card p-8 rounded-3xl border border-outline/5 shadow-sm hover:shadow-xl transition-all group flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                     <span className="material-symbols-outlined text-3xl">{d.icon || 'microbe'}</span>
                   </div>
                   <h4 className="text-lg font-bold text-on-surface mb-1">{d.name}</h4>
-                  <p className="text-[10px] font-black text-emerald-700 uppercase tracking-widest mb-4">{d.agent || d.scientific_name}</p>
+                  <p className="text-[10px] font-black text-emerald-700 dark:text-emerald-400 uppercase tracking-widest mb-4">{d.agent || d.scientific_name}</p>
                   <p className="text-sm text-on-surface-variant font-sans leading-relaxed">
                     {d.description || d.desc}
                   </p>

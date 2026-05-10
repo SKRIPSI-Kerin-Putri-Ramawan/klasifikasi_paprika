@@ -47,13 +47,13 @@ export function Sidebar() {
   }, [pathname])
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 bg-white flex flex-col border-r border-stone-100 z-50 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
+    <aside className="fixed left-0 top-0 h-screen w-72 bg-background flex flex-col border-r border-outline/10 z-50 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
       <div className="px-8 py-10 flex items-center gap-3">
         <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
           <span className="material-symbols-outlined text-white text-xl">psychiatry</span>
         </div>
         <div>
-          <h1 className="font-heading text-2xl font-black text-emerald-950 tracking-tighter">
+          <h1 className="font-heading text-2xl font-black text-emerald-950 dark:text-emerald-50 tracking-tighter">
             PapriCare
           </h1>
         </div>
@@ -71,8 +71,8 @@ export function Sidebar() {
                   className={cn(
                     "w-full flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all duration-300 ease-in-out group relative overflow-hidden",
                     isActive
-                      ? "bg-emerald-50 text-emerald-700 shadow-sm"
-                      : "text-stone-500 hover:bg-stone-50 hover:text-stone-900"
+                      ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 shadow-sm"
+                      : "text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface"
                   )}
                 >
                   <div className="flex items-center gap-4">
@@ -107,18 +107,18 @@ export function Sidebar() {
                         <Link
                           key={hist.id}
                           href={hist.id ? `/history/${hist.id}` : "/history"}
-                          className="block py-2 px-3 text-[11px] font-medium text-stone-500 hover:text-emerald-700 hover:bg-emerald-50/50 rounded-lg transition-colors truncate"
+                          className="block py-2 px-3 text-[11px] font-medium text-on-surface-variant hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/20 rounded-lg transition-colors truncate"
                         >
                           <span className="opacity-50 mr-2">•</span>
                           {hist.result || "Tanpa Judul"}
                         </Link>
                       ))
                     ) : (
-                      <p className="py-2 px-3 text-[10px] text-stone-400 italic">Belum ada riwayat</p>
+                      <p className="py-2 px-3 text-[10px] text-stone-400 dark:text-slate-600 italic">Belum ada riwayat</p>
                     )}
                     <Link
                       href="/history"
-                      className="flex items-center gap-2 py-2 px-3 text-[11px] font-bold text-emerald-600 hover:text-emerald-700 transition-colors mt-2"
+                      className="flex items-center gap-2 py-2 px-3 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors mt-2"
                     >
                       <span className="material-symbols-outlined text-xs">list_alt</span>
                       LIHAT SEMUA
@@ -136,8 +136,8 @@ export function Sidebar() {
               className={cn(
                 "flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 ease-in-out group relative overflow-hidden",
                 isActive
-                  ? "bg-emerald-50 text-emerald-700 shadow-sm"
-                  : "text-stone-500 hover:bg-stone-50 hover:text-stone-900"
+                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 shadow-sm"
+                  : "text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface"
               )}
             >
               {isActive && (

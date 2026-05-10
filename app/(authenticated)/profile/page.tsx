@@ -211,7 +211,7 @@ export default function ProfilePage() {
             <div className="flex flex-col items-center text-center relative z-10">
               <div className="relative mb-6">
                 <img 
-                  className="w-32 h-32 rounded-xl object-cover shadow-2xl ring-4 ring-white" 
+                  className="w-32 h-32 rounded-xl object-cover shadow-2xl ring-4 ring-surface" 
                   src={profileImage}
                   alt={userData?.full_name || "Budi Santoso"}
                 />
@@ -228,13 +228,13 @@ export default function ProfilePage() {
               <h3 className="text-2xl font-heading font-bold text-on-surface mb-1">{userData?.full_name || "Budi Santoso"}</h3>
               <p className="text-primary font-bold text-sm mb-6 px-4 py-1 bg-primary/10 rounded-full capitalize">{userData?.role || "Ahli Patologi Tanaman"}</p>
               
-              <div className="w-full grid grid-cols-2 gap-4 border-t border-stone-200/50 pt-6 mt-2">
-                <div className="text-center border-r border-stone-200/50">
-                  <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-1">Status</p>
+              <div className="w-full grid grid-cols-2 gap-4 border-t border-outline-variant/10 pt-6 mt-2">
+                <div className="text-center border-r border-outline-variant/10">
+                  <p className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Status</p>
                   <p className="font-heading font-bold text-on-surface tracking-tight">Terverifikasi</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-1">Fokus</p>
+                  <p className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Fokus</p>
                   <div className="flex flex-col items-center">
                     <p className="font-heading font-bold text-on-surface tracking-tight">Paprika</p>
                     <p className="text-[9px] italic text-primary/70 font-sans tracking-wide leading-none mt-0.5">Capsicum annuum</p>
@@ -248,20 +248,20 @@ export default function ProfilePage() {
             <button 
               onClick={() => fileInputRef.current?.click()}
               disabled={uploading}
-              className="w-full flex items-center justify-between p-4 bg-white/50 backdrop-blur-md rounded-xl group hover:bg-primary hover:text-white transition-all duration-300 border border-outline-variant/10 shadow-sm disabled:opacity-50"
+              className="w-full flex items-center justify-between p-4 bg-card/50 backdrop-blur-md rounded-xl group hover:bg-primary hover:text-white transition-all duration-300 border border-outline-variant/10 shadow-sm disabled:opacity-50"
             >
               <div className="flex items-center gap-4">
                 <span className="material-symbols-outlined text-primary group-hover:text-white transition-colors">upload</span>
                 <span className="font-bold text-sm">Ganti Foto Profil</span>
               </div>
-              <span className="material-symbols-outlined text-stone-400 group-hover:translate-x-1 group-hover:text-white transition-all">arrow_forward</span>
+              <span className="material-symbols-outlined text-on-surface-variant/40 group-hover:translate-x-1 group-hover:text-white transition-all">arrow_forward</span>
             </button>
-            <button className="w-full flex items-center justify-between p-4 bg-white/50 backdrop-blur-md rounded-xl group hover:bg-secondary hover:text-white transition-all duration-300 border border-outline-variant/10 shadow-sm">
+            <button className="w-full flex items-center justify-between p-4 bg-card/50 backdrop-blur-md rounded-xl group hover:bg-secondary hover:text-white transition-all duration-300 border border-outline-variant/10 shadow-sm">
               <div className="flex items-center gap-4">
                 <span className="material-symbols-outlined text-secondary group-hover:text-white transition-colors">lock_reset</span>
                 <span className="font-bold text-sm">Ubah Kata Sandi</span>
               </div>
-              <span className="material-symbols-outlined text-stone-400 group-hover:translate-x-1 group-hover:text-white transition-all">arrow_forward</span>
+              <span className="material-symbols-outlined text-on-surface-variant/40 group-hover:translate-x-1 group-hover:text-white transition-all">arrow_forward</span>
             </button>
             <button className="w-full flex items-center justify-between p-4 bg-error-container/5 rounded-xl group hover:bg-error hover:text-white transition-all duration-300 border border-error/10 shadow-sm">
               <div className="flex items-center gap-4">
@@ -340,7 +340,7 @@ export default function ProfilePage() {
                   <div className="flex items-center gap-4">
                     <div className={cn(
                       "w-12 h-12 rounded-full flex items-center justify-center",
-                      activity.result.toLowerCase() === "sehat" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"
+                      activity.result.toLowerCase() === "sehat" ? "bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400" : "bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400"
                     )}>
                       <span className="material-symbols-outlined">
                         {activity.result.toLowerCase() === "sehat" ? "check_circle" : "error"}
@@ -350,13 +350,13 @@ export default function ProfilePage() {
                       <h4 className="font-bold text-on-surface group-hover:text-primary transition-colors">{activity.result}</h4>
                       <div className="flex items-center gap-2 mt-1">
                         <span className="text-xs text-on-surface-variant italic">{activity.species}</span>
-                        <span className="h-1 w-1 bg-stone-300 rounded-full"></span>
-                        <span className="text-[10px] font-bold text-stone-400 uppercase">{(activity.confidence * 100).toFixed(1)}% Confidence</span>
+                        <span className="h-1 w-1 bg-outline-variant/30 rounded-full"></span>
+                        <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase">{(activity.confidence * 100).toFixed(1)}% Confidence</span>
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-[10px] font-bold text-stone-400 uppercase mb-1">{format(new Date(activity.created_at), "d MMMM, HH:mm", { locale: id })}</p>
+                    <p className="text-[10px] font-bold text-on-surface-variant/40 uppercase mb-1">{format(new Date(activity.created_at), "d MMMM, HH:mm", { locale: id })}</p>
                     <span className={cn(
                       "text-[9px] px-2 py-0.5 rounded font-black uppercase tracking-tighter",
                       activity.status === "COMPLETED" ? "bg-emerald-500 text-white" : "bg-primary text-white"

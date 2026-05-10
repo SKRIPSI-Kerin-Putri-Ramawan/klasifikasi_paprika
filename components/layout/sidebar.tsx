@@ -17,11 +17,16 @@ export function Sidebar() {
   const supabase = createSupabaseClient()
   const [isHistoryOpen, setIsHistoryOpen] = useState(false)
   const [recentHistory, setRecentHistory] = useState<any[]>([])
+  const [isGuest, setIsGuest] = useState(false)
 
   useEffect(() => {
     async function fetchRecentHistory() {
       const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
+      if (!user) {
+        setIsGuest(true)
+        return
+      }
+      setIsGuest(false)
 
       const { data } = await supabase
         .from("classifications")
@@ -101,11 +106,11 @@ export function Sidebar() {
                       recentHistory.map((hist) => (
                         <Link
                           key={hist.id}
-                          href={`/history/${hist.id}`}
+                          href={hist.id ? `/history/${hist.id}` : "/history"}
                           className="block py-2 px-3 text-[11px] font-medium text-stone-500 hover:text-emerald-700 hover:bg-emerald-50/50 rounded-lg transition-colors truncate"
                         >
                           <span className="opacity-50 mr-2">•</span>
-                          {hist.result}
+                          {hist.result || "Tanpa Judul"}
                         </Link>
                       ))
                     ) : (
@@ -165,6 +170,12 @@ export function Sidebar() {
               <span className="material-symbols-outlined text-lg">add_circle</span>
               <span className="text-xs uppercase tracking-wider">Scan Baru</span>
             </Link>
+            {isGuest && (
+              <Link href="/login" className="w-full mt-3 py-2 border border-emerald-500/30 text-emerald-400 font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-500/10 transition-all">
+                <span className="material-symbols-outlined text-sm">login</span>
+                <span className="text-[10px] uppercase tracking-wider">Login Akun</span>
+              </Link>
+            )}
           </div>
         </div>
       </div>

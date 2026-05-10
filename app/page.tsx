@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-surface">
+    <div className="flex flex-col min-h-screen bg-surface" suppressHydrationWarning>
       {/* Navbar */}
       <nav className="sticky top-0 z-50 w-full backdrop-blur-xl bg-white/70 border-b border-emerald-900/5 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">

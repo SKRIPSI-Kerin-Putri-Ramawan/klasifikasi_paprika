@@ -61,7 +61,10 @@ export async function updateSession(request: NextRequest) {
         !path.startsWith('/login') && 
         !path.startsWith('/register') && 
         !path.startsWith('/auth') &&
-        path !== '/' // assuming root is public, if not remove this line. Wait, root is public landing page? By default maybe.
+        !path.startsWith('/dashboard') &&
+        !path.startsWith('/scan') &&
+        !path.startsWith('/history') &&
+        path !== '/'
     ) {
         const url = request.nextUrl.clone()
         url.pathname = '/login'

@@ -79,7 +79,7 @@ export default function DashboardPage() {
 
 
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-12 bg-surface">
+    <div className="p-8 max-w-7xl mx-auto space-y-12 bg-surface" suppressHydrationWarning>
       
       {/* Hero Welcome Section */}
       <section className="relative rounded-3xl overflow-hidden bg-emerald-900 min-h-[350px] flex items-center shadow-2xl">

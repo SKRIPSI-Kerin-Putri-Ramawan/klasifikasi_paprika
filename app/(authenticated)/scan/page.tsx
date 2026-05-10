@@ -53,7 +53,10 @@ export default function ScanPage() {
   const saveClassification = async (result: string, confidence: number, imageUrl: string) => {
     try {
       const { data: { user } } = await supabase.auth.getUser()
-      if (!user) throw new Error("User not authenticated")
+      if (!user) {
+        console.log("Guest mode: Skipping database save.")
+        return
+      }
 
       const { data, error } = await supabase
         .from('classifications')
@@ -79,19 +82,26 @@ export default function ScanPage() {
     setShowResults(false)
     
     try {
-      const fileExt = fileToUpload instanceof File ? fileToUpload.name.split('.').pop() : 'jpg'
-      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
-      const filePath = `public/${fileName}`
-      
-      const { error: uploadError } = await supabase.storage
-        .from('scans')
-        .upload(filePath, fileToUpload)
+      const { data: { user } } = await supabase.auth.getUser()
+      let publicUrl = ""
+
+      if (user) {
+        const fileExt = fileToUpload instanceof File ? fileToUpload.name.split('.').pop() : 'jpg'
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
+        const filePath = `public/${fileName}`
         
-      if (uploadError) throw uploadError
-      
-      const { data: { publicUrl } } = supabase.storage
-        .from('scans')
-        .getPublicUrl(filePath)
+        const { error: uploadError } = await supabase.storage
+          .from('scans')
+          .upload(filePath, fileToUpload)
+          
+        if (uploadError) throw uploadError
+        
+        const { data: { publicUrl: url } } = supabase.storage
+          .from('scans')
+          .getPublicUrl(filePath)
+        
+        publicUrl = url
+      }
 
       // Call Python backend API
       const formData = new FormData()
@@ -119,8 +129,8 @@ export default function ScanPage() {
       }
 
     } catch (err) {
-      console.error("Upload error:", err)
-      alert("Gagal mengunggah gambar. Silakan coba lagi.")
+      console.error("Analysis error:", err)
+      alert("Gagal menganalisis gambar. Silakan coba lagi.")
       setIsAnalyzing(false)
     }
   }
@@ -177,7 +187,7 @@ export default function ScanPage() {
   }
 
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-10 bg-surface">
+    <div className="p-8 max-w-7xl mx-auto space-y-10 bg-surface" suppressHydrationWarning>
       <input 
         type="file" 
         ref={fileInputRef} 

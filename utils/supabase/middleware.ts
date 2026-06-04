@@ -34,41 +34,25 @@ export async function updateSession(request: NextRequest) {
   const path = request.nextUrl.pathname;
   
   if (user) {
-    if (path.startsWith('/admin')) {
-      const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-      
-      if (!profile || profile.role !== 'admin') {
-        const url = request.nextUrl.clone();
-        url.pathname = '/dashboard';
-        return NextResponse.redirect(url);
-      }
-    }
-    
     if (path.startsWith('/login') || path.startsWith('/register')) {
-        const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-        const url = request.nextUrl.clone();
-        
-        if (profile?.role === 'admin') {
-          url.pathname = '/admin/dashboard';
-        } else {
-          url.pathname = '/dashboard';
-        }
-        return NextResponse.redirect(url);
+      const url = request.nextUrl.clone()
+      url.pathname = '/dashboard'
+      return NextResponse.redirect(url)
     }
   } else {
     // allow public access to auth callbacks, login, register, public assets or root if applicable
     if (
-        !path.startsWith('/login') && 
-        !path.startsWith('/register') && 
-        !path.startsWith('/auth') &&
-        !path.startsWith('/dashboard') &&
-        !path.startsWith('/scan') &&
-        !path.startsWith('/history') &&
-        path !== '/'
+      !path.startsWith('/login') && 
+      !path.startsWith('/register') && 
+      !path.startsWith('/auth') &&
+      !path.startsWith('/dashboard') &&
+      !path.startsWith('/scan') &&
+      !path.startsWith('/history') &&
+      path !== '/'
     ) {
-        const url = request.nextUrl.clone()
-        url.pathname = '/login'
-        return NextResponse.redirect(url)
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
     }
   }
 

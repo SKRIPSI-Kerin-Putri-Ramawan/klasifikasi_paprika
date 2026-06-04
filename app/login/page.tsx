@@ -31,18 +31,8 @@ export default function LoginPage() {
       return
     }
 
-    const { data: { user } } = await supabase.auth.getUser()
-    
-    if (user) {
-      const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
-      
-      if (profile?.role === 'admin') {
-        router.push('/admin/dashboard')
-      } else {
-        router.push('/dashboard')
-      }
-      router.refresh()
-    }
+    router.push('/dashboard')
+    router.refresh()
   }
 
   return (

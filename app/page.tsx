@@ -68,18 +68,6 @@ export default function LandingPage() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-6 pt-8">
-              <div className="flex -space-x-3">
-                {[1,2,3,4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-emerald-100 overflow-hidden flex items-center justify-center">
-                    <span className="material-symbols-outlined text-emerald-600 text-sm">person</span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs font-bold text-emerald-900/40">
-                Bergabung dengan <span className="text-emerald-900">500+ Petani</span> lainnya
-              </p>
-            </div>
           </div>
 
           <div className="relative">
@@ -209,7 +197,6 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <h1 className="text-2xl font-heading font-black">PapriCare</h1>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Powered by Advanced AI</p>
                 </div>
               </div>
               <p className="text-white/60 text-sm max-w-sm leading-relaxed font-sans">
@@ -234,7 +221,7 @@ export default function LandingPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">location_on</span>
-                  Bogor, Jawa Barat
+                  Aceh
                 </li>
               </ul>
             </div>

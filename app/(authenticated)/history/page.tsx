@@ -92,6 +92,7 @@ export default function HistoryPage() {
                 </Link>
               </div>
             </div>
+          ) : logs.length > 0 ? (
             logs.map((log) => (
               <div key={log.id} className="bg-card rounded-3xl overflow-hidden border border-outline/5 shadow-sm hover:shadow-xl transition-all group">
                 <div className="relative h-48 bg-muted">

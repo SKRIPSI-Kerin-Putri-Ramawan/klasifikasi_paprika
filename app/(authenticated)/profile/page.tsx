@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils"
 import { createSupabaseClient } from "@/utils/supabase/client"
 import { format } from "date-fns"
 import { id } from "date-fns/locale"
+import { useRouter } from "next/navigation"
 
 interface UserProfile {
   full_name: string
-  role: string
   avatar_url: string
 }
 
@@ -31,6 +31,16 @@ interface Stats {
 
 export default function ProfilePage() {
   const supabase = createSupabaseClient()
+  const router = useRouter()
+  
+  // Modal & Password State
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
+  const [newPassword, setNewPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [passwordError, setPasswordError] = useState<string | null>(null)
+  const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null)
+  const [passwordLoading, setPasswordLoading] = useState(false)
+
   const [profileImage, setProfileImage] = useState("https://lh3.googleusercontent.com/aida-public/AB6AXuDOJgc7KknXztXxlcsTTyRJMPp2mF_S0DLAWPFylVXUO3AJjcjNk3B6zE9qDsYur7C1kBiBtoa9kT1msRVal9fACZG1Smw1_0NBwEpoomCWo4B2qhF_I1BUZyMclSGyCcLQvls32PYac6NXr0musmnw4fXpkN59UtzKj1cwKSTOcPk-9Sb4I6zux1M6sAUdL-BGj94aaucPPSH1QUpUe9hCWgO5zAcMZS17kwZccZn2yH1nDr3vp67OINV3tYtiBM4yVjhaISLVe58")
   const [userData, setUserData] = useState<UserProfile | null>(null)
   const [stats, setStats] = useState<Stats[]>([])
@@ -41,6 +51,60 @@ export default function ProfilePage() {
   const [uploading, setUploading] = useState(false)
   
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut()
+      if (error) throw error
+      router.push("/login")
+      router.refresh()
+    } catch (error: any) {
+      console.error("Error logging out:", error)
+      alert("Gagal keluar akun: " + error.message)
+    }
+  }
+
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setPasswordError(null)
+    setPasswordSuccess(null)
+
+    if (!newPassword || !confirmPassword) {
+      setPasswordError("Semua bidang sandi harus diisi.")
+      return
+    }
+
+    if (newPassword !== confirmPassword) {
+      setPasswordError("Sandi baru dan konfirmasi sandi tidak cocok.")
+      return
+    }
+
+    if (newPassword.length < 6) {
+      setPasswordError("Sandi minimal harus terdiri dari 6 karakter.")
+      return
+    }
+
+    setPasswordLoading(true)
+    try {
+      const { error } = await supabase.auth.updateUser({ password: newPassword })
+      if (error) throw error
+
+      setPasswordSuccess("Kata sandi berhasil diperbarui!")
+      setNewPassword("")
+      setConfirmPassword("")
+      
+      // Auto close modal after 1.5s
+      setTimeout(() => {
+        setIsPasswordModalOpen(false)
+        setPasswordSuccess(null)
+      }, 1500)
+    } catch (error: any) {
+      console.error("Error changing password:", error)
+      setPasswordError(error.message || "Gagal mengubah kata sandi.")
+    } finally {
+      setPasswordLoading(false)
+    }
+  }
 
   useEffect(() => {
     fetchData()
@@ -215,18 +279,10 @@ export default function ProfilePage() {
                   src={profileImage}
                   alt={userData?.full_name || "Budi Santoso"}
                 />
-                <button 
-                  onClick={() => fileInputRef.current?.click()}
-                  className="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-lg shadow-lg hover:bg-primary-container transition-colors active:scale-95"
-                  disabled={uploading}
-                >
-                  <span className="material-symbols-outlined text-lg">
-                    {uploading ? "sync" : "edit"}
-                  </span>
-                </button>
+
               </div>
               <h3 className="text-2xl font-heading font-bold text-on-surface mb-1">{userData?.full_name || "Budi Santoso"}</h3>
-              <p className="text-primary font-bold text-sm mb-6 px-4 py-1 bg-primary/10 rounded-full capitalize">{userData?.role || "Ahli Patologi Tanaman"}</p>
+              <p className="text-primary font-bold text-sm mb-6 px-4 py-1 bg-primary/10 rounded-full capitalize">Peneliti</p>
               
               <div className="w-full grid grid-cols-2 gap-4 border-t border-outline-variant/10 pt-6 mt-2">
                 <div className="text-center border-r border-outline-variant/10">
@@ -256,14 +312,20 @@ export default function ProfilePage() {
               </div>
               <span className="material-symbols-outlined text-on-surface-variant/40 group-hover:translate-x-1 group-hover:text-white transition-all">arrow_forward</span>
             </button>
-            <button className="w-full flex items-center justify-between p-4 bg-card/50 backdrop-blur-md rounded-xl group hover:bg-secondary hover:text-white transition-all duration-300 border border-outline-variant/10 shadow-sm">
+            <button 
+              onClick={() => setIsPasswordModalOpen(true)}
+              className="w-full flex items-center justify-between p-4 bg-card/50 backdrop-blur-md rounded-xl group hover:bg-secondary hover:text-white transition-all duration-300 border border-outline-variant/10 shadow-sm"
+            >
               <div className="flex items-center gap-4">
                 <span className="material-symbols-outlined text-secondary group-hover:text-white transition-colors">lock_reset</span>
                 <span className="font-bold text-sm">Ubah Kata Sandi</span>
               </div>
               <span className="material-symbols-outlined text-on-surface-variant/40 group-hover:translate-x-1 group-hover:text-white transition-all">arrow_forward</span>
             </button>
-            <button className="w-full flex items-center justify-between p-4 bg-error-container/5 rounded-xl group hover:bg-error hover:text-white transition-all duration-300 border border-error/10 shadow-sm">
+            <button 
+              onClick={handleLogout}
+              className="w-full flex items-center justify-between p-4 bg-error-container/5 rounded-xl group hover:bg-error hover:text-white transition-all duration-300 border border-error/10 shadow-sm"
+            >
               <div className="flex items-center gap-4">
                 <span className="material-symbols-outlined text-error group-hover:text-white transition-colors">logout</span>
                 <span className="font-bold text-sm text-error group-hover:text-white transition-colors">Keluar Akun</span>
@@ -376,6 +438,110 @@ export default function ProfilePage() {
 
         </div>
       </div>
+
+      {/* Change Password Modal */}
+      {isPasswordModalOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
+          <div 
+            className="bg-surface-container-low border border-outline-variant/10 rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl relative animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => {
+                setIsPasswordModalOpen(false)
+                setPasswordError(null)
+                setPasswordSuccess(null)
+                setNewPassword("")
+                setConfirmPassword("")
+              }}
+              className="absolute top-6 right-6 text-stone-400 hover:text-on-surface transition-colors"
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-heading font-bold text-on-surface tracking-tight">Ubah Kata Sandi</h3>
+                <p className="text-xs text-on-surface-variant font-sans">Masukkan kata sandi baru Anda di bawah ini.</p>
+              </div>
+
+              <form onSubmit={handlePasswordChange} className="space-y-4">
+                {passwordError && (
+                  <div className="p-3 text-xs text-red-500 bg-red-100/10 rounded-xl border border-red-500/20 font-sans">
+                    {passwordError}
+                  </div>
+                )}
+
+                {passwordSuccess && (
+                  <div className="p-3 text-xs text-emerald-500 bg-emerald-100/10 rounded-xl border border-emerald-500/20 font-sans">
+                    {passwordSuccess}
+                  </div>
+                )}
+
+                <div className="space-y-2">
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant font-sans" htmlFor="new-password">
+                    Kata Sandi Baru
+                  </label>
+                  <div className="relative">
+                    <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">lock</span>
+                    <input
+                      type="password"
+                      id="new-password"
+                      required
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      className="w-full bg-surface-container-lowest border border-outline-variant/10 rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-stone-400 focus:ring-2 focus:ring-primary/20 transition-all font-sans"
+                      placeholder="Minimal 6 karakter"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant font-sans" htmlFor="confirm-password">
+                    Konfirmasi Kata Sandi Baru
+                  </label>
+                  <div className="relative">
+                    <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">lock_reset</span>
+                    <input
+                      type="password"
+                      id="confirm-password"
+                      required
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className="w-full bg-surface-container-lowest border border-outline-variant/10 rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-stone-400 focus:ring-2 focus:ring-primary/20 transition-all font-sans"
+                      placeholder="Ulangi kata sandi baru"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsPasswordModalOpen(false)
+                      setPasswordError(null)
+                      setPasswordSuccess(null)
+                      setNewPassword("")
+                      setConfirmPassword("")
+                    }}
+                    className="flex-1 py-3 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold text-sm rounded-xl transition-all font-sans"
+                  >
+                    Batal
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={passwordLoading}
+                    className="flex-1 py-3 bg-primary text-white font-bold text-sm rounded-xl shadow-lg shadow-primary/10 hover:bg-primary/95 active:scale-[0.98] transition-all disabled:opacity-70 disabled:active:scale-100 flex items-center justify-center gap-2 font-sans"
+                  >
+                    {passwordLoading ? "Menyimpan..." : "Simpan Sandi"}
+                    {!passwordLoading && <span className="material-symbols-outlined text-base">save</span>}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

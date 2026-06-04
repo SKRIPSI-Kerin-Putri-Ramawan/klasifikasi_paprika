@@ -4,7 +4,6 @@
 -- create profiles table
 create table public.profiles (
   id uuid references auth.users on delete cascade not null primary key,
-  role varchar default 'pengguna',
   full_name varchar,
   avatar_url varchar
 );

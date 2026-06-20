@@ -167,11 +167,6 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              <div className="flex items-center">
-                <input type="checkbox" id="remember" className="w-4 h-4 rounded text-primary focus:ring-primary/20 bg-surface-container-high border-none" />
-                <label htmlFor="remember" className="ml-3 text-sm text-on-surface-variant font-sans">Tetap terotentikasi selama 24 jam</label>
-              </div>
-
               <button
                 type="submit"
                 disabled={loading}

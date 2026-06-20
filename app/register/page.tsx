@@ -20,6 +20,22 @@ export default function RegisterPage() {
     setLoading(true)
     setError(null)
 
+    if (!fullName.trim()) {
+      setError("Registrasi gagal: Nama lengkap wajib diisi.")
+      setLoading(false)
+      return
+    }
+    if (!email.trim()) {
+      setError("Registrasi gagal: Email wajib diisi.")
+      setLoading(false)
+      return
+    }
+    if (password.length < 6) {
+      setError("Registrasi gagal: Kata sandi harus minimal 6 karakter.")
+      setLoading(false)
+      return
+    }
+
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -31,7 +47,20 @@ export default function RegisterPage() {
     })
 
     if (error) {
-      setError(error.message)
+      const msg = error.message.toLowerCase()
+      let friendlyMessage = `Registrasi gagal: ${error.message}`
+
+      if (msg.includes("user already registered") || msg.includes("email already in use") || msg.includes("already registered")) {
+        friendlyMessage = "Registrasi gagal: Email sudah terdaftar. Silakan gunakan email lain atau masuk ke portal."
+      } else if (msg.includes("password should be at least 6 characters") || msg.includes("password is too short")) {
+        friendlyMessage = "Registrasi gagal: Kata sandi harus terdiri dari minimal 6 karakter."
+      } else if (msg.includes("invalid email")) {
+        friendlyMessage = "Registrasi gagal: Format email tidak valid."
+      } else if (msg.includes("too many requests") || msg.includes("rate limit")) {
+        friendlyMessage = "Registrasi gagal: Terlalu banyak percobaan registrasi. Silakan coba beberapa saat lagi."
+      }
+
+      setError(friendlyMessage)
       setLoading(false)
       return
     }

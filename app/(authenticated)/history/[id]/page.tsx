@@ -6,6 +6,12 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
+const isHealthyResult = (result?: string) => {
+  if (!result) return false;
+  const r = result.toLowerCase();
+  return r === 'healthy' || r === 'sehat' || r.includes('daun sehat');
+}
+
 export default function ClassificationDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
   const supabase = createSupabaseClient()
@@ -87,9 +93,9 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
               <img src={log.image_url} alt={log.result} className="w-full h-full object-cover" />
               <div className="absolute top-6 left-6">
                 <span className={cn("px-4 py-1.5 rounded-full text-xs font-black text-white uppercase tracking-widest shadow-lg", 
-                  log.result === 'Sehat' ? "bg-emerald-500" : "bg-red-500"
+                  isHealthyResult(log.result) ? "bg-emerald-500" : "bg-red-500"
                 )}>
-                  {log.result === 'Sehat' ? 'Optimal' : 'Kritis'}
+                  {isHealthyResult(log.result) ? 'Optimal' : 'Kritis'}
                 </span>
               </div>
             </div>
@@ -98,9 +104,17 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
                 <div>
                   <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">Diagnosis Utama</p>
                   <h3 className="text-3xl font-heading font-black text-on-surface leading-tight">{log.result}</h3>
+                  <div className={cn(
+                    "inline-flex items-center text-xs font-bold mt-2 px-2.5 py-1 rounded-full gap-1",
+                    log.confidence >= 0.8
+                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-400"
+                      : "bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-400"
+                  )}>
+                    <span>{log.confidence >= 0.8 ? '✓ Keyakinan Tinggi' : '✓ Keyakinan Baik'}</span>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">Akurasi AI</p>
+                <div className="text-right shrink-0">
+                  <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">Confidence Score</p>
                   <p className="text-3xl font-black text-emerald-600">{(log.confidence * 100).toFixed(1)}%</p>
                 </div>
               </div>
@@ -111,9 +125,9 @@ export default function ClassificationDetailPage({ params }: { params: Promise<{
                   <p className="font-bold text-on-surface italic">{log.species || 'Capsicum annuum'}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest mb-1">Tanggal Scan</p>
+                  <p className="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest mb-1">Tanggal & Waktu Scan</p>
                   <p className="font-bold text-on-surface">
-                    {new Date(log.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    {new Date(log.created_at).toLocaleString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                   </p>
                 </div>
               </div>

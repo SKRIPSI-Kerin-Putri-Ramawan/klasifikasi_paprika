@@ -5,6 +5,12 @@ import { createSupabaseClient } from "@/utils/supabase/client"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 
+const isHealthyResult = (result?: string) => {
+  if (!result) return false;
+  const r = result.toLowerCase();
+  return r === 'healthy' || r === 'sehat' || r.includes('daun sehat');
+}
+
 export default function HistoryPage() {
   const supabase = createSupabaseClient()
   const [logs, setLogs] = useState<any[]>([])
@@ -99,9 +105,9 @@ export default function HistoryPage() {
                   <img src={log.image_url} alt={log.result} className="w-full h-full object-cover" />
                   <div className="absolute top-4 left-4">
                     <span className={cn("px-3 py-1 rounded-full text-[10px] font-black text-white uppercase tracking-widest", 
-                      log.result === 'Daun Sehat (Healthy Leaf)' ? "bg-emerald-500" : "bg-red-500"
+                      isHealthyResult(log.result) ? "bg-emerald-500" : "bg-red-500"
                     )}>
-                      {log.status || (log.result === 'Daun Sehat (Healthy Leaf)' ? 'Optimal' : 'Kritis')}
+                      {log.status || (isHealthyResult(log.result) ? 'Optimal' : 'Kritis')}
                     </span>
                   </div>
                 </div>
@@ -109,12 +115,20 @@ export default function HistoryPage() {
                   <div className="flex justify-between items-start">
                     <div>
                       <p className="text-[10px] font-black text-on-surface-variant uppercase tracking-widest mb-1" suppressHydrationWarning>
-                        {log.created_at ? new Date(log.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Tanggal tidak tersedia'}
+                        {log.created_at ? new Date(log.created_at).toLocaleString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Tanggal tidak tersedia'}
                       </p>
                       <h4 className="text-xl font-heading font-black text-on-surface">{log.result || 'Hasil tidak tersedia'}</h4>
+                      <div className={cn(
+                        "inline-flex items-center text-[10px] font-bold mt-1.5 px-2 py-0.5 rounded-full gap-1",
+                        log.confidence >= 0.8
+                          ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-400"
+                          : "bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-400"
+                      )}>
+                        <span>{log.confidence >= 0.8 ? '✓ Keyakinan Tinggi' : '✓ Keyakinan Baik'}</span>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-[10px] font-black text-on-surface-variant uppercase tracking-widest mb-1">Akurasi</p>
+                    <div className="text-right shrink-0">
+                      <p className="text-[10px] font-black text-on-surface-variant uppercase tracking-widest mb-1">Confidence Score</p>
                       <p className="text-lg font-bold text-emerald-600">{(log.confidence * 100).toFixed(1)}%</p>
                     </div>
                   </div>

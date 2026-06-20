@@ -14,6 +14,7 @@ export default function ScanPage() {
   const [showResults, setShowResults] = useState(false)
   const [isCameraActive, setIsCameraActive] = useState(false)
   const [stream, setStream] = useState<MediaStream | null>(null)
+  const [scanTimestamp, setScanTimestamp] = useState<Date | null>(null)
   const [predictionResult, setPredictionResult] = useState<{
     class: string;
     confidence: number;
@@ -118,6 +119,7 @@ export default function ScanPage() {
       
       if (result.status === 'success') {
         setPredictionResult(result)
+        setScanTimestamp(new Date())
         
         setIsAnalyzing(false)
         setShowResults(true)
@@ -322,21 +324,37 @@ export default function ScanPage() {
                 <div>
                   <p className="text-[10px] font-sans font-bold text-on-surface-variant uppercase tracking-widest mb-1">Hasil Diagnosis AI</p>
                   <h4 className="text-3xl font-heading font-extrabold text-on-surface leading-tight">{predictionResult.title}</h4>
-                  <p className={cn(
-                    "font-medium text-sm mt-1 flex items-center gap-1 font-sans",
-                    predictionResult.class === 'Healthy' ? "text-emerald-700" : "text-error"
-                  )}>
-                    <span className="material-symbols-outlined text-sm">
-                      {predictionResult.class === 'Healthy' ? 'verified' : 'warning'}
-                    </span>
-                    {predictionResult.class === 'Healthy' ? 'Terdeteksi (Status: Sehat)' : 'Terdeteksi (Status: Kritis)'}
-                  </p>
+                  <div className="flex flex-col gap-1.5 mt-1">
+                    <p className={cn(
+                      "font-medium text-sm flex items-center gap-1 font-sans",
+                      (predictionResult.class === 'Healthy' || predictionResult.class === 'Sehat') ? "text-emerald-700" : "text-error"
+                    )}>
+                      <span className="material-symbols-outlined text-sm">
+                        {(predictionResult.class === 'Healthy' || predictionResult.class === 'Sehat') ? 'verified' : 'warning'}
+                      </span>
+                      {(predictionResult.class === 'Healthy' || predictionResult.class === 'Sehat') ? 'Terdeteksi (Status: Sehat)' : 'Terdeteksi (Status: Kritis)'}
+                    </p>
+                    <div className={cn(
+                      "inline-flex items-center text-xs font-bold px-2.5 py-1 rounded-full w-fit gap-1",
+                      predictionResult.confidence >= 0.8
+                        ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-400"
+                        : "bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-400"
+                    )}>
+                      <span>{predictionResult.confidence >= 0.8 ? '✓ Keyakinan Tinggi' : '✓ Keyakinan Baik'}</span>
+                    </div>
+                    {scanTimestamp && (
+                      <p className="text-xs text-on-surface-variant flex items-center gap-1.5 font-sans mt-0.5">
+                        <span className="material-symbols-outlined text-sm">schedule</span>
+                        {scanTimestamp.toLocaleString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="bg-primary/10 px-4 py-2 rounded-lg text-center">
+                <div className="bg-primary/10 px-4 py-2 rounded-lg text-center shrink-0">
                   <span className="block text-primary text-2xl font-black font-heading">
                     {(predictionResult.confidence * 100).toFixed(1)}%
                   </span>
-                  <span className="text-[9px] font-sans font-bold text-primary/70 uppercase">Skor CNN</span>
+                  <span className="text-[9px] font-sans font-bold text-primary/70 uppercase">Confidence Score</span>
                 </div>
               </div>
 

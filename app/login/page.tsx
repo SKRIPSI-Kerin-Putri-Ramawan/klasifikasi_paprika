@@ -20,13 +20,37 @@ export default function LoginPage() {
     setLoading(true)
     setError(null)
 
+    if (!email.trim()) {
+      setError("Login gagal: Email wajib diisi.")
+      setLoading(false)
+      return
+    }
+    if (!password) {
+      setError("Login gagal: Kata sandi wajib diisi.")
+      setLoading(false)
+      return
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
 
     if (error) {
-      setError(error.message)
+      const msg = error.message.toLowerCase()
+      let friendlyMessage = `Login gagal: ${error.message}`
+
+      if (msg.includes("invalid login credentials") || msg.includes("invalid credentials")) {
+        friendlyMessage = "Login gagal: Email tidak terdaftar atau kata sandi salah."
+      } else if (msg.includes("email not confirmed") || msg.includes("email not verified")) {
+        friendlyMessage = "Login gagal: Email belum terverifikasi. Silakan periksa kotak masuk email Anda."
+      } else if (msg.includes("invalid email")) {
+        friendlyMessage = "Login gagal: Format email tidak valid."
+      } else if (msg.includes("too many requests") || msg.includes("rate limit")) {
+        friendlyMessage = "Login gagal: Terlalu banyak percobaan masuk. Silakan coba beberapa saat lagi."
+      }
+
+      setError(friendlyMessage)
       setLoading(false)
       return
     }
@@ -34,6 +58,7 @@ export default function LoginPage() {
     router.push('/dashboard')
     router.refresh()
   }
+
 
   return (
     <div className="min-h-screen bg-background text-on-surface flex items-center justify-center p-6 bg-[linear-gradient(135deg,rgba(248,250,249,0.92),rgba(242,244,243,0.85)),url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9H1x1notYvJxO4HGP9RW9AWUmmdaIK-b7nncu8ADIxsjWl2IVL-PBBiaRXUOGSmQIFhc8Ar43PGHpqEx07nBfy27ActOlFnc2RSyoN1c6jB7ioDm--Z668x3g0mhLgwzauK152TuS3DLK5uHBEwi57couiJAQbjQv2TvyvMsbvupO6bNQH05dZctEQfFeu0QAgr_N_UvvD7WNmFnvrd4riy_TYQbH6wxNzkWQzp_IBiwEWWpP8sCHs0ctHkf8Kt1ctrRIfEUs6JA')] bg-cover bg-center" suppressHydrationWarning>

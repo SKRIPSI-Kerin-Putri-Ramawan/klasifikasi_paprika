@@ -264,7 +264,6 @@ export default function ProfilePage() {
 
       <header>
         <h2 className="text-4xl font-heading font-extrabold tracking-tight text-on-surface mb-2">Profil Peneliti</h2>
-        <p className="text-on-surface-variant max-w-2xl font-sans">Kelola kredensial Anda dan tinjau performa analisis klasifikasi penyakit pada tanaman paprika.</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-sans">

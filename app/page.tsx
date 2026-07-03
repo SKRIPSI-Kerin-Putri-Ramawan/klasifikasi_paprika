@@ -80,17 +80,7 @@ export default function LandingPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/40 to-transparent"></div>
               
-              {/* Floating Card */}
-              <div className="absolute bottom-8 left-8 right-8 p-6 bg-white/90 backdrop-blur-md rounded-2xl border border-white/50 shadow-2xl flex items-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-1000 delay-300">
-                <div className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center">
-                  <span className="material-symbols-outlined text-emerald-600 text-3xl">verified</span>
-                </div>
-                <div>
-                  <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Akurasi Deteksi</p>
-                  <p className="text-2xl font-black text-emerald-950 leading-none mt-1">98.4%</p>
-                  <p className="text-[10px] text-emerald-900/40 font-bold mt-1">Berbasis 10k+ Dataset Daun</p>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

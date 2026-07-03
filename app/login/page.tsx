@@ -131,7 +131,7 @@ export default function LoginPage() {
 
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant mb-2 font-sans" htmlFor="identity">
-                  Identitas Portal (Email)
+                  Username
                 </label>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">person</span>
@@ -150,7 +150,7 @@ export default function LoginPage() {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant font-sans" htmlFor="password">
-                    Kunci Keamanan
+                    kata sandi
                   </label>
                 </div>
                 <div className="relative">

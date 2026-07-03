@@ -107,7 +107,7 @@ export default function RegisterPage() {
         <div className="w-full flex items-center justify-center p-12 bg-surface">
           <div className="w-full max-w-sm space-y-10">
             <div className="space-y-2 text-center md:text-left">
-              <h3 className="text-3xl font-heading font-black text-on-surface tracking-tight">Daftar Akun Baru.</h3>
+              <h3 className="text-3xl font-heading font-black text-on-surface tracking-tight">Daftar Akun</h3>
               <p className="text-on-surface-variant font-sans text-sm">Lengkapi data Anda untuk mengakses portal PapriCare.</p>
             </div>
 
@@ -120,7 +120,7 @@ export default function RegisterPage() {
 
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant mb-2 font-sans" htmlFor="fullname">
-                  Nama Lengkap
+                  Name
                 </label>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">badge</span>
@@ -131,14 +131,14 @@ export default function RegisterPage() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     className="w-full bg-surface-container-low border-none rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-stone-400 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-                    placeholder="Nama Lengkap Anda"
+                    placeholder="Name"
                   />
                 </div>
               </div>
 
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant mb-2 font-sans" htmlFor="identity">
-                  Identitas Portal (Email)
+                  email
                 </label>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">email</span>
@@ -156,7 +156,7 @@ export default function RegisterPage() {
 
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant mb-2 font-sans" htmlFor="password">
-                  Kunci Keamanan Baru
+                  kata sandi
                 </label>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">lock</span>

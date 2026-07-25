@@ -186,7 +186,7 @@ export default function RegisterPage() {
                 disabled={loading}
                 className="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-heading font-bold text-lg shadow-xl shadow-primary/20 hover:opacity-95 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:active:scale-100"
               >
-                {loading ? "Memproses..." : "Daftarkan Akses"}
+                {loading ? "Memproses..." : "Daftar akun"}
                 {!loading && <span className="material-symbols-outlined text-xl">arrow_forward</span>}
               </button>
             </form>
@@ -205,7 +205,7 @@ export default function RegisterPage() {
                 href="/login" 
                 className="w-full py-4 rounded-xl border-2 border-primary/20 text-primary font-heading font-bold text-lg hover:bg-primary/5 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
               >
-                Masuk ke Portal
+                Masuk ke akun
                 <span className="material-symbols-outlined text-xl">login</span>
               </Link>
             </div>

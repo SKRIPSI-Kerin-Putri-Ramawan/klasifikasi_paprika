@@ -181,7 +181,7 @@ export default function LoginPage() {
                 disabled={loading}
                 className="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-heading font-bold text-lg shadow-xl shadow-primary/20 hover:opacity-95 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:active:scale-100"
               >
-                {loading ? "Memuat..." : "Inisialisasi Sesi"}
+                {loading ? "Memuat..." : "Login"}
                 {!loading && <span className="material-symbols-outlined text-xl">arrow_forward</span>}
               </button>
             </form>

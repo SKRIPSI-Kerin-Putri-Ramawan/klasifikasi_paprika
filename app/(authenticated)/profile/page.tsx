@@ -276,11 +276,11 @@ export default function ProfilePage() {
                 <img 
                   className="w-32 h-32 rounded-xl object-cover shadow-2xl ring-4 ring-surface" 
                   src={profileImage}
-                  alt={userData?.full_name || "Budi Santoso"}
+                  alt={userData?.full_name || "Kerin Putri"}
                 />
 
               </div>
-              <h3 className="text-2xl font-heading font-bold text-on-surface mb-1">{userData?.full_name || "Budi Santoso"}</h3>
+              <h3 className="text-2xl font-heading font-bold text-on-surface mb-1">{userData?.full_name || "Kerin Putri"}</h3>
               <p className="text-primary font-bold text-sm mb-6 px-4 py-1 bg-primary/10 rounded-full capitalize">Peneliti</p>
               
               <div className="w-full grid grid-cols-2 gap-4 border-t border-outline-variant/10 pt-6 mt-2">
